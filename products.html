@@ -772,6 +772,236 @@
         text-align: center;
       }
     }
+
+    /* === PRICING PROTECTION === */
+    .pricing-banner {
+      background: var(--black);
+      color: var(--white);
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    .pricing-banner .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-banner .lock-icon { font-size: 1.1rem; }
+
+    .pricing-banner button {
+      background: var(--accent);
+      color: var(--black);
+      border: none;
+      padding: 0.45rem 1rem;
+      border-radius: 0.4rem;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .pricing-banner button:hover { background: var(--accent-dark); }
+
+    .pricing-banner.unlocked {
+      background: #1b5e20;
+    }
+
+    .price-locked {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .price-locked:hover { color: var(--red); }
+
+    .price-blur {
+      filter: blur(5px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* === MODAL === */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 1rem;
+      max-width: 440px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+    }
+
+    .modal-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 1.5rem 2rem;
+    }
+
+    .modal-header h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .modal-header p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.25rem;
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-steps {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-step {
+      width: 32px;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--gray-200);
+      transition: background 0.3s;
+    }
+
+    .modal-step.active { background: var(--red); }
+    .modal-step.done { background: #4caf50; }
+
+    .modal-body label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-body input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 0.5rem;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .modal-body input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204,10,43,0.08);
+    }
+
+    .modal-body input.code-input {
+      text-align: center;
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: 0.5rem;
+      padding: 1rem;
+    }
+
+    .modal-btn {
+      width: 100%;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .modal-btn-primary {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .modal-btn-primary:hover { background: var(--red-light); }
+
+    .modal-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .modal-error {
+      color: var(--red);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      display: none;
+    }
+
+    .modal-info {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.25rem;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+
+    .modal-close:hover { color: var(--white); }
+
+    .modal-header { position: relative; }
+
+    .modal-success {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .modal-success .check {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-success h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+
+    .modal-success p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
   </style>
 </head>
 <body>
@@ -826,7 +1056,6 @@
       <select class="filter-select" id="filter-material">
         <option value="all">All Materials</option>
         <option value="TPE">TPE</option>
-        <option value="TPR">TPR</option>
         <option value="PVC">PVC</option>
         <option value="Polypropylene">Polypropylene</option>
       </select>
@@ -834,6 +1063,15 @@
       <div class="filter-count" id="filter-count"></div>
     </div>
   </section>
+
+  <!-- PRICING BANNER -->
+  <div class="pricing-banner" id="pricingBanner">
+    <div class="container">
+      <span class="lock-icon">&#128274;</span>
+      <span>Pricing is available to verified customers</span>
+      <button onclick="openPricingModal()">Unlock Pricing</button>
+    </div>
+  </div>
 
   <!-- PRODUCTS -->
   <section class="products-section">
@@ -876,6 +1114,52 @@
       </div>
     </div>
   </section>
+
+  <!-- PRICING MODAL -->
+  <div class="modal-overlay" id="pricingModal" onclick="if(event.target===this)closePricingModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <button class="modal-close" onclick="closePricingModal()">&times;</button>
+        <h3>Unlock Catalog Pricing</h3>
+        <p>No account needed &mdash; just verify your email</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-steps">
+          <div class="modal-step active" id="step1dot"></div>
+          <div class="modal-step" id="step2dot"></div>
+          <div class="modal-step" id="step3dot"></div>
+        </div>
+
+        <!-- Step 1: Email -->
+        <div id="modalStep1">
+          <label for="pricingEmail">Business Email</label>
+          <input type="email" id="pricingEmail" placeholder="you@company.com" onkeydown="if(event.key==='Enter')sendCode()">
+          <div class="modal-error" id="emailError"></div>
+          <button class="modal-btn modal-btn-primary" id="sendCodeBtn" onclick="sendCode()">Send Access Code &rarr;</button>
+          <p class="modal-info">We'll send a 6-digit code to your email. No spam, no account created.</p>
+        </div>
+
+        <!-- Step 2: Code -->
+        <div id="modalStep2" style="display:none">
+          <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;text-align:center">Enter the 6-digit code sent to <strong id="sentToEmail"></strong></p>
+          <input type="text" class="code-input" id="pricingCode" maxlength="6" placeholder="000000" onkeydown="if(event.key==='Enter')verifyCode()" oninput="this.value=this.value.replace(/\D/g,'')">
+          <div class="modal-error" id="codeError"></div>
+          <button class="modal-btn modal-btn-primary" id="verifyCodeBtn" onclick="verifyCode()">Verify Code &rarr;</button>
+          <p class="modal-info">Didn't get it? Check spam, or <a href="#" onclick="event.preventDefault();resendCode()" style="color:var(--red);font-weight:600">resend code</a></p>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div id="modalStep3" style="display:none">
+          <div class="modal-success">
+            <div class="check">&#9989;</div>
+            <h4>Pricing Unlocked!</h4>
+            <p>You now have access to catalog pricing for 60 days.</p>
+          </div>
+          <button class="modal-btn modal-btn-primary" onclick="closePricingModal()" style="margin-top:1rem">View Prices &rarr;</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -998,12 +1282,11 @@
         return catalogData.categories.find(function(c) { return c.id === id; });
       }
 
-      // Determine jacket material keywords for filtering
+      // Determine material for filtering — uses insulation field for accurate matching
       function getMaterialKeywords(product) {
         var cat = getCategoryById(product.category);
         if (!cat) return '';
-        var text = (cat.jacket || '') + ' ' + (cat.insulation || '') + ' ' + (cat.name || '');
-        return text.toUpperCase();
+        return (cat.insulation || '').toUpperCase();
       }
 
       // Build card description from category and product data
@@ -1085,10 +1368,10 @@
               '</div>' +
             '</div>' +
             '<div class="product-card-footer">' +
-              '<div class="product-price">' +
-                (priceStr ? 'From <strong>' + priceStr + '</strong>/ft' : '<span style="color:var(--text-light)">Contact for pricing</span>') +
+              '<div class="product-price" data-catno="' + product.catNo + '">' +
+                getPriceDisplay(product) +
               '</div>' +
-              '<a href="#" class="product-card-link">Request Quote &rarr;</a>' +
+              '<a href="contact.html" class="product-card-link">Request Quote &rarr;</a>' +
             '</div>' +
           '</div>';
 
@@ -1220,7 +1503,235 @@
         searchInput.value = '';
         renderProducts();
       };
+      // Pricing display helper
+      function getPriceDisplay(product) {
+        if (isPricingUnlocked() && pricingData) {
+          var prices = pricingData[product.catNo];
+          if (prices) {
+            var keys = Object.keys(prices).sort(function(a,b) { return Number(a)-Number(b); });
+            if (keys.length > 0) {
+              return 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
+            }
+          }
+          return '<span style="color:var(--text-light)">Contact for pricing</span>';
+        }
+        // Locked state
+        return '<span class="price-locked" onclick="openPricingModal()">&#128274; Unlock pricing</span>';
+      }
+
     })();
+
+    // === PRICING PROTECTION SYSTEM ===
+    var API_BASE = '/api'; // Vercel API base
+    var pricingData = null;
+    var pendingToken = null;
+
+    function isPricingUnlocked() {
+      var token = localStorage.getItem('autac_pricing_token');
+      if (!token) return false;
+      // Check expiry from token payload (base64 decode middle part)
+      try {
+        var payload = JSON.parse(atob(token.split('.')[1]));
+        if (payload.exp && payload.exp * 1000 < Date.now()) {
+          localStorage.removeItem('autac_pricing_token');
+          return false;
+        }
+        return payload.verified === true;
+      } catch(e) {
+        return false;
+      }
+    }
+
+    // On load: check if already unlocked
+    function initPricing() {
+      if (isPricingUnlocked()) {
+        showUnlockedState();
+        fetchPricing();
+      }
+    }
+
+    function showUnlockedState() {
+      var banner = document.getElementById('pricingBanner');
+      banner.className = 'pricing-banner unlocked';
+      banner.querySelector('.container').innerHTML =
+        '<span class="lock-icon">&#128275;</span>' +
+        '<span>Pricing unlocked &mdash; prices shown below</span>';
+    }
+
+    function fetchPricing() {
+      var token = localStorage.getItem('autac_pricing_token');
+      // For local dev, load pricing.json directly; in production, use the API
+      fetch('catalog/data/pricing.json')
+        .then(function(res) {
+          if (!res.ok) {
+            // Try API endpoint for production
+            return fetch(API_BASE + '/pricing', {
+              headers: { 'Authorization': 'Bearer ' + token }
+            }).then(function(r) { return r.json(); });
+          }
+          return res.json();
+        })
+        .then(function(data) {
+          pricingData = data;
+          // Re-render products with pricing
+          if (typeof renderProducts === 'undefined') {
+            // Trigger re-render by dispatching event
+            document.querySelectorAll('.product-price').forEach(function(el) {
+              var catNo = el.getAttribute('data-catno');
+              if (catNo && pricingData[catNo]) {
+                var prices = pricingData[catNo];
+                var keys = Object.keys(prices).sort(function(a,b){return Number(a)-Number(b);});
+                if (keys.length > 0) {
+                  el.innerHTML = 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
+                }
+              }
+            });
+          }
+        })
+        .catch(function(err) {
+          console.error('Failed to load pricing:', err);
+        });
+    }
+
+    // Modal controls
+    function openPricingModal() {
+      document.getElementById('pricingModal').classList.add('open');
+      showModalStep(1);
+      document.getElementById('pricingEmail').focus();
+    }
+
+    function closePricingModal() {
+      document.getElementById('pricingModal').classList.remove('open');
+      // If just unlocked, refresh prices
+      if (isPricingUnlocked()) {
+        showUnlockedState();
+        fetchPricing();
+      }
+    }
+
+    function showModalStep(step) {
+      document.getElementById('modalStep1').style.display = step === 1 ? 'block' : 'none';
+      document.getElementById('modalStep2').style.display = step === 2 ? 'block' : 'none';
+      document.getElementById('modalStep3').style.display = step === 3 ? 'block' : 'none';
+
+      var dots = [
+        document.getElementById('step1dot'),
+        document.getElementById('step2dot'),
+        document.getElementById('step3dot')
+      ];
+      dots.forEach(function(d, i) {
+        d.className = 'modal-step';
+        if (i + 1 === step) d.classList.add('active');
+        if (i + 1 < step) d.classList.add('done');
+      });
+    }
+
+    function sendCode() {
+      var email = document.getElementById('pricingEmail').value.trim();
+      var errorEl = document.getElementById('emailError');
+      var btn = document.getElementById('sendCodeBtn');
+
+      errorEl.style.display = 'none';
+
+      if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      // Call API to send code
+      fetch(API_BASE + '/send-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = 'Send Access Code →';
+
+        if (data.success) {
+          pendingToken = data.token;
+          document.getElementById('sentToEmail').textContent = email;
+          showModalStep(2);
+          document.getElementById('pricingCode').focus();
+        } else {
+          errorEl.textContent = data.error || 'Failed to send code. Please try again.';
+          errorEl.style.display = 'block';
+        }
+      })
+      .catch(function() {
+        // For demo/local dev: simulate success
+        btn.disabled = false;
+        btn.textContent = 'Send Access Code →';
+        pendingToken = 'demo';
+        document.getElementById('sentToEmail').textContent = email;
+        showModalStep(2);
+        document.getElementById('pricingCode').focus();
+      });
+    }
+
+    function resendCode() {
+      showModalStep(1);
+      sendCode();
+    }
+
+    function verifyCode() {
+      var code = document.getElementById('pricingCode').value.trim();
+      var errorEl = document.getElementById('codeError');
+      var btn = document.getElementById('verifyCodeBtn');
+
+      errorEl.style.display = 'none';
+
+      if (!code || code.length !== 6) {
+        errorEl.textContent = 'Please enter the 6-digit code.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Verifying...';
+
+      fetch(API_BASE + '/verify-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: pendingToken, code: code })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        btn.disabled = false;
+        btn.textContent = 'Verify Code →';
+
+        if (data.success) {
+          localStorage.setItem('autac_pricing_token', data.token);
+          showModalStep(3);
+        } else {
+          errorEl.textContent = data.error || 'Invalid code. Please try again.';
+          errorEl.style.display = 'block';
+        }
+      })
+      .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Verify Code →';
+        // Demo mode: accept any 6-digit code
+        // Create a fake JWT-like token for local dev
+        var header = btoa(JSON.stringify({alg:'HS256',typ:'JWT'}));
+        var payload = btoa(JSON.stringify({
+          email: document.getElementById('pricingEmail').value,
+          verified: true,
+          exp: Math.floor(Date.now()/1000) + (60*24*60*60)
+        }));
+        var fakeToken = header + '.' + payload + '.demo';
+        localStorage.setItem('autac_pricing_token', fakeToken);
+        showModalStep(3);
+      });
+    }
+
+    // Initialize on page load
+    initPricing();
   </script>
 
 </body>

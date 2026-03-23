@@ -1,8 +1,16 @@
 {
   "buildCommand": "",
   "outputDirectory": "",
+  "functions": {
+    "api/*.js": {
+      "memory": 128,
+      "maxDuration": 10
+    }
+  },
   "rewrites": [
-    { "source": "/api/:path*", "destination": "/api/:path*" }
+    { "source": "/api/send-code", "destination": "/api/send-code.js" },
+    { "source": "/api/verify-code", "destination": "/api/verify-code.js" },
+    { "source": "/api/pricing", "destination": "/api/pricing.js" }
   ],
   "headers": [
     {
@@ -16,6 +24,14 @@
       "headers": [
         { "key": "X-Robots-Tag", "value": "noindex" },
         { "key": "Cache-Control", "value": "no-store" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
       ]
     }
   ],
