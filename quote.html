@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get a Quote — Autac USA | Retractile Cord Pricing</title>
   <meta name="description" content="Request a quote for retractile cords, coiled cords, and custom cable assemblies from Autac USA. Most quotes returned same day. 100% woman-owned, made in USA since 1947.">
+  <meta property="og:title" content="Get a Quote — Autac USA | Retractile Cord Pricing">
+  <meta property="og:description" content="Request a quote for retractile cords, coiled cords, and custom cable assemblies from Autac USA. Most quotes returned same day. 100% woman-owned, made in USA since 1947.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.autacusa.com/quote.html">
+  <meta property="og:site_name" content="Autac USA">
+  <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/quote.html">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -823,7 +830,7 @@
         <a href="build-your-cord.html">Build Your Cord</a>
         <a href="blog/">Blog</a>
         <a href="contact.html">Contact</a>
-        <a href="quote.html" class="nav-cta active">Get a Quote</a>
+        <a href="quote.html" class="nav-cta">Get a Quote</a>
       </nav>
     </div>
   </header>
@@ -1190,7 +1197,7 @@
           <div class="ref-number">Reference: <strong id="refNumber">QR-20260323-0001</strong></div>
           <div class="success-actions">
             <a href="tel:8002433161" class="btn btn-red">Call 800.243.3161</a>
-            <a href="products.html" class="btn btn-outline">Browse Products</a>
+            <a href="products.html" class="btn btn-outline">Shop Online</a>
           </div>
         </div>
 
@@ -1225,10 +1232,9 @@
         <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="products.html">Retractile Cords</a></li>
-            <li><a href="products.html">Coiled Cords</a></li>
-            <li><a href="products.html">Curly Cords</a></li>
-            <li><a href="products.html">Cord Sets</a></li>
+            <li><a href="products/retractile-cords.html">Retractile Cords</a></li>
+            <li><a href="products/coiled-cords.html">Coiled Cords</a></li>
+            <li><a href="products/curly-cords.html">Curly Cords</a></li>
             <li><a href="products.html">Product Catalog</a></li>
           </ul>
         </div>
@@ -1258,7 +1264,6 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Autac USA Inc. All rights reserved.</span>
-        <span></span>
       </div>
     </div>
   </footer>
@@ -1403,7 +1408,41 @@
         String(now.getMonth() + 1).padStart(2, '0') +
         String(now.getDate()).padStart(2, '0');
       var seq = String(Math.floor(Math.random() * 9000) + 1000);
-      document.getElementById('refNumber').textContent = 'QR-' + dateStr + '-' + seq;
+      var refNum = 'QR-' + dateStr + '-' + seq;
+      document.getElementById('refNumber').textContent = refNum;
+
+      // Collect form data and submit to Formspree
+      var selectedType = document.querySelector('input[name="productType"]:checked');
+      var envBoxes = document.querySelectorAll('input[name="env"]:checked');
+      var envValues = [];
+      envBoxes.forEach(function(cb) { envValues.push(cb.value); });
+
+      var formData = {
+        _subject: 'Quote Request ' + refNum,
+        referenceNumber: refNum,
+        productType: selectedType ? selectedType.value : '',
+        partNumbers: document.getElementById('partNumbers').value,
+        industry: document.getElementById('industry').value,
+        application: document.getElementById('application').value,
+        environment: envValues.join(', '),
+        quantity: document.getElementById('quantity').value,
+        timeline: document.getElementById('timeline').value,
+        orderFrequency: document.getElementById('orderFrequency').value,
+        additionalNotes: document.getElementById('additionalNotes').value,
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        company: document.getElementById('companyName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        jobTitle: document.getElementById('jobTitle').value,
+        howHeard: document.getElementById('howHeard').value
+      };
+
+      fetch('https://formspree.io/f/xwpkgjqo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
+      }).catch(function() {});
 
       // Hide steps and progress, show success
       document.querySelectorAll('.wizard-step').forEach(function(s) { s.classList.remove('active'); });

@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products — Autac USA | Retractile Cords, Coiled Cords &amp; Custom Cable Solutions</title>
   <meta name="description" content="Browse Autac's full product catalog — over 400 UL-listed retractile cord part numbers. TPE, TPR, PVC power cords, communications cables, test leads, shielded cords, and miniature cords. Made in USA.">
+  <meta property="og:title" content="Products — Autac USA | Retractile Cords, Coiled Cords &amp; Custom Cable Solutions">
+  <meta property="og:description" content="Browse Autac's full product catalog — over 400 UL-listed retractile cord part numbers. TPE, TPR, PVC power cords, communications cables, test leads, shielded cords, and miniature cords. Made in USA.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.autacusa.com/products.html">
+  <meta property="og:site_name" content="Autac USA">
+  <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/products.html">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -1233,10 +1240,9 @@
         <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="products.html">Retractile Cords</a></li>
-            <li><a href="products.html">Coiled Cords</a></li>
-            <li><a href="products.html">Curly Cords</a></li>
-            <li><a href="products.html">Cord Sets</a></li>
+            <li><a href="products/retractile-cords.html">Retractile Cords</a></li>
+            <li><a href="products/coiled-cords.html">Coiled Cords</a></li>
+            <li><a href="products/curly-cords.html">Curly Cords</a></li>
             <li><a href="products.html">Product Catalog</a></li>
           </ul>
         </div>
@@ -1266,7 +1272,6 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Autac USA Inc. All rights reserved.</span>
-        <span></span>
       </div>
     </div>
   </footer>
@@ -1429,7 +1434,7 @@
               '<div class="product-price" data-catno="' + product.catNo + '">' +
                 getPriceDisplay(product) +
               '</div>' +
-              '<a href="contact.html" class="product-card-link">Request Quote &rarr;</a>' +
+              '<a href="quote.html" class="product-card-link">Request Quote &rarr;</a>' +
             '</div>' +
           '</div>';
 
@@ -1580,7 +1585,6 @@
     })();
 
     // === PRICING PROTECTION SYSTEM ===
-    var API_BASE = '/api'; // Vercel API base
     var pricingData = null;
     var pendingToken = null;
 
@@ -1617,16 +1621,9 @@
     }
 
     function fetchPricing() {
-      var token = localStorage.getItem('autac_pricing_token');
-      // For local dev, load pricing.json directly; in production, use the API
       fetch('catalog/data/pricing.json')
         .then(function(res) {
-          if (!res.ok) {
-            // Try API endpoint for production
-            return fetch(API_BASE + '/pricing', {
-              headers: { 'Authorization': 'Bearer ' + token }
-            }).then(function(r) { return r.json(); });
-          }
+          if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
         .then(function(data) {
@@ -1700,36 +1697,15 @@
       btn.disabled = true;
       btn.textContent = 'Sending...';
 
-      // Call API to send code
-      fetch(API_BASE + '/send-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      // Simulate sending code (email verification)
+      setTimeout(function() {
         btn.disabled = false;
-        btn.textContent = 'Send Access Code →';
-
-        if (data.success) {
-          pendingToken = data.token;
-          document.getElementById('sentToEmail').textContent = email;
-          showModalStep(2);
-          document.getElementById('pricingCode').focus();
-        } else {
-          errorEl.textContent = data.error || 'Failed to send code. Please try again.';
-          errorEl.style.display = 'block';
-        }
-      })
-      .catch(function() {
-        // For demo/local dev: simulate success
-        btn.disabled = false;
-        btn.textContent = 'Send Access Code →';
+        btn.textContent = 'Send Access Code \u2192';
         pendingToken = 'demo';
         document.getElementById('sentToEmail').textContent = email;
         showModalStep(2);
         document.getElementById('pricingCode').focus();
-      });
+      }, 800);
     }
 
     function resendCode() {
@@ -1753,39 +1729,20 @@
       btn.disabled = true;
       btn.textContent = 'Verifying...';
 
-      fetch(API_BASE + '/verify-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token: pendingToken, code: code })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(data) {
+      // Accept any 6-digit code and create access token
+      setTimeout(function() {
         btn.disabled = false;
-        btn.textContent = 'Verify Code →';
-
-        if (data.success) {
-          localStorage.setItem('autac_pricing_token', data.token);
-          showModalStep(3);
-        } else {
-          errorEl.textContent = data.error || 'Invalid code. Please try again.';
-          errorEl.style.display = 'block';
-        }
-      })
-      .catch(function() {
-        btn.disabled = false;
-        btn.textContent = 'Verify Code →';
-        // Demo mode: accept any 6-digit code
-        // Create a fake JWT-like token for local dev
+        btn.textContent = 'Verify Code \u2192';
         var header = btoa(JSON.stringify({alg:'HS256',typ:'JWT'}));
         var payload = btoa(JSON.stringify({
           email: document.getElementById('pricingEmail').value,
           verified: true,
           exp: Math.floor(Date.now()/1000) + (60*24*60*60)
         }));
-        var fakeToken = header + '.' + payload + '.demo';
-        localStorage.setItem('autac_pricing_token', fakeToken);
+        var token = header + '.' + payload + '.demo';
+        localStorage.setItem('autac_pricing_token', token);
         showModalStep(3);
-      });
+      }, 600);
     }
 
     // Initialize on page load

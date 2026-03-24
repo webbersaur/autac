@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us — Autac USA | Retractile Cord Manufacturer</title>
   <meta name="description" content="Contact Autac USA for retractile cord quotes, product questions, or custom orders. Call 800.243.3161 or visit us in North Branford, CT. Most quotes returned same day.">
+  <meta property="og:title" content="Contact Us — Autac USA | Retractile Cord Manufacturer">
+  <meta property="og:description" content="Contact Autac USA for retractile cord quotes, product questions, or custom orders. Call 800.243.3161 or visit us in North Branford, CT. Most quotes returned same day.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.autacusa.com/contact.html">
+  <meta property="og:site_name" content="Autac USA">
+  <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/contact.html">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -666,7 +673,7 @@
           <h2>Send Us a Message</h2>
           <p>Fill out the form and we'll get back to you promptly.</p>
 
-          <form id="contactForm" onsubmit="handleSubmit(event)">
+          <form id="contactForm" action="https://formspree.io/f/xwpkgjqo" method="POST" onsubmit="handleSubmit(event)">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -767,11 +774,11 @@
   <!-- MAP -->
   <section class="map-section">
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.8!2d-72.7717!3d41.3978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7d8a8b6ef75e7%3A0x4c0e1f9f2a8b5e0a!2sNorth%20Branford%2C%20CT%2006471!5e0!3m2!1sen!2sus!4v1"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.8!2d-72.7717!3d41.3978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sP.O.%20Box%20306%2C%20North%20Branford%2C%20CT%2006471!5e0!3m2!1sen!2sus!4v1"
       allowfullscreen=""
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
-      title="Autac USA location — North Branford, CT">
+      title="Autac USA — P.O. Box 306, North Branford, CT 06471">
     </iframe>
   </section>
 
@@ -832,7 +839,6 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Autac USA Inc. All rights reserved.</span>
-        <span></span>
       </div>
     </div>
   </footer>
@@ -840,12 +846,25 @@
   <script>
     function handleSubmit(e) {
       e.preventDefault();
-      // In production, this would POST to a backend or service like Formspree/Netlify Forms
-      document.getElementById('formSuccess').style.display = 'block';
-      e.target.reset();
-      setTimeout(function() {
-        document.getElementById('formSuccess').style.display = 'none';
-      }, 5000);
+      var form = e.target;
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(res) {
+        if (res.ok) {
+          document.getElementById('formSuccess').style.display = 'block';
+          form.reset();
+          setTimeout(function() {
+            document.getElementById('formSuccess').style.display = 'none';
+          }, 5000);
+        } else {
+          alert('Something went wrong. Please try again or call us at 800.243.3161.');
+        }
+      }).catch(function() {
+        alert('Something went wrong. Please try again or call us at 800.243.3161.');
+      });
     }
   </script>
 

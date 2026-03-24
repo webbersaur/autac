@@ -1,0 +1,346 @@
+{
+  "categories": [
+    {
+      "id": "tpe-power",
+      "name": "TPE Power Cords",
+      "conductor": "Bare copper",
+      "insulation": "TPE",
+      "jacket": "TPE",
+      "shield": false,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "tpr-power",
+      "name": "TPR Power Cords",
+      "conductor": "Bare copper",
+      "insulation": "TPR",
+      "jacket": "TPR",
+      "shield": false,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "pvc-power",
+      "name": "PVC Power Cords",
+      "conductor": "Bare copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": false,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "tpe-power-bare",
+      "name": "TPE Power Cords (Bare Ends)",
+      "conductor": "Bare copper",
+      "insulation": "TPE",
+      "jacket": "TPE",
+      "shield": false,
+      "listing": "UL Recognized"
+    },
+    {
+      "id": "comm-control",
+      "name": "Communications & Control Cables",
+      "conductor": "Tinned copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": false,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "test-leads",
+      "name": "Test Lead Cords",
+      "conductor": "Tinned copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": false,
+      "listing": "UL Recognized"
+    },
+    {
+      "id": "shielded-comm",
+      "name": "Shielded Communications Cables",
+      "conductor": "Tinned copper",
+      "insulation": "TPE",
+      "jacket": "TPE",
+      "shield": true,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "pvc-shielded",
+      "name": "PVC Shielded Cables",
+      "conductor": "Tinned copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": true,
+      "listing": "UL Listed"
+    },
+    {
+      "id": "pvc-miniature",
+      "name": "Miniature PVC Cords",
+      "conductor": "Bare copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": false,
+      "listing": "UL Recognized"
+    },
+    {
+      "id": "pvc-miniature-foil",
+      "name": "Miniature PVC Foil-Shielded Cords",
+      "conductor": "Tinned copper",
+      "insulation": "PVC",
+      "jacket": "PVC",
+      "shield": true,
+      "listing": "UL Recognized"
+    }
+  ],
+  "products": [
+    {
+      "catNo": "1601",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [2, 4, 6, 8, 10]
+    },
+    {
+      "catNo": "1602",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "1610",
+      "category": "tpe-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15, 20]
+    },
+    {
+      "catNo": "1615",
+      "category": "tpe-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [4, 6, 8, 10, 15, 20]
+    },
+    {
+      "catNo": "1620",
+      "category": "tpe-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SJTO",
+      "voltage": "300V",
+      "ampRating": "20A",
+      "retractedLengths": [4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "2201",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJTO",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "2210",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJTO",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [4, 6, 8, 10, 15, 20]
+    },
+    {
+      "catNo": "2215",
+      "category": "tpr-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SO",
+      "voltage": "600V",
+      "ampRating": "20A",
+      "retractedLengths": [4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "3301",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [2, 4, 6, 8, 10]
+    },
+    {
+      "catNo": "3310",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "3315",
+      "category": "pvc-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [4, 6, 8, 10, 15, 20]
+    },
+    {
+      "catNo": "3320",
+      "category": "pvc-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SOW",
+      "voltage": "600V",
+      "ampRating": "20A",
+      "retractedLengths": [4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "3325",
+      "category": "pvc-power",
+      "awg": "10",
+      "conductors": 3,
+      "type": "SOW",
+      "voltage": "600V",
+      "ampRating": "30A",
+      "retractedLengths": [6, 8, 10, 15]
+    },
+    {
+      "catNo": "4401",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVTO",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [2, 4, 6, 8, 10]
+    },
+    {
+      "catNo": "4410",
+      "category": "tpe-power-bare",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "5501",
+      "category": "comm-control",
+      "awg": "18",
+      "conductors": 4,
+      "type": "CMG",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6, 8, 10]
+    },
+    {
+      "catNo": "5510",
+      "category": "comm-control",
+      "awg": "16",
+      "conductors": 4,
+      "type": "CMG",
+      "voltage": "300V",
+      "ampRating": "8A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "6601",
+      "category": "test-leads",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [2, 4, 6]
+    },
+    {
+      "catNo": "6610",
+      "category": "test-leads",
+      "awg": "16",
+      "conductors": 2,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [2, 4, 6, 8]
+    },
+    {
+      "catNo": "7701",
+      "category": "shielded-comm",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SJTO",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6, 8, 10]
+    },
+    {
+      "catNo": "7710",
+      "category": "shielded-comm",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "8A",
+      "retractedLengths": [2, 4, 6, 8, 10, 15]
+    },
+    {
+      "catNo": "8801",
+      "category": "pvc-shielded",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6, 8]
+    },
+    {
+      "catNo": "9901",
+      "category": "pvc-miniature",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6]
+    },
+    {
+      "catNo": "9910",
+      "category": "pvc-miniature",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6, 8]
+    },
+    {
+      "catNo": "9950",
+      "category": "pvc-miniature-foil",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "5A",
+      "retractedLengths": [2, 4, 6]
+    }
+  ]
+}

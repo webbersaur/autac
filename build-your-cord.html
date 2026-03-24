@@ -5,7 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Build Your Cord — Autac USA | Custom Retractile Cord Configurator</title>
   <meta name="description" content="Configure a custom retractile cord to your exact specifications. Choose gauge, conductors, length, material, shielding, and color. Get a quote from Autac USA.">
+  <meta property="og:title" content="Build Your Cord — Autac USA | Custom Retractile Cord Configurator">
+  <meta property="og:description" content="Configure a custom retractile cord to your exact specifications. Choose gauge, conductors, length, material, shielding, and color. Get a quote from Autac USA.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.autacusa.com/build-your-cord.html">
+  <meta property="og:site_name" content="Autac USA">
+  <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/build-your-cord.html">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -1137,10 +1144,9 @@
         <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="products.html">Retractile Cords</a></li>
-            <li><a href="products.html">Coiled Cords</a></li>
-            <li><a href="products.html">Curly Cords</a></li>
-            <li><a href="products.html">Cord Sets</a></li>
+            <li><a href="products/retractile-cords.html">Retractile Cords</a></li>
+            <li><a href="products/coiled-cords.html">Coiled Cords</a></li>
+            <li><a href="products/curly-cords.html">Curly Cords</a></li>
             <li><a href="products.html">Product Catalog</a></li>
           </ul>
         </div>
@@ -1170,7 +1176,6 @@
       </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Autac USA Inc. All rights reserved.</span>
-        <span></span>
       </div>
     </div>
   </footer>
@@ -1261,6 +1266,35 @@
         alert('Please select an insulation material (Step 1).');
         return;
       }
+
+      // Submit to Formspree
+      var formData = {
+        _subject: 'Custom Cord Builder Request',
+        name: name,
+        email: email,
+        phone: phone,
+        company: company,
+        material: cordConfig.material,
+        jacket: cordConfig.jacket,
+        shield: cordConfig.shield,
+        drainWire: cordConfig.drain,
+        ulListed: cordConfig.ul,
+        conductors: document.getElementById('conductors').value,
+        gauge: document.getElementById('gauge').value,
+        conductorType: document.getElementById('conductorType').value,
+        retractedLength: document.getElementById('retractedLength').value,
+        extendedLength: document.getElementById('extendedLength').value,
+        jacketColor: document.getElementById('jacketColor').value,
+        tangentAType: cordConfig.tangentAType,
+        tangentBType: cordConfig.tangentBType,
+        notes: document.getElementById('notes') ? document.getElementById('notes').value : ''
+      };
+
+      fetch('https://formspree.io/f/xwpkgjqo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
+      }).catch(function() {});
 
       document.getElementById('formSuccess').style.display = 'block';
       window.scrollTo({ top: document.getElementById('formSuccess').offsetTop - 100, behavior: 'smooth' });
