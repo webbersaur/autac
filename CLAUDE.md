@@ -1,0 +1,75 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Static HTML/CSS/JS website for **Autac USA** (autacusa.com), a 100% woman-owned retractile cord manufacturer in North Branford, CT since 1947. No build system, no bundler, no CMS — all pages are self-contained HTML with inline `<style>` blocks.
+
+**Repo:** github.com/webbersaur/autac-proposal.git (branch: `main`)
+
+## Local Development
+
+```bash
+python3 -m http.server 8080
+```
+
+## Site Structure
+
+### Public Pages (11 total, indexed in sitemap.xml)
+- `index.html` — Homepage
+- `about.html` — Company history, leadership, woman-owned messaging
+- `products.html` — Product catalog with filtering (loads from JSON)
+- `products/retractile-cords.html` — Retractile cord category
+- `products/curly-cords.html` — Curly cord category
+- `products/coiled-cords.html` — Coiled cord category
+- `products/color-charts.html` — Conductor color reference
+- `solutions.html` — Industry-specific solutions
+- `contact.html` — Contact form and info
+- `quote.html` — 5-step guided quote wizard with progress bar
+- `build-your-cord.html` — 8-step custom cord configurator with live summary panel
+
+### Non-indexed Files (blocked in robots.txt)
+- `proposal-v1.html` — Webbersaurus website redesign proposal (different brand colors)
+- `invoice-deposit.html` — Webbersaurus deposit invoice
+- `mockup.html` — Design mockup/test page
+
+## Architecture & Patterns
+
+### No Shared CSS/JS
+Every page has its own complete inline `<style>` block and `<script>` block. When creating new pages, copy the full header/nav/footer structure and CSS from an existing page. This means **sitewide changes (nav, footer, theme) must be applied to all 11 pages individually**.
+
+### CSS Theme (consistent across all pages)
+- `--red: #cc0a2b` / `--red-light: #e01235` — Primary CTA color
+- `--accent: #f5c518` / `--accent-dark: #d4a80e` — Secondary CTA (yellow)
+- `--black: #1a1a1a` — Headers, dark backgrounds
+- `--font: 'Inter'` — Google Fonts (weights 400–800)
+- `.container` — max-width: 1200px centered wrapper
+
+### Page Template Structure
+Every page follows: Topbar → Sticky Header (logo + nav + CTA) → Page Hero → Content → Footer
+
+### Navigation
+- Products has a hover dropdown with invisible bridge (`::before` spacer) to prevent flickering
+- Mobile: hamburger toggle with `nav.open` class
+- "Get a Quote" yellow CTA button links to `quote.html`
+- Blog link points to `blog/` (directory to be created)
+- Product subpages use `../` prefix for root-level links
+
+### Forms (No Backend)
+Both `quote.html` and `build-your-cord.html` are client-side only — success messages display but no data is POSTed. Forms will need a backend (Formspree, Netlify Forms, etc.) for production.
+
+- **quote.html**: `nextStep()`/`prevStep()`/`goToStep()` navigation, `validateContact()` on step 4, generates reference number `QR-YYYYMMDD-XXXX`
+- **build-your-cord.html**: `cordConfig` state object, `updateSummary()` updates sticky sidebar, auto-calculates extended length (5x retracted)
+
+## SEO Status
+- Canonical tags on all 11 pages (www.autacusa.com)
+- Unique title tags and meta descriptions per page
+- robots.txt and sitemap.xml in place
+- **Not yet implemented:** JSON-LD structured data, Open Graph tags, blog content
+
+## When Adding New Pages
+1. Copy header/nav/footer HTML and full `<style>` block from an existing page
+2. Add `<link rel="canonical">` tag in `<head>`
+3. Add the page to `sitemap.xml`
+4. For pages in subdirectories, use `../` prefix for root-level asset/page links

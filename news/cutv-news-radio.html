@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curly Cords — Autac USA | Communications, Control & Test Lead Cords</title>
-  <meta name="description" content="Autac curly cords for communications, electronic control, and test lead applications. PVC and Auta-Prene retractile cords, UL listed, made in the USA since 1947.">
-  <meta property="og:title" content="Curly Cords — Autac USA | Communications, Control & Test Lead Cords">
-  <meta property="og:description" content="Autac curly cords for communications, electronic control, and test lead applications. PVC and Auta-Prene retractile cords, UL listed, made in the USA since 1947.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.autacusa.com/products/curly-cords.html">
+  <title>CUTV News Radio Spotlights Marie-Louise Burkle of Autac Inc | Autac USA</title>
+  <meta name="description" content="CUTV News Radio features Marie-Louise Burkle, CEO of Autac Inc, discussing her leadership of the woman-owned retractile cord manufacturer in Branford, CT.">
+  <meta property="og:title" content="CUTV News Radio Spotlights Marie-Louise Burkle of Autac Inc | Autac USA">
+  <meta property="og:description" content="CUTV News Radio features Marie-Louise Burkle, CEO of Autac Inc, discussing her leadership of the woman-owned retractile cord manufacturer in Branford, CT.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.autacusa.com/news/cutv-news-radio.html">
   <meta property="og:site_name" content="Autac USA">
   <meta property="og:image" content="https://www.autacusa.com/logo.png">
-  <link rel="canonical" href="https://www.autacusa.com/products/curly-cords.html">
+  <link rel="canonical" href="https://www.autacusa.com/news/cutv-news-radio.html">
   <link rel="icon" type="image/png" href="../logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -274,153 +274,73 @@
     .btn-white { background: var(--white); color: var(--red); }
     .btn-white:hover { background: var(--gray-100); }
 
-    /* === OVERVIEW === */
-    .overview {
-      padding: 4rem 0;
-    }
-
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    .overview-card {
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      border-radius: 0.75rem;
-      padding: 2rem;
-    }
-
-    .overview-card .card-icon {
+    /* === ARTICLE META === */
+    .article-meta {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      background: rgba(204, 10, 43, 0.08);
-      border-radius: 0.5rem;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-
-    .overview-card h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 0.5rem;
-    }
-
-    .overview-card p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* === PRODUCT SECTIONS === */
-    .product-section {
-      padding: 4rem 0;
-    }
-
-    .product-section:nth-child(even) {
-      background: var(--gray-50);
-    }
-
-    .product-section-header {
-      margin-bottom: 1rem;
-    }
-
-    .product-meta {
-      display: flex;
-      flex-wrap: wrap;
       gap: 1.5rem;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .product-meta-item {
+      align-items: center;
       font-size: 0.85rem;
-      color: var(--text-light);
+      color: rgba(255,255,255,0.7);
+      margin-top: 1rem;
     }
 
-    .product-meta-item strong {
+    /* === ARTICLE BODY === */
+    .article-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .article-body h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--black);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.5px;
+    }
+
+    .article-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--black);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .article-body p {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 1.5rem 1.5rem;
+      line-height: 1.8;
+    }
+
+    .article-body li {
+      margin-bottom: 0.5rem;
+      font-size: 1.02rem;
+    }
+
+    .article-body strong {
       color: var(--black);
     }
 
-    .product-note {
-      background: rgba(245, 197, 24, 0.1);
-      border: 1px solid rgba(245, 197, 24, 0.3);
-      border-radius: 0.5rem;
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
-      color: var(--text);
+    /* === BACK LINK === */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--red);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
       margin-bottom: 2rem;
     }
 
-    .product-table-wrap {
-      overflow-x: auto;
-      border-radius: 0.5rem;
-      border: 1px solid var(--gray-200);
-    }
-
-    .product-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-
-    .product-table thead {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .product-table th {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      white-space: nowrap;
-    }
-
-    .product-table td {
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid var(--gray-100);
-      white-space: nowrap;
-    }
-
-    .product-table tbody tr:hover {
-      background: rgba(204, 10, 43, 0.03);
-    }
-
-    .product-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    /* === BUILD YOUR CORD === */
-    .build-cord {
-      padding: 3.5rem 0;
-      background: linear-gradient(135deg, var(--red), var(--red-light));
-      color: var(--white);
-    }
-
-    .build-cord .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .build-cord h3 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .build-cord p {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.95rem;
+    .back-link:hover {
+      color: var(--red-light);
     }
 
     /* === CTA === */
@@ -436,7 +356,6 @@
     }
 
     .cta .section-desc {
-      max-width: 500px;
       margin: 0 auto 2rem;
     }
 
@@ -444,6 +363,43 @@
       display: flex;
       gap: 1rem;
       justify-content: center;
+    }
+
+    /* === RELATED POSTS === */
+    .related-posts {
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-200);
+      padding: 2.5rem 0;
+    }
+
+    .related-posts .container {
+      max-width: 760px;
+    }
+
+    .related-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .related-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.25rem;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 0.4rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .related-links a:hover {
+      border-color: var(--red);
+      color: var(--red);
     }
 
     /* === FOOTER === */
@@ -530,20 +486,8 @@
       color: var(--text);
     }
 
-    /* === LOADING === */
-    .loading {
-      text-align: center;
-      padding: 3rem;
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-
     /* === RESPONSIVE === */
     @media (max-width: 1024px) {
-      .overview-grid {
-        grid-template-columns: 1fr;
-      }
-
       .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
@@ -578,21 +522,19 @@
       .page-hero { padding: 3rem 0; }
       .page-hero h1 { font-size: 2rem; }
 
-      .overview-grid { grid-template-columns: 1fr; }
+      .article-body h2 { font-size: 1.35rem; }
 
-      .product-table { font-size: 0.78rem; }
-      .product-table th,
-      .product-table td { padding: 0.5rem 0.6rem; }
-
-      .build-cord .container {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
+      .article-body {
+        padding: 2rem 1.25rem;
       }
 
       .cta-buttons {
         flex-direction: column;
         align-items: center;
+      }
+
+      .related-links {
+        flex-direction: column;
       }
 
       .footer-grid { grid-template-columns: 1fr; }
@@ -625,13 +567,13 @@
       <nav>
         <a href="../about.html">About</a>
         <div class="nav-dropdown">
-          <a href="../products.html" class="active">Products</a>
+          <a href="../products.html">Products</a>
           <div class="nav-dropdown-menu">
             <a href="../products.html">Full Catalog</a>
-            <a href="retractile-cords.html">Retractile Cords</a>
-            <a href="curly-cords.html">Curly Cords</a>
-            <a href="coiled-cords.html">Coiled Cords</a>
-            <a href="color-charts.html">Color Charts</a>
+            <a href="../products/retractile-cords.html">Retractile Cords</a>
+            <a href="../products/curly-cords.html">Curly Cords</a>
+            <a href="../products/coiled-cords.html">Coiled Cords</a>
+            <a href="../products/color-charts.html">Color Charts</a>
           </div>
         </div>
         <a href="../solutions.html">Solutions</a>
@@ -647,61 +589,44 @@
   <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container">
-      <div class="page-hero-badge">Product Category</div>
-      <h1>Curly <span>Cords</span></h1>
-      <p>Retractile curly cords for communications, electronic control, and test lead applications. Available in PVC and our proprietary Auta-Prene jacketing.</p>
-    </div>
-  </section>
-
-  <!-- OVERVIEW -->
-  <section class="overview">
-    <div class="container">
-      <div class="section-label">Overview</div>
-      <div class="section-title">What Are Curly Cords Used For?</div>
-      <p class="section-desc">Curly cords &mdash; also known as retractile or coiled cords &mdash; keep workspaces organized while providing the reach you need. Autac curly cords are built for reliability in demanding communications, control, and testing environments.</p>
-
-      <div class="overview-grid">
-        <div class="overview-card">
-          <div class="card-icon">&#128225;</div>
-          <h3>Telecommunications</h3>
-          <p>Telephone handset cords, headset cables, and communication panel connections. Multi-conductor designs for signal integrity across voice and data lines.</p>
-        </div>
-        <div class="overview-card">
-          <div class="card-icon">&#9881;</div>
-          <h3>Control Panels</h3>
-          <p>Electronic control cords for industrial panels, pendant controls, and operator stations. Available in 2 to 12 conductors for complex control circuits.</p>
-        </div>
-        <div class="overview-card">
-          <div class="card-icon">&#128268;</div>
-          <h3>Test Equipment</h3>
-          <p>Auta-Prene test leads for utility meters, multimeters, and field testing. Our proprietary TPE jacketing delivers superior flexibility and durability in all conditions.</p>
-        </div>
+      <div class="page-hero-badge">News &amp; Press</div>
+      <h1>CUTV News Radio Spotlights <span>Marie-Louise Burkle</span> of Autac Inc</h1>
+      <p>Marie-Louise Burkle, CEO of Autac, shares her story of leading a woman-owned manufacturing company in the coiled cord industry.</p>
+      <div class="article-meta">
+        <span>February 23, 2019</span>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT SECTIONS (loaded dynamically) -->
-  <div id="product-sections">
-    <div class="loading">Loading product data...</div>
-  </div>
+  <!-- ARTICLE BODY -->
+  <article class="article-body">
 
-  <!-- BUILD YOUR CORD -->
-  <section class="build-cord">
-    <div class="container">
-      <div>
-        <h3>Don't See Your Exact Spec?</h3>
-        <p>We build custom curly cords to order &mdash; any gauge, conductor count, length, material, and color.</p>
-      </div>
-      <a href="../build-your-cord.html" class="btn btn-white">Build Your Cord &rarr;</a>
-    </div>
-  </section>
+    <a href="../news/" class="back-link">&larr; Back to News</a>
+
+    <p>Branford, CT &mdash; When we think of manufacturing plants, we often imagine these companies being run only by men. But the truth is many women are successfully running manufacturing companies worldwide.</p>
+
+    <p>Marie-Louise Burkle is CEO of Autac, a highly regarded woman-owned manufacturer of high-quality coiled cords. Founded by Robert Burkle in 1947, Autac is the second oldest company in the industry.</p>
+
+    <p>&ldquo;When Autac first started, we were solely involved in the commercial trucking industry but diversified when the trucking industry suffered from overregulation,&rdquo; says Marie. &ldquo;Coiled cords can be found in medical facilities, aviation, toys, communication, automation, and many other industries.&rdquo;</p>
+
+    <p>What sets Autac apart from the &ldquo;Big Guys&rdquo;? Extra magic and precise attention to detail are involved in producing retractile cords. Autac has the recipe for the best quality cords on the market today. Everyone else is still trying to figure it out.</p>
+
+    <p>&ldquo;We are a boutique manufacturer of wire and cable. Our firm is filling a void that nobody else will. Small quantity, high-quality wire with exceptional service,&rdquo; says Marie. &ldquo;We effectively customize our products precisely to the customer&rsquo;s request so they may purchase one of something instead of a thousand.&rdquo;</p>
+
+    <p>Autac&rsquo;s goal is to be the &ldquo;go-to&rdquo; because of excellent customer service, high quality, and attention to detail.</p>
+
+    <p>&ldquo;Women can become accomplished in any job,&rdquo; says Marie. &ldquo;It&rsquo;s all about your passion and what brings you joy and fulfillment. If you are drawn to manufacturing, then make it your career choice. They say well-behaved women rarely make history, so make waves, make a change, make history.&rdquo;</p>
+
+    <p style="margin-top: 2rem;"><a href="../news/" class="back-link">&larr; Back to News &amp; Press</a></p>
+
+  </article>
 
   <!-- CTA -->
   <section class="cta">
     <div class="container">
       <div class="section-label">Get Started</div>
-      <div class="section-title">Need a Curly Cord Quote?</div>
-      <p class="section-desc">Tell us about your application and we'll recommend the right cord &mdash; or build one from scratch.</p>
+      <div class="section-title">Need Help Choosing?</div>
+      <p class="section-desc">Autac manufactures over 400 standard coiled cord configurations &mdash; and builds custom cords to your exact specifications. Tell us what you need and we'll recommend the right solution.</p>
       <div class="cta-buttons">
         <a href="../quote.html" class="btn btn-red">Request a Quote &rarr;</a>
         <a href="../build-your-cord.html" class="btn btn-accent">Build Your Cord</a>
@@ -720,9 +645,9 @@
         <div>
           <h4>Products</h4>
           <ul>
-            <li><a href="retractile-cords.html">Retractile Cords</a></li>
-            <li><a href="coiled-cords.html">Coiled Cords</a></li>
-            <li><a href="curly-cords.html">Curly Cords</a></li>
+            <li><a href="../products/retractile-cords.html">Retractile Cords</a></li>
+            <li><a href="../products/coiled-cords.html">Coiled Cords</a></li>
+            <li><a href="../products/curly-cords.html">Curly Cords</a></li>
             <li><a href="../products.html">Product Catalog</a></li>
           </ul>
         </div>
@@ -755,92 +680,6 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    const CATEGORIES = ['comm-control', 'test-leads'];
-
-    fetch('../catalog/data/products.json')
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById('product-sections');
-        container.innerHTML = '';
-
-        CATEGORIES.forEach((catId, index) => {
-          const category = data.categories.find(c => c.id === catId);
-          if (!category) return;
-
-          const products = data.products.filter(p => p.category === catId);
-          if (products.length === 0) return;
-
-          const section = document.createElement('section');
-          section.className = 'product-section';
-          section.id = catId;
-
-          let noteHtml = '';
-          if (category.note) {
-            noteHtml = '<div class="product-note">' + category.note + '</div>';
-          }
-
-          let shieldMeta = '';
-          if (category.shield) {
-            shieldMeta = '<span class="product-meta-item"><strong>Shield:</strong> ' + category.shield + '</span>';
-          }
-
-          section.innerHTML = `
-            <div class="container">
-              <div class="product-section-header">
-                <div class="section-label">${category.name}</div>
-                <div class="section-title" style="font-size:1.75rem;">${category.name}</div>
-              </div>
-              <div class="product-meta">
-                <span class="product-meta-item"><strong>Conductor:</strong> ${category.conductor}</span>
-                <span class="product-meta-item"><strong>Insulation:</strong> ${category.insulation}</span>
-                <span class="product-meta-item"><strong>Jacket:</strong> ${category.jacket}</span>
-                <span class="product-meta-item"><strong>Extension Ratio:</strong> ${category.extensionRatio}</span>
-                <span class="product-meta-item"><strong>Listing:</strong> ${category.listing}</span>
-                ${shieldMeta}
-              </div>
-              ${noteHtml}
-              <div class="product-table-wrap">
-                <table class="product-table">
-                  <thead>
-                    <tr>
-                      <th>Catalog #</th>
-                      <th>Conductors</th>
-                      <th>AWG</th>
-                      <th>Voltage</th>
-                      <th>Amps</th>
-                      <th>Retracted Lengths</th>
-                      <th>Listing</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    ${products.map(p => `
-                      <tr>
-                        <td><strong>${p.catNo}</strong></td>
-                        <td>${p.conductors}</td>
-                        <td>${p.awg}</td>
-                        <td>${p.voltage}</td>
-                        <td>${p.ampRating}A</td>
-                        <td>${p.retractedLengths.map(l => l + '"').join(', ')}</td>
-                        <td>${category.listing}</td>
-                      </tr>
-                    `).join('')}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          `;
-
-          container.appendChild(section);
-        });
-      })
-      .catch(err => {
-        document.getElementById('product-sections').innerHTML =
-          '<div class="loading">Unable to load product data. Please try again later.</div>';
-        console.error('Error loading products:', err);
-      });
-  </script>
 
 </body>
 </html>
