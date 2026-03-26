@@ -906,24 +906,67 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Autac USA Inc.",
-    "description": "100% woman-owned retractile cord manufacturer since 1947. World's largest inventory of coil cords with over 400 UL-listed part numbers.",
+    "@type": ["Organization", "LocalBusiness"],
+    "name": "Autac USA",
+    "legalName": "AUTAC, Incorporated",
     "url": "https://www.autacusa.com",
-    "telephone": "+1-800-243-3161",
-    "email": "sales@autacusa.com",
+    "logo": "https://www.autacusa.com/logo.png",
+    "image": "https://www.autacusa.com/logo.png",
+    "description": "World's largest inventory of retractile power cords. Over 400 UL-listed part numbers in stock. Custom coil cords built to spec. 100% woman-owned, made in USA since 1947.",
+    "foundingDate": "1947",
+    "founder": {
+      "@type": "Person",
+      "name": "Robert N. Burkle"
+    },
     "address": {
       "@type": "PostalAddress",
-      "postOfficeBoxNumber": "306",
+      "streetAddress": "5 Branford Industrial Court",
       "addressLocality": "North Branford",
       "addressRegion": "CT",
       "postalCode": "06471",
       "addressCountry": "US"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.3854,
+      "longitude": -72.7673
+    },
+    "telephone": "+1-800-243-3161",
+    "email": "info@autacusa.com",
     "openingHours": "Mo-Fr 08:00-17:00",
-    "foundingDate": "1947",
-    "image": "https://www.autacusa.com/logo.png",
-    "sameAs": []
+    "sameAs": [
+      "https://www.youtube.com/@autaccords",
+      "https://www.linkedin.com/company/autac-incorporated"
+    ],
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "minValue": 10,
+      "maxValue": 50
+    },
+    "naics": "335929",
+    "isicV4": "2732",
+    "knowsAbout": ["retractile cords", "coiled cords", "curly cords", "custom cable manufacturing"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Retractile Cord Products",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Retractile Power Cords",
+          "url": "https://www.autacusa.com/products/retractile-cords.html"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Curly Cords",
+          "url": "https://www.autacusa.com/products/curly-cords.html"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Coiled Cords",
+          "url": "https://www.autacusa.com/products/coiled-cords.html"
+        }
+      ]
+    }
   }
   </script>
 </head>
