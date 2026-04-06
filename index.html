@@ -196,7 +196,7 @@
 
     .hero .container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 0.8fr;
       gap: 4rem;
       align-items: center;
     }
@@ -285,15 +285,18 @@
       border-radius: 1rem;
       overflow: hidden;
       height: 380px;
+      max-width: 100%;
       position: relative;
       border: 1px solid rgba(255,255,255,0.08);
+      background: var(--white);
     }
 
     .hero-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
+      object-fit: contain;
+      object-position: center;
+      padding: 2rem;
     }
 
     .hero-image-caption {
@@ -502,11 +505,21 @@
       align-items: center;
     }
 
+    .why-images {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
     .why-image {
       border-radius: 1rem;
       overflow: hidden;
       height: 420px;
       position: relative;
+    }
+
+    .why-image-secondary {
+      height: 320px;
     }
 
     .why-image img {
@@ -971,7 +984,6 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -1025,8 +1037,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="groundbreaking.jpg" alt="Robert N. Burkle and daughter Marie-Louise at the Autac facility groundbreaking, circa 1960s">
-        <div class="hero-image-caption">Robert N. Burkle &amp; Marie-Louise at the original Autac facility groundbreaking</div>
+        <img src="logo.png" alt="Autac USA — Re-Trak-Tul Kords logo">
       </div>
     </div>
   </section>
@@ -1121,14 +1132,22 @@
   <!-- WHY AUTAC -->
   <section class="why">
     <div class="container">
-      <div class="why-image">
-        <img src="marie-louise-headshot.jpg" alt="Marie-Louise Burkle, CEO of Autac USA">
-        <div class="why-image-overlay">
-          <div>
-            <div class="name">Marie-Louise Burkle</div>
-            <div class="title">CEO, Autac USA Inc.</div>
+      <div class="why-images">
+        <div class="why-image">
+          <img src="marie-louise-headshot.jpg" alt="Marie-Louise Burkle, CEO of Autac USA">
+          <div class="why-image-overlay">
+            <div>
+              <div class="name">Marie-Louise Burkle</div>
+              <div class="title">CEO, Autac USA Inc.</div>
+            </div>
+            <img class="badge" src="made-in-usa.png" alt="Made in the USA">
           </div>
-          <img class="badge" src="made-in-usa.png" alt="Made in the USA">
+        </div>
+        <div class="why-image why-image-secondary">
+          <img src="groundbreaking.jpg" alt="Robert N. Burkle and daughter Marie-Louise at the Autac facility groundbreaking, circa 1960s">
+          <div class="why-image-overlay">
+            <span class="name">Robert N. Burkle &amp; Marie-Louise at the original facility groundbreaking</span>
+          </div>
         </div>
       </div>
       <div>
