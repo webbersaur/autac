@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/build-your-cord.html">
   <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -698,7 +699,6 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -1261,6 +1261,12 @@
       }
     }
 
+    // Supabase client
+    var supabaseClient = supabase.createClient(
+      'https://jsiozojgglsemzwjzcey.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+    );
+
     // Submit
     function submitQuote() {
       var name = document.getElementById('contactName').value;
@@ -1279,45 +1285,48 @@
         return;
       }
 
-      // Submit to Formspree
-      var formData = {
-        _subject: 'Custom Cord Builder Request',
-        name: name,
-        email: email,
-        phone: phone,
-        company: company,
+      var row = {
         material: cordConfig.material,
-        jacket: cordConfig.jacket,
+        jacket: cordConfig.jacket || null,
+        conductors: document.getElementById('conductors').value || null,
+        gauge: document.getElementById('gauge').value || null,
+        conductor_type: document.getElementById('conductorType').value || null,
+        stranding: document.getElementById('stranding').value || null,
         shield: cordConfig.shield,
-        drainWire: cordConfig.drain,
-        ulListed: cordConfig.ul,
-        conductors: document.getElementById('conductors').value,
-        gauge: document.getElementById('gauge').value,
-        conductorType: document.getElementById('conductorType').value,
-        retractedLength: document.getElementById('retractedLength').value,
-        extendedLength: document.getElementById('extendedLength').value,
-        jacketColor: document.getElementById('jacketColor').value,
-        tangentAType: cordConfig.tangentAType,
-        tangentBType: cordConfig.tangentBType,
-        notes: document.getElementById('notes') ? document.getElementById('notes').value : ''
+        drain: cordConfig.drain,
+        ul_required: cordConfig.ul,
+        retracted_length: document.getElementById('retractedLength').value || null,
+        extended_length: document.getElementById('extendedLength').value || null,
+        coil_od: document.getElementById('coilOD').value || null,
+        cable_od: document.getElementById('cableOD').value || null,
+        jacket_color: document.getElementById('jacketColor').value || null,
+        color_code: document.getElementById('colorCode').value || null,
+        tangent_a_type: cordConfig.tangentAType,
+        tangent_a_length: document.getElementById('tangentALength').value || null,
+        tangent_a_roj: document.getElementById('tangentAROJ').value || null,
+        tangent_b_type: cordConfig.tangentBType,
+        tangent_b_length: document.getElementById('tangentBLength').value || null,
+        tangent_b_roj: document.getElementById('tangentBROJ').value || null,
+        comments: document.getElementById('comments').value || null,
+        contact_name: name,
+        company: company,
+        email: email,
+        phone: phone
       };
 
       var submitBtn = document.querySelector('.btn-red.btn-full');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting…';
 
-      fetch('https://formspree.io/f/xwpkgjqo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData)
-      }).then(function(res) {
-        if (!res.ok) throw new Error('Server error');
+      supabaseClient.from('cord_configs').insert([row]).then(function(result) {
+        if (result.error) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Submit Quote Request &rarr;';
+          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          return;
+        }
         document.getElementById('formSuccess').style.display = 'block';
         window.scrollTo({ top: document.getElementById('formSuccess').offsetTop - 100, behavior: 'smooth' });
-      }).catch(function() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-        alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
       });
     }
 

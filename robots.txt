@@ -3,5 +3,6 @@ Allow: /
 Disallow: /proposal-v1.html
 Disallow: /invoice-deposit.html
 Disallow: /mockup.html
+Disallow: /admin.html
 
 Sitemap: https://www.autacusa.com/sitemap.xml

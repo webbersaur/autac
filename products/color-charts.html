@@ -252,7 +252,6 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <div class="topbar">
     <div class="container">
@@ -453,6 +452,15 @@
       </div>
     </div>
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+    (async function() {
+      var sb = supabase.createClient('https://jsiozojgglsemzwjzcey.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU');
+      var r = await sb.auth.getSession();
+      if (r.data.session) sb.from('page_views').insert([{ email: r.data.session.user.email, page: location.pathname, title: document.title }]);
+    })();
+  </script>
 
 </body>
 </html>

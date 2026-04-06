@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Autac USA</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #1a1a1a;
+      --black-light: #2a2a2a;
+      --red: #cc0a2b;
+      --red-light: #e01235;
+      --accent: #f5c518;
+      --accent-dark: #d4a80e;
+      --white: #ffffff;
+      --gray-50: #f8f9fb;
+      --gray-100: #eef1f5;
+      --gray-200: #d8dde6;
+      --gray-300: #b0b8c7;
+      --text: #2c3345;
+      --text-light: #5a6478;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--gray-50);
+    }
+
+    /* === AUTH SCREEN === */
+    .auth-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 50%, #333 100%);
+    }
+
+    .auth-card {
+      background: var(--white);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .auth-card .logo-wrap {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .auth-card .logo-wrap img {
+      height: 48px;
+    }
+
+    .auth-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.25rem;
+    }
+
+    .auth-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .auth-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--gray-100);
+    }
+
+    .auth-tab {
+      flex: 1;
+      text-align: center;
+      padding: 0.6rem 0;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+
+    .auth-tab.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    .auth-form { display: none; }
+    .auth-form.active { display: block; }
+
+    .auth-field {
+      margin-bottom: 1rem;
+    }
+
+    .auth-field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .auth-field input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 0.5rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .auth-field input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(204, 10, 43, 0.08);
+    }
+
+    .auth-btn {
+      width: 100%;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .auth-btn.btn-red {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .auth-btn.btn-red:hover { background: var(--red-light); }
+
+    .auth-btn.btn-accent {
+      background: var(--accent);
+      color: var(--black);
+    }
+
+    .auth-btn.btn-accent:hover { background: var(--accent-dark); }
+
+    .auth-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      font-size: 0.8rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .auth-success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #166534;
+      font-size: 0.8rem;
+      padding: 0.6rem 0.9rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* === DASHBOARD === */
+    .dashboard { display: none; }
+    .dashboard.active { display: block; }
+
+    .dash-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      padding: 0.75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .dash-header .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dash-header .logo img { height: 40px; }
+
+    .dash-user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .dash-user strong { color: var(--text); }
+
+    .btn-signout {
+      background: none;
+      border: 1px solid var(--gray-200);
+      padding: 0.4rem 0.9rem;
+      border-radius: 0.4rem;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-signout:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    .dash-body {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Stats cards */
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      border: 1px solid var(--gray-200);
+    }
+
+    .stat-card .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .stat-card .stat-sub {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+
+    /* Tabs */
+    .dash-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--gray-200);
+      margin-bottom: 1.5rem;
+    }
+
+    .dash-tab {
+      padding: 0.75rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+
+    .dash-tab.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+
+    .dash-tab:hover:not(.active) { color: var(--text); }
+
+    .tab-badge {
+      display: inline-block;
+      background: var(--gray-100);
+      color: var(--text-light);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      margin-left: 0.4rem;
+    }
+
+    .dash-tab.active .tab-badge {
+      background: rgba(204, 10, 43, 0.1);
+      color: var(--red);
+    }
+
+    /* Table panel */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    .data-table-wrap {
+      background: var(--white);
+      border-radius: 0.75rem;
+      border: 1px solid var(--gray-200);
+      overflow: hidden;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .data-table thead {
+      background: var(--gray-50);
+    }
+
+    .data-table th {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--gray-200);
+      white-space: nowrap;
+    }
+
+    .data-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--gray-100);
+      color: var(--text);
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .data-table tbody tr:last-child td { border-bottom: none; }
+
+    .data-table tbody tr:hover { background: var(--gray-50); }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-light);
+    }
+
+    .empty-state .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      opacity: 0.4;
+    }
+
+    /* Detail modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal {
+      background: var(--white);
+      border-radius: 1rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .modal-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-light);
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .detail-row {
+      display: flex;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--gray-50);
+    }
+
+    .detail-row:last-child { border-bottom: none; }
+
+    .detail-label {
+      width: 160px;
+      flex-shrink: 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .detail-value {
+      font-size: 0.9rem;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Insights panel */
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .insight-card {
+      background: var(--white);
+      border-radius: 0.75rem;
+      border: 1px solid var(--gray-200);
+      padding: 1.25rem;
+    }
+
+    .insight-card h3 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .insight-card h3 .icon { font-size: 1rem; }
+
+    .insight-list {
+      list-style: none;
+    }
+
+    .insight-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid var(--gray-50);
+      font-size: 0.85rem;
+    }
+
+    .insight-list li:last-child { border-bottom: none; }
+
+    .insight-email { color: var(--text); font-weight: 500; }
+
+    .insight-meta { color: var(--text-light); font-size: 0.75rem; }
+
+    .insight-empty {
+      color: var(--gray-300);
+      font-size: 0.85rem;
+      font-style: italic;
+      padding: 0.5rem 0;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-urgent {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .badge-soon {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .badge-planning {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .badge-converted {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+
+    .badge-repeat {
+      background: #faf5ff;
+      color: #7c3aed;
+      border: 1px solid #ddd6fe;
+    }
+
+    .status-btn {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      transition: all 0.15s;
+    }
+
+    .status-btn:hover { opacity: 0.8; transform: scale(1.05); }
+
+    .status-new {
+      background: #fef2f2;
+      color: #b91c1c;
+      border: 1px solid #fecaca;
+    }
+
+    .status-in_progress {
+      background: #fffbeb;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    .status-done {
+      background: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .new-row { border-left: 3px solid #ef4444; }
+
+    .stat-new-count {
+      color: var(--red);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .insights { grid-template-columns: 1fr; }
+      .stat-cards { grid-template-columns: 1fr; }
+      .dash-body { padding: 1rem; }
+      .data-table-wrap { overflow-x: auto; }
+      .auth-card { margin: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- AUTH SCREEN -->
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-card">
+      <div class="logo-wrap">
+        <img src="logo.png" alt="Autac USA">
+      </div>
+
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</div>
+        <div class="auth-tab" onclick="switchAuthTab('setup')">Set Password</div>
+      </div>
+
+      <div id="authError" class="auth-error"></div>
+      <div id="authSuccess" class="auth-success"></div>
+
+      <!-- Sign In Form -->
+      <div id="signinForm" class="auth-form active">
+        <h2>Welcome back</h2>
+        <p>Sign in to view leads, quotes, and submissions.</p>
+        <div class="auth-field">
+          <label>Email</label>
+          <input type="email" id="signinEmail" placeholder="you@autacusa.com">
+        </div>
+        <div class="auth-field">
+          <label>Password</label>
+          <input type="password" id="signinPassword" placeholder="Enter your password">
+        </div>
+        <button class="auth-btn btn-red" onclick="signIn()">Sign In</button>
+      </div>
+
+      <!-- Set Password Form -->
+      <div id="setupForm" class="auth-form">
+        <h2>Set your password</h2>
+        <p>First time? Enter your authorized email and choose a password.</p>
+        <div class="auth-field">
+          <label>Email</label>
+          <input type="email" id="setupEmail" placeholder="you@autacusa.com">
+        </div>
+        <div class="auth-field">
+          <label>Password</label>
+          <input type="password" id="setupPassword" placeholder="Choose a password (min 6 characters)">
+        </div>
+        <div class="auth-field">
+          <label>Confirm Password</label>
+          <input type="password" id="setupConfirm" placeholder="Confirm your password">
+        </div>
+        <button class="auth-btn btn-accent" onclick="setPassword()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+    <div class="dash-header">
+      <div class="container">
+        <a href="index.html" class="logo"><img src="logo.png" alt="Autac USA"></a>
+        <div class="dash-user">
+          <span>Signed in as <strong id="userEmail"></strong></span>
+          <button class="btn-signout" onclick="signOut()">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-body">
+      <!-- Stat cards -->
+      <div class="stat-cards">
+        <div class="stat-card">
+          <div class="stat-label">Contact Messages</div>
+          <div class="stat-value" id="statContacts">—</div>
+          <div class="stat-sub" id="statContactsSub"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Quote Requests</div>
+          <div class="stat-value" id="statQuotes">—</div>
+          <div class="stat-sub" id="statQuotesSub"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Custom Cord Configs</div>
+          <div class="stat-value" id="statCords">—</div>
+          <div class="stat-sub" id="statCordsSub"></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Catalog Leads</div>
+          <div class="stat-value" id="statLeads">—</div>
+          <div class="stat-sub" id="statLeadsSub"></div>
+        </div>
+      </div>
+
+      <!-- Insights -->
+      <div class="insights">
+        <div class="insight-card">
+          <h3><span class="icon">&#128293;</span> Urgent Quotes</h3>
+          <ul class="insight-list" id="insightUrgent">
+            <li class="insight-empty">Loading...</li>
+          </ul>
+        </div>
+        <div class="insight-card">
+          <h3><span class="icon">&#127919;</span> Leads That Converted</h3>
+          <ul class="insight-list" id="insightConverted">
+            <li class="insight-empty">Loading...</li>
+          </ul>
+        </div>
+        <div class="insight-card">
+          <h3><span class="icon">&#128257;</span> Repeat Visitors</h3>
+          <ul class="insight-list" id="insightRepeat">
+            <li class="insight-empty">Loading...</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="dash-tabs">
+        <div class="dash-tab active" onclick="switchTab('contacts')">Contacts <span class="tab-badge" id="badgeContacts">0</span></div>
+        <div class="dash-tab" onclick="switchTab('quotes')">Quotes <span class="tab-badge" id="badgeQuotes">0</span></div>
+        <div class="dash-tab" onclick="switchTab('cords')">Cord Configs <span class="tab-badge" id="badgeCords">0</span></div>
+        <div class="dash-tab" onclick="switchTab('leads')">Catalog Leads <span class="tab-badge" id="badgeLeads">0</span></div>
+      </div>
+
+      <!-- Contacts Panel -->
+      <div class="tab-panel active" id="panelContacts">
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Subject</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody id="tableContacts">
+              <tr><td colspan="7" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Quotes Panel -->
+      <div class="tab-panel" id="panelQuotes">
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Ref #</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Product</th>
+                <th>Industry</th>
+                <th>Qty</th>
+              </tr>
+            </thead>
+            <tbody id="tableQuotes">
+              <tr><td colspan="9" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cord Configs Panel -->
+      <div class="tab-panel" id="panelCords">
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Material</th>
+                <th>Jacket</th>
+                <th>Conductors</th>
+                <th>Gauge</th>
+              </tr>
+            </thead>
+            <tbody id="tableCords">
+              <tr><td colspan="9" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Catalog Leads Panel -->
+      <div class="tab-panel" id="panelLeads">
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Page Views</th>
+                <th>Last Active</th>
+                <th>Pages Visited</th>
+              </tr>
+            </thead>
+            <tbody id="tableLeads">
+              <tr><td colspan="5" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Details</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    var ALLOWED_EMAILS = ['marie@autacusa.com', 'sales@autacusa.com'];
+
+    var sb = supabase.createClient(
+      'https://jsiozojgglsemzwjzcey.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+    );
+
+    // Cache
+    var allContacts = [];
+    var allQuotes = [];
+    var allCords = [];
+    var allLeads = [];
+    var allPageViews = [];
+
+    // ─── AUTH ──────────────────────────────────
+
+    function switchAuthTab(tab) {
+      document.querySelectorAll('.auth-tab').forEach(function(t, i) {
+        t.classList.toggle('active', (tab === 'signin' && i === 0) || (tab === 'setup' && i === 1));
+      });
+      document.getElementById('signinForm').classList.toggle('active', tab === 'signin');
+      document.getElementById('setupForm').classList.toggle('active', tab === 'setup');
+      hideAuthMessages();
+    }
+
+    function showAuthError(msg) {
+      var el = document.getElementById('authError');
+      el.textContent = msg;
+      el.style.display = 'block';
+      document.getElementById('authSuccess').style.display = 'none';
+    }
+
+    function showAuthSuccess(msg) {
+      var el = document.getElementById('authSuccess');
+      el.textContent = msg;
+      el.style.display = 'block';
+      document.getElementById('authError').style.display = 'none';
+    }
+
+    function hideAuthMessages() {
+      document.getElementById('authError').style.display = 'none';
+      document.getElementById('authSuccess').style.display = 'none';
+    }
+
+    async function signIn() {
+      hideAuthMessages();
+      var email = document.getElementById('signinEmail').value.trim().toLowerCase();
+      var password = document.getElementById('signinPassword').value;
+
+      if (!email || !password) { showAuthError('Please enter email and password.'); return; }
+
+      var result = await sb.auth.signInWithPassword({ email: email, password: password });
+      if (result.error) {
+        showAuthError(result.error.message);
+        return;
+      }
+      showDashboard(result.data.session);
+    }
+
+    async function setPassword() {
+      hideAuthMessages();
+      var email = document.getElementById('setupEmail').value.trim().toLowerCase();
+      var password = document.getElementById('setupPassword').value;
+      var confirm = document.getElementById('setupConfirm').value;
+
+      if (!email || !password || !confirm) { showAuthError('Please fill in all fields.'); return; }
+      if (ALLOWED_EMAILS.indexOf(email) === -1) { showAuthError('This email is not authorized. Contact your administrator.'); return; }
+      if (password.length < 6) { showAuthError('Password must be at least 6 characters.'); return; }
+      if (password !== confirm) { showAuthError('Passwords do not match.'); return; }
+
+      var result = await sb.auth.signUp({ email: email, password: password });
+      if (result.error) {
+        if (result.error.message.indexOf('already registered') !== -1) {
+          showAuthError('This email already has an account. Use Sign In instead.');
+        } else {
+          showAuthError(result.error.message);
+        }
+        return;
+      }
+      showAuthSuccess('Account created! Signing you in...');
+      setTimeout(function() {
+        showDashboard(result.data.session);
+      }, 1000);
+    }
+
+    async function signOut() {
+      await sb.auth.signOut();
+      document.getElementById('dashboard').classList.remove('active');
+      document.getElementById('authScreen').style.display = 'flex';
+      hideAuthMessages();
+    }
+
+    // ─── DASHBOARD ────────────────────────────
+
+    function showDashboard(session) {
+      document.getElementById('authScreen').style.display = 'none';
+      document.getElementById('dashboard').classList.add('active');
+      document.getElementById('userEmail').textContent = session.user.email;
+      loadAllData();
+    }
+
+    async function loadAllData() {
+      var contactRes = sb.from('contacts').select('*').order('created_at', { ascending: false });
+      var quoteRes = sb.from('quotes').select('*').order('created_at', { ascending: false });
+      var cordRes = sb.from('cord_configs').select('*').order('created_at', { ascending: false });
+      var leadRes = sb.from('catalog_leads').select('*').order('created_at', { ascending: false });
+      var pvRes = sb.from('page_views').select('*').order('created_at', { ascending: false });
+
+      var results = await Promise.all([contactRes, quoteRes, cordRes, leadRes, pvRes]);
+
+      allContacts = results[0].data || [];
+      allQuotes = results[1].data || [];
+      allCords = results[2].data || [];
+      allLeads = results[3].data || [];
+      allPageViews = results[4].data || [];
+
+      // Stats
+      document.getElementById('statContacts').textContent = allContacts.length;
+      document.getElementById('statQuotes').textContent = allQuotes.length;
+      document.getElementById('statCords').textContent = allCords.length;
+      document.getElementById('statLeads').textContent = allLeads.length;
+
+      var newContacts = countNew(allContacts);
+      var newQuotes = countNew(allQuotes);
+      var newCords = countNew(allCords);
+      var recentLeads = countRecent(allLeads);
+      document.getElementById('statContactsSub').innerHTML = newContacts ? '<span class="stat-new-count">' + newContacts + ' new</span>' : 'All handled';
+      document.getElementById('statQuotesSub').innerHTML = newQuotes ? '<span class="stat-new-count">' + newQuotes + ' new</span>' : 'All handled';
+      document.getElementById('statCordsSub').innerHTML = newCords ? '<span class="stat-new-count">' + newCords + ' new</span>' : 'All handled';
+      document.getElementById('statLeadsSub').textContent = recentLeads ? recentLeads + ' in last 7 days' : '';
+
+      // Badges
+      document.getElementById('badgeContacts').textContent = allContacts.length;
+      document.getElementById('badgeQuotes').textContent = allQuotes.length;
+      document.getElementById('badgeCords').textContent = allCords.length;
+      document.getElementById('badgeLeads').textContent = allLeads.length;
+
+      // Tables & insights
+      renderContacts();
+      renderQuotes();
+      renderCords();
+      renderLeads();
+      renderInsights();
+    }
+
+    function countRecent(rows) {
+      var cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - 7);
+      return rows.filter(function(r) { return new Date(r.created_at) >= cutoff; }).length;
+    }
+
+    function fmtDate(iso) {
+      if (!iso) return '—';
+      var d = new Date(iso);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+        ' ' + d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+    }
+
+    function esc(str) {
+      if (!str) return '—';
+      var div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    var STATUS_LABELS = { 'new': 'New', 'in_progress': 'In Progress', 'done': 'Done' };
+    var STATUS_CYCLE = { 'new': 'in_progress', 'in_progress': 'done', 'done': 'new' };
+
+    function statusBtn(table, id, status) {
+      return '<button class="status-btn status-' + status + '" ' +
+        'onclick="event.stopPropagation(); cycleStatus(\'' + table + '\', \'' + id + '\', \'' + status + '\')">' +
+        STATUS_LABELS[status] + '</button>';
+    }
+
+    async function cycleStatus(table, id, current) {
+      var next = STATUS_CYCLE[current];
+      var result = await sb.from(table).update({ status: next }).eq('id', id);
+      if (!result.error) loadAllData();
+    }
+
+    function countNew(rows) {
+      return rows.filter(function(r) { return r.status === 'new'; }).length;
+    }
+
+    // ─── CONTACTS TABLE ───────────────────────
+
+    function renderContacts() {
+      var tbody = document.getElementById('tableContacts');
+      if (!allContacts.length) {
+        tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><div class="empty-icon">&#128233;</div>No contact messages yet</div></td></tr>';
+        return;
+      }
+      tbody.innerHTML = allContacts.map(function(r, i) {
+        return '<tr style="cursor:pointer" class="' + (r.status === 'new' ? 'new-row' : '') + '" onclick="showContact(' + i + ')">' +
+          '<td>' + statusBtn('contacts', r.id, r.status) + '</td>' +
+          '<td>' + esc(fmtDate(r.created_at)) + '</td>' +
+          '<td>' + esc(r.first_name + ' ' + r.last_name) + '</td>' +
+          '<td>' + esc(r.email) + '</td>' +
+          '<td>' + esc(r.phone) + '</td>' +
+          '<td>' + esc(r.subject) + '</td>' +
+          '<td>' + esc(r.message) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function showContact(i) {
+      var r = allContacts[i];
+      openModal('Contact Message', [
+        ['Date', fmtDate(r.created_at)],
+        ['Name', r.first_name + ' ' + r.last_name],
+        ['Email', r.email],
+        ['Phone', r.phone],
+        ['Subject', r.subject],
+        ['Message', r.message]
+      ]);
+    }
+
+    // ─── QUOTES TABLE ─────────────────────────
+
+    function renderQuotes() {
+      var tbody = document.getElementById('tableQuotes');
+      if (!allQuotes.length) {
+        tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">&#128203;</div>No quote requests yet</div></td></tr>';
+        return;
+      }
+      tbody.innerHTML = allQuotes.map(function(r, i) {
+        var urgBadge = '';
+        if (r.timeline === 'ASAP / Rush order') urgBadge = ' <span class="badge badge-urgent">Rush</span>';
+        else if (r.timeline === 'Within 2 weeks') urgBadge = ' <span class="badge badge-soon">2 Wks</span>';
+        else if (r.timeline === 'Within 30 days') urgBadge = ' <span class="badge badge-planning">30d</span>';
+        return '<tr style="cursor:pointer" class="' + (r.status === 'new' ? 'new-row' : '') + '" onclick="showQuote(' + i + ')">' +
+          '<td>' + statusBtn('quotes', r.id, r.status) + '</td>' +
+          '<td>' + esc(fmtDate(r.created_at)) + urgBadge + '</td>' +
+          '<td>' + esc(r.reference_number) + '</td>' +
+          '<td>' + esc(r.first_name + ' ' + r.last_name) + '</td>' +
+          '<td>' + esc(r.company_name) + '</td>' +
+          '<td>' + esc(r.email) + '</td>' +
+          '<td>' + esc(r.product_type) + '</td>' +
+          '<td>' + esc(r.industry) + '</td>' +
+          '<td>' + esc(r.quantity) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function showQuote(i) {
+      var r = allQuotes[i];
+      var env = Array.isArray(r.environment) ? r.environment.join(', ') : r.environment;
+      openModal('Quote Request — ' + r.reference_number, [
+        ['Date', fmtDate(r.created_at)],
+        ['Reference #', r.reference_number],
+        ['Product Type', r.product_type],
+        ['Part Numbers', r.part_numbers],
+        ['Industry', r.industry],
+        ['Application', r.application],
+        ['Environment', env],
+        ['Quantity', r.quantity],
+        ['Timeline', r.timeline],
+        ['Order Frequency', r.order_frequency],
+        ['Additional Notes', r.additional_notes],
+        ['Name', r.first_name + ' ' + r.last_name],
+        ['Company', r.company_name],
+        ['Email', r.email],
+        ['Phone', r.phone],
+        ['Job Title', r.job_title],
+        ['How Heard', r.how_heard]
+      ]);
+    }
+
+    // ─── CORD CONFIGS TABLE ───────────────────
+
+    function renderCords() {
+      var tbody = document.getElementById('tableCords');
+      if (!allCords.length) {
+        tbody.innerHTML = '<tr><td colspan="9"><div class="empty-state"><div class="empty-icon">&#128268;</div>No cord configurations yet</div></td></tr>';
+        return;
+      }
+      tbody.innerHTML = allCords.map(function(r, i) {
+        return '<tr style="cursor:pointer" class="' + (r.status === 'new' ? 'new-row' : '') + '" onclick="showCord(' + i + ')">' +
+          '<td>' + statusBtn('cord_configs', r.id, r.status) + '</td>' +
+          '<td>' + esc(fmtDate(r.created_at)) + '</td>' +
+          '<td>' + esc(r.contact_name) + '</td>' +
+          '<td>' + esc(r.company) + '</td>' +
+          '<td>' + esc(r.email) + '</td>' +
+          '<td>' + esc(r.material) + '</td>' +
+          '<td>' + esc(r.jacket) + '</td>' +
+          '<td>' + esc(r.conductors) + '</td>' +
+          '<td>' + esc(r.gauge) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function showCord(i) {
+      var r = allCords[i];
+      openModal('Custom Cord Config', [
+        ['Date', fmtDate(r.created_at)],
+        ['Contact', r.contact_name],
+        ['Company', r.company],
+        ['Email', r.email],
+        ['Phone', r.phone],
+        ['Material', r.material],
+        ['Jacket', r.jacket],
+        ['Conductors', r.conductors],
+        ['Gauge', r.gauge],
+        ['Conductor Type', r.conductor_type],
+        ['Stranding', r.stranding],
+        ['Shield', r.shield],
+        ['Drain Wire', r.drain],
+        ['UL/CUL Required', r.ul_required],
+        ['Retracted Length', r.retracted_length],
+        ['Extended Length', r.extended_length],
+        ['Coil OD', r.coil_od],
+        ['Cable OD', r.cable_od],
+        ['Jacket Color', r.jacket_color],
+        ['Color Code', r.color_code],
+        ['Tangent A Type', r.tangent_a_type],
+        ['Tangent A Length', r.tangent_a_length],
+        ['Tangent A ROJ', r.tangent_a_roj],
+        ['Tangent B Type', r.tangent_b_type],
+        ['Tangent B Length', r.tangent_b_length],
+        ['Tangent B ROJ', r.tangent_b_roj],
+        ['Comments', r.comments]
+      ]);
+    }
+
+    // ─── CATALOG LEADS TABLE ──────────────────
+
+    function renderLeads() {
+      var tbody = document.getElementById('tableLeads');
+      if (!allLeads.length) {
+        tbody.innerHTML = '<tr><td colspan="5"><div class="empty-state"><div class="empty-icon">&#128274;</div>No catalog leads yet</div></td></tr>';
+        return;
+      }
+
+      // Group page views by email
+      var viewsByEmail = {};
+      allPageViews.forEach(function(pv) {
+        if (!viewsByEmail[pv.email]) viewsByEmail[pv.email] = [];
+        viewsByEmail[pv.email].push(pv);
+      });
+
+      // Dedupe leads by email, keep earliest
+      var seen = {};
+      var uniqueLeads = [];
+      allLeads.forEach(function(l) {
+        if (!seen[l.email]) {
+          seen[l.email] = true;
+          uniqueLeads.push(l);
+        }
+      });
+
+      // Build sets for crossmatch
+      var quoteEmails = {};
+      allQuotes.forEach(function(q) { quoteEmails[q.email] = true; });
+      var contactEmails = {};
+      allContacts.forEach(function(c) { contactEmails[c.email] = true; });
+      var cordEmails = {};
+      allCords.forEach(function(c) { cordEmails[c.email] = true; });
+
+      tbody.innerHTML = uniqueLeads.map(function(r, i) {
+        var views = viewsByEmail[r.email] || [];
+        var viewCount = views.length;
+        var lastActive = views.length ? fmtDate(views[0].created_at) : '—';
+        var pages = [];
+        var pagesSeen = {};
+        views.forEach(function(v) {
+          if (!pagesSeen[v.page]) { pagesSeen[v.page] = true; pages.push(v.page); }
+        });
+        var pagesStr = pages.length ? pages.join(', ') : '—';
+
+        // Badges
+        var badges = '';
+        if (quoteEmails[r.email]) badges += ' <span class="badge badge-converted">Quoted</span>';
+        if (contactEmails[r.email]) badges += ' <span class="badge badge-converted">Contacted</span>';
+        if (cordEmails[r.email]) badges += ' <span class="badge badge-converted">Cord Config</span>';
+        // Count unique days for repeat badge
+        var days = {};
+        views.forEach(function(v) { days[new Date(v.created_at).toDateString()] = true; });
+        if (Object.keys(days).length > 1) badges += ' <span class="badge badge-repeat">' + Object.keys(days).length + ' visits</span>';
+
+        return '<tr style="cursor:pointer" onclick="showLead(\'' + esc(r.email).replace(/'/g, "\\'") + '\')">' +
+          '<td>' + esc(fmtDate(r.created_at)) + '</td>' +
+          '<td>' + esc(r.email) + badges + '</td>' +
+          '<td>' + viewCount + '</td>' +
+          '<td>' + esc(lastActive) + '</td>' +
+          '<td>' + esc(pagesStr) + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function showLead(email) {
+      var views = allPageViews.filter(function(pv) { return pv.email === email; });
+      var lead = allLeads.find(function(l) { return l.email === email; });
+
+      var rows = [
+        ['Email', email],
+        ['Signed Up', lead ? fmtDate(lead.created_at) : '—'],
+        ['Total Page Views', String(views.length)]
+      ];
+
+      if (views.length) {
+        rows.push(['Last Active', fmtDate(views[0].created_at)]);
+        rows.push(['', '']); // spacer
+        views.forEach(function(v, i) {
+          rows.push(['View ' + (i + 1), v.page + ' — ' + fmtDate(v.created_at)]);
+        });
+      }
+
+      openModal('Catalog Lead — ' + email, rows);
+    }
+
+    // ─── INSIGHTS ─────────────────────────────
+
+    function renderInsights() {
+      renderUrgentQuotes();
+      renderConvertedLeads();
+      renderRepeatVisitors();
+    }
+
+    function renderUrgentQuotes() {
+      var el = document.getElementById('insightUrgent');
+      var urgent = allQuotes.filter(function(q) {
+        return q.timeline === 'ASAP / Rush order' || q.timeline === 'Within 2 weeks';
+      });
+      if (!urgent.length) {
+        el.innerHTML = '<li class="insight-empty">No urgent quotes right now</li>';
+        return;
+      }
+      el.innerHTML = urgent.slice(0, 5).map(function(q) {
+        var isRush = q.timeline === 'ASAP / Rush order';
+        var badgeClass = isRush ? 'badge-urgent' : 'badge-soon';
+        var badgeText = isRush ? 'Rush' : '2 Weeks';
+        return '<li>' +
+          '<span><span class="insight-email">' + esc(q.first_name + ' ' + q.last_name) + '</span> — ' + esc(q.company_name) + '</span>' +
+          '<span class="badge ' + badgeClass + '">' + badgeText + '</span>' +
+          '</li>';
+      }).join('');
+    }
+
+    function renderConvertedLeads() {
+      var el = document.getElementById('insightConverted');
+      // Find catalog lead emails that also appear in quotes, contacts, or cord configs
+      var leadEmails = {};
+      allLeads.forEach(function(l) { leadEmails[l.email] = true; });
+
+      var converted = [];
+      var seenEmail = {};
+
+      allQuotes.forEach(function(q) {
+        if (leadEmails[q.email] && !seenEmail[q.email]) {
+          seenEmail[q.email] = true;
+          converted.push({ email: q.email, action: 'Quote request', detail: q.reference_number });
+        }
+      });
+      allContacts.forEach(function(c) {
+        var email = c.email;
+        if (leadEmails[email] && !seenEmail[email]) {
+          seenEmail[email] = true;
+          converted.push({ email: email, action: 'Contact form', detail: c.subject });
+        }
+      });
+      allCords.forEach(function(c) {
+        if (leadEmails[c.email] && !seenEmail[c.email]) {
+          seenEmail[c.email] = true;
+          converted.push({ email: c.email, action: 'Cord config', detail: c.material });
+        }
+      });
+
+      if (!converted.length) {
+        el.innerHTML = '<li class="insight-empty">No conversions yet</li>';
+        return;
+      }
+      el.innerHTML = converted.slice(0, 5).map(function(c) {
+        return '<li>' +
+          '<span class="insight-email">' + esc(c.email) + '</span>' +
+          '<span class="badge badge-converted">' + esc(c.action) + '</span>' +
+          '</li>';
+      }).join('');
+    }
+
+    function renderRepeatVisitors() {
+      var el = document.getElementById('insightRepeat');
+      // Group page views by email, count unique sessions (days)
+      var viewsByEmail = {};
+      allPageViews.forEach(function(pv) {
+        if (!viewsByEmail[pv.email]) viewsByEmail[pv.email] = [];
+        viewsByEmail[pv.email].push(pv);
+      });
+
+      var repeats = [];
+      Object.keys(viewsByEmail).forEach(function(email) {
+        var views = viewsByEmail[email];
+        // Count unique days visited
+        var days = {};
+        views.forEach(function(v) {
+          var day = new Date(v.created_at).toDateString();
+          days[day] = true;
+        });
+        var dayCount = Object.keys(days).length;
+        if (dayCount > 1) {
+          repeats.push({ email: email, days: dayCount, views: views.length, lastSeen: views[0].created_at });
+        }
+      });
+
+      // Sort by most days, then most views
+      repeats.sort(function(a, b) { return b.days - a.days || b.views - a.views; });
+
+      if (!repeats.length) {
+        el.innerHTML = '<li class="insight-empty">No repeat visitors yet</li>';
+        return;
+      }
+      el.innerHTML = repeats.slice(0, 5).map(function(r) {
+        return '<li>' +
+          '<span><span class="insight-email">' + esc(r.email) + '</span><br><span class="insight-meta">' + r.views + ' pages, last ' + fmtDate(r.lastSeen) + '</span></span>' +
+          '<span class="badge badge-repeat">' + r.days + ' days</span>' +
+          '</li>';
+      }).join('');
+    }
+
+    // ─── TABS ─────────────────────────────────
+
+    function switchTab(tab) {
+      var tabs = { contacts: 0, quotes: 1, cords: 2, leads: 3 };
+      document.querySelectorAll('.dash-tab').forEach(function(t, i) {
+        t.classList.toggle('active', i === tabs[tab]);
+      });
+      document.getElementById('panelContacts').classList.toggle('active', tab === 'contacts');
+      document.getElementById('panelQuotes').classList.toggle('active', tab === 'quotes');
+      document.getElementById('panelCords').classList.toggle('active', tab === 'cords');
+      document.getElementById('panelLeads').classList.toggle('active', tab === 'leads');
+    }
+
+    // ─── MODAL ────────────────────────────────
+
+    function openModal(title, rows) {
+      document.getElementById('modalTitle').textContent = title;
+      var html = rows.map(function(r) {
+        return '<div class="detail-row"><div class="detail-label">' + esc(r[0]) + '</div><div class="detail-value">' + esc(r[1]) + '</div></div>';
+      }).join('');
+      document.getElementById('modalBody').innerHTML = html;
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ─── INIT ─────────────────────────────────
+
+    (async function() {
+      var result = await sb.auth.getSession();
+      if (result.data.session) {
+        showDashboard(result.data.session);
+      }
+    })();
+  </script>
+
+</body>
+</html>

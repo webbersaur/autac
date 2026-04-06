@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/contact.html">
   <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -617,7 +618,6 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -675,7 +675,7 @@
           <h2>Send Us a Message</h2>
           <p>Fill out the form and we'll get back to you promptly.</p>
 
-          <form id="contactForm" action="https://formspree.io/f/xwpkgjqo" method="POST" onsubmit="handleSubmit(event)">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
             <div class="form-row">
               <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -846,26 +846,34 @@
   </footer>
 
   <script>
+    var supabaseClient = supabase.createClient(
+      'https://jsiozojgglsemzwjzcey.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+    );
+
     function handleSubmit(e) {
       e.preventDefault();
       var form = e.target;
-      var data = new FormData(form);
-      fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(function(res) {
-        if (res.ok) {
-          document.getElementById('formSuccess').style.display = 'block';
-          form.reset();
-          setTimeout(function() {
-            document.getElementById('formSuccess').style.display = 'none';
-          }, 5000);
-        } else {
+
+      var row = {
+        first_name: document.getElementById('firstName').value,
+        last_name: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value || null,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      supabaseClient.from('contacts').insert([row]).then(function(result) {
+        if (result.error) {
           alert('Something went wrong. Please try again or call us at 800.243.3161.');
+          return;
         }
-      }).catch(function() {
-        alert('Something went wrong. Please try again or call us at 800.243.3161.');
+        document.getElementById('formSuccess').style.display = 'block';
+        form.reset();
+        setTimeout(function() {
+          document.getElementById('formSuccess').style.display = 'none';
+        }, 5000);
       });
     }
   </script>

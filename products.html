@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/products.html">
   <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -1064,7 +1065,6 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -1206,13 +1206,13 @@
           <input type="email" id="pricingEmail" placeholder="you@company.com" onkeydown="if(event.key==='Enter')sendCode()">
           <div class="modal-error" id="emailError"></div>
           <button class="modal-btn modal-btn-primary" id="sendCodeBtn" onclick="sendCode()">Send Access Code &rarr;</button>
-          <p class="modal-info">We'll send a 6-digit code to your email. No spam, no account created.</p>
+          <p class="modal-info">We'll send a access code to your email. No spam, no account created.</p>
         </div>
 
         <!-- Step 2: Code -->
         <div id="modalStep2" style="display:none">
-          <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;text-align:center">Enter the 6-digit code sent to <strong id="sentToEmail"></strong></p>
-          <input type="text" class="code-input" id="pricingCode" maxlength="6" placeholder="000000" onkeydown="if(event.key==='Enter')verifyCode()" oninput="this.value=this.value.replace(/\D/g,'')">
+          <p style="font-size:0.88rem;color:var(--text-light);margin-bottom:1rem;text-align:center">Enter the access code sent to <strong id="sentToEmail"></strong></p>
+          <input type="text" class="code-input" id="pricingCode" maxlength="8" placeholder="00000000" onkeydown="if(event.key==='Enter')verifyCode()" oninput="this.value=this.value.replace(/\D/g,'')">
           <div class="modal-error" id="codeError"></div>
           <button class="modal-btn modal-btn-primary" id="verifyCodeBtn" onclick="verifyCode()">Verify Code &rarr;</button>
           <p class="modal-info">Didn't get it? Check spam, or <a href="#" onclick="event.preventDefault();resendCode()" style="color:var(--red);font-weight:600">resend code</a></p>
@@ -1586,14 +1586,30 @@
 
     })();
 
-    // === PRICING PROTECTION SYSTEM ===
+    // === PRICING PROTECTION SYSTEM (Supabase Auth OTP) ===
     var pricingData = null;
-    var pendingToken = null;
+    var supabaseClient = supabase.createClient(
+      'https://jsiozojgglsemzwjzcey.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+    );
+    var pendingEmail = '';
+    var pendingOtpType = 'magiclink';
 
     function isPricingUnlocked() {
+      // Check for Supabase session in localStorage
+      var storageKey = 'sb-jsiozojgglsemzwjzcey-auth-token';
+      var stored = localStorage.getItem(storageKey);
+      if (stored) {
+        try {
+          var session = JSON.parse(stored);
+          if (session && session.expires_at && session.expires_at * 1000 > Date.now()) {
+            return true;
+          }
+        } catch(e) {}
+      }
+      // Fallback: check legacy token
       var token = localStorage.getItem('autac_pricing_token');
       if (!token) return false;
-      // Check expiry from token payload (base64 decode middle part)
       try {
         var payload = JSON.parse(atob(token.split('.')[1]));
         if (payload.exp && payload.exp * 1000 < Date.now()) {
@@ -1606,9 +1622,10 @@
       }
     }
 
-    // On load: check if already unlocked
-    function initPricing() {
-      if (isPricingUnlocked()) {
+    // On load: check if already unlocked via Supabase session
+    async function initPricing() {
+      var { data: { session } } = await supabaseClient.auth.getSession();
+      if (session || isPricingUnlocked()) {
         showUnlockedState();
         fetchPricing();
       }
@@ -1630,20 +1647,16 @@
         })
         .then(function(data) {
           pricingData = data;
-          // Re-render products with pricing
-          if (typeof renderProducts === 'undefined') {
-            // Trigger re-render by dispatching event
-            document.querySelectorAll('.product-price').forEach(function(el) {
-              var catNo = el.getAttribute('data-catno');
-              if (catNo && pricingData[catNo]) {
-                var prices = pricingData[catNo];
-                var keys = Object.keys(prices).sort(function(a,b){return Number(a)-Number(b);});
-                if (keys.length > 0) {
-                  el.innerHTML = 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
-                }
+          document.querySelectorAll('.product-price').forEach(function(el) {
+            var catNo = el.getAttribute('data-catno');
+            if (catNo && pricingData[catNo]) {
+              var prices = pricingData[catNo];
+              var keys = Object.keys(prices).sort(function(a,b){return Number(a)-Number(b);});
+              if (keys.length > 0) {
+                el.innerHTML = 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
               }
-            });
-          }
+            }
+          });
         })
         .catch(function(err) {
           console.error('Failed to load pricing:', err);
@@ -1659,7 +1672,6 @@
 
     function closePricingModal() {
       document.getElementById('pricingModal').classList.remove('open');
-      // If just unlocked, refresh prices
       if (isPricingUnlocked()) {
         showUnlockedState();
         fetchPricing();
@@ -1683,7 +1695,7 @@
       });
     }
 
-    function sendCode() {
+    async function sendCode() {
       var email = document.getElementById('pricingEmail').value.trim();
       var errorEl = document.getElementById('emailError');
       var btn = document.getElementById('sendCodeBtn');
@@ -1698,32 +1710,47 @@
 
       btn.disabled = true;
       btn.textContent = 'Sending...';
+      pendingEmail = email;
 
-      // Simulate sending code (email verification)
-      setTimeout(function() {
+      try {
+        // Check if user already exists by attempting sign-in
+        // signInWithOtp sends 'signup' type for new users, 'magiclink' for existing
+        var { error } = await supabaseClient.auth.signInWithOtp({ email: email });
         btn.disabled = false;
         btn.textContent = 'Send Access Code \u2192';
-        pendingToken = 'demo';
+
+        if (error) {
+          errorEl.textContent = error.message || 'Failed to send code. Please try again.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
         document.getElementById('sentToEmail').textContent = email;
         showModalStep(2);
         document.getElementById('pricingCode').focus();
-      }, 800);
+      } catch(e) {
+        btn.disabled = false;
+        btn.textContent = 'Send Access Code \u2192';
+        errorEl.textContent = 'Network error. Please try again.';
+        errorEl.style.display = 'block';
+      }
     }
 
     function resendCode() {
       showModalStep(1);
+      document.getElementById('pricingEmail').value = pendingEmail;
       sendCode();
     }
 
-    function verifyCode() {
+    async function verifyCode() {
       var code = document.getElementById('pricingCode').value.trim();
       var errorEl = document.getElementById('codeError');
       var btn = document.getElementById('verifyCodeBtn');
 
       errorEl.style.display = 'none';
 
-      if (!code || code.length !== 6) {
-        errorEl.textContent = 'Please enter the 6-digit code.';
+      if (!code || code.length < 6) {
+        errorEl.textContent = 'Please enter the code from your email.';
         errorEl.style.display = 'block';
         return;
       }
@@ -1731,24 +1758,50 @@
       btn.disabled = true;
       btn.textContent = 'Verifying...';
 
-      // Accept any 6-digit code and create access token
-      setTimeout(function() {
+      try {
+        // Use the tracked OTP type from sendCode
+        var result = await supabaseClient.auth.verifyOtp({
+          email: pendingEmail,
+          token: code,
+          type: pendingOtpType
+        });
+
         btn.disabled = false;
         btn.textContent = 'Verify Code \u2192';
-        var header = btoa(JSON.stringify({alg:'HS256',typ:'JWT'}));
-        var payload = btoa(JSON.stringify({
-          email: document.getElementById('pricingEmail').value,
-          verified: true,
-          exp: Math.floor(Date.now()/1000) + (60*24*60*60)
-        }));
-        var token = header + '.' + payload + '.demo';
-        localStorage.setItem('autac_pricing_token', token);
+
+        if (result.error) {
+          errorEl.textContent = result.error.message || 'Invalid code. Please try again.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        // Success — session is now stored by Supabase automatically
+        // Record catalog lead
+        supabaseClient.from('catalog_leads').insert([{ email: pendingEmail }]);
         showModalStep(3);
-      }, 600);
+      } catch(e) {
+        btn.disabled = false;
+        btn.textContent = 'Verify Code \u2192';
+        errorEl.textContent = 'Network error. Please try again.';
+        errorEl.style.display = 'block';
+      }
+    }
+
+    // Track page view for authenticated catalog users
+    async function trackPageView() {
+      var result = await supabaseClient.auth.getSession();
+      if (result.data.session) {
+        supabaseClient.from('page_views').insert([{
+          email: result.data.session.user.email,
+          page: window.location.pathname,
+          title: document.title
+        }]);
+      }
     }
 
     // Initialize on page load
     initPricing();
+    trackPageView();
   </script>
 
 </body>

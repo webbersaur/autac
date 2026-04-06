@@ -13,6 +13,7 @@
   <meta property="og:image" content="https://www.autacusa.com/logo.png">
   <link rel="canonical" href="https://www.autacusa.com/quote.html">
   <link rel="icon" type="image/png" href="logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -802,7 +803,6 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- TOP BAR -->
   <div class="topbar">
@@ -1409,6 +1409,12 @@
       el.textContent = (val && val.trim()) ? val : '\u2014';
     }
 
+    // Supabase client
+    var supabaseClient = supabase.createClient(
+      'https://jsiozojgglsemzwjzcey.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+    );
+
     // Submit
     function submitQuote() {
       // Generate reference number
@@ -1420,51 +1426,47 @@
       var refNum = 'QR-' + dateStr + '-' + seq;
       document.getElementById('refNumber').textContent = refNum;
 
-      // Collect form data and submit to Formspree
+      // Collect form data
       var selectedType = document.querySelector('input[name="productType"]:checked');
       var envBoxes = document.querySelectorAll('input[name="env"]:checked');
       var envValues = [];
       envBoxes.forEach(function(cb) { envValues.push(cb.value); });
 
-      var formData = {
-        _subject: 'Quote Request ' + refNum,
-        referenceNumber: refNum,
-        productType: selectedType ? selectedType.value : '',
-        partNumbers: document.getElementById('partNumbers').value,
+      var row = {
+        reference_number: refNum,
+        product_type: selectedType ? selectedType.value : '',
+        part_numbers: document.getElementById('partNumbers').value || null,
         industry: document.getElementById('industry').value,
         application: document.getElementById('application').value,
-        environment: envValues.join(', '),
+        environment: envValues,
         quantity: document.getElementById('quantity').value,
         timeline: document.getElementById('timeline').value,
-        orderFrequency: document.getElementById('orderFrequency').value,
-        additionalNotes: document.getElementById('additionalNotes').value,
-        firstName: document.getElementById('firstName').value,
-        lastName: document.getElementById('lastName').value,
-        company: document.getElementById('companyName').value,
+        order_frequency: document.getElementById('orderFrequency').value || null,
+        additional_notes: document.getElementById('additionalNotes').value || null,
+        first_name: document.getElementById('firstName').value,
+        last_name: document.getElementById('lastName').value,
+        company_name: document.getElementById('companyName').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-        jobTitle: document.getElementById('jobTitle').value,
-        howHeard: document.getElementById('howHeard').value
+        job_title: document.getElementById('jobTitle').value || null,
+        how_heard: document.getElementById('howHeard').value || null
       };
 
       var submitBtn = document.querySelector('.wizard-nav .btn-accent');
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting…';
 
-      fetch('https://formspree.io/f/xwpkgjqo', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData)
-      }).then(function(res) {
-        if (!res.ok) throw new Error('Server error');
+      supabaseClient.from('quotes').insert([row]).then(function(result) {
+        if (result.error) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Submit Quote Request &rarr;';
+          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          return;
+        }
         document.querySelectorAll('.wizard-step').forEach(function(s) { s.classList.remove('active'); });
         document.querySelector('.progress-bar').style.display = 'none';
         document.getElementById('wizardSuccess').classList.add('active');
         document.querySelector('.wizard-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }).catch(function() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-        alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
       });
     }
   </script>
