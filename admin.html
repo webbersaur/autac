@@ -725,6 +725,7 @@
         <div class="dash-tab" onclick="switchTab('quotes')">Quotes <span class="tab-badge" id="badgeQuotes">0</span></div>
         <div class="dash-tab" onclick="switchTab('cords')">Cord Configs <span class="tab-badge" id="badgeCords">0</span></div>
         <div class="dash-tab" onclick="switchTab('leads')">Catalog Leads <span class="tab-badge" id="badgeLeads">0</span></div>
+        <div class="dash-tab" onclick="switchTab('pricingLog')">Pricing Access <span class="tab-badge" id="badgePricingLog">0</span></div>
       </div>
 
       <!-- Contacts Panel -->
@@ -797,6 +798,25 @@
         </div>
       </div>
 
+      <!-- Pricing Access Log Panel -->
+      <div class="tab-panel" id="panelPricingLog">
+        <div class="data-table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Email</th>
+                <th>Domain</th>
+                <th>Access Count</th>
+              </tr>
+            </thead>
+            <tbody id="tablePricingLog">
+              <tr><td colspan="4" class="loading">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- Catalog Leads Panel -->
       <div class="tab-panel" id="panelLeads">
         <div class="data-table-wrap">
@@ -844,6 +864,7 @@
     var allCords = [];
     var allLeads = [];
     var allPageViews = [];
+    var allPricingLog = [];
 
     // ─── AUTH ──────────────────────────────────
 
@@ -938,14 +959,16 @@
       var cordRes = sb.from('cord_configs').select('*').order('created_at', { ascending: false });
       var leadRes = sb.from('catalog_leads').select('*').order('created_at', { ascending: false });
       var pvRes = sb.from('page_views').select('*').order('created_at', { ascending: false });
+      var pricingLogRes = sb.from('pricing_access_log').select('*').order('accessed_at', { ascending: false });
 
-      var results = await Promise.all([contactRes, quoteRes, cordRes, leadRes, pvRes]);
+      var results = await Promise.all([contactRes, quoteRes, cordRes, leadRes, pvRes, pricingLogRes]);
 
       allContacts = results[0].data || [];
       allQuotes = results[1].data || [];
       allCords = results[2].data || [];
       allLeads = results[3].data || [];
       allPageViews = results[4].data || [];
+      allPricingLog = results[5].data || [];
 
       // Stats
       document.getElementById('statContacts').textContent = allContacts.length;
@@ -968,11 +991,17 @@
       document.getElementById('badgeCords').textContent = allCords.length;
       document.getElementById('badgeLeads').textContent = allLeads.length;
 
+      // Pricing log badge — count unique emails
+      var pricingEmails = {};
+      allPricingLog.forEach(function(r) { pricingEmails[r.email] = true; });
+      document.getElementById('badgePricingLog').textContent = Object.keys(pricingEmails).length;
+
       // Tables & insights
       renderContacts();
       renderQuotes();
       renderCords();
       renderLeads();
+      renderPricingLog();
       renderInsights();
     }
 
@@ -1241,6 +1270,55 @@
       openModal('Catalog Lead — ' + email, rows);
     }
 
+    // ─── PRICING ACCESS LOG ──────────────────
+
+    function renderPricingLog() {
+      // Group by email: count accesses, get last access, extract domain
+      var grouped = {};
+      allPricingLog.forEach(function(r) {
+        if (!grouped[r.email]) {
+          grouped[r.email] = { email: r.email, count: 0, lastAccess: r.accessed_at };
+        }
+        grouped[r.email].count++;
+        if (new Date(r.accessed_at) > new Date(grouped[r.email].lastAccess)) {
+          grouped[r.email].lastAccess = r.accessed_at;
+        }
+      });
+
+      var entries = Object.values(grouped).sort(function(a, b) {
+        return new Date(b.lastAccess) - new Date(a.lastAccess);
+      });
+
+      var el = document.getElementById('tablePricingLog');
+      if (!entries.length) {
+        el.innerHTML = '<tr><td colspan="4" class="loading">No pricing access recorded yet</td></tr>';
+        return;
+      }
+
+      el.innerHTML = entries.map(function(r) {
+        var domain = r.email.split('@')[1] || '—';
+        return '<tr onclick="openPricingLogDetail(\'' + esc(r.email) + '\')" style="cursor:pointer">' +
+          '<td>' + fmtDate(r.lastAccess) + '</td>' +
+          '<td>' + esc(r.email) + '</td>' +
+          '<td>' + esc(domain) + '</td>' +
+          '<td>' + r.count + '</td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function openPricingLogDetail(email) {
+      var accesses = allPricingLog.filter(function(r) { return r.email === email; });
+      var domain = email.split('@')[1] || '—';
+      var rows = [
+        ['Email', email],
+        ['Domain', domain],
+        ['Total Views', String(accesses.length)],
+        ['First Access', fmtDate(accesses[accesses.length - 1].accessed_at)],
+        ['Last Access', fmtDate(accesses[0].accessed_at)]
+      ];
+      openModal('Pricing Access — ' + email, rows);
+    }
+
     // ─── INSIGHTS ─────────────────────────────
 
     function renderInsights() {
@@ -1352,7 +1430,7 @@
     // ─── TABS ─────────────────────────────────
 
     function switchTab(tab) {
-      var tabs = { contacts: 0, quotes: 1, cords: 2, leads: 3 };
+      var tabs = { contacts: 0, quotes: 1, cords: 2, leads: 3, pricingLog: 4 };
       document.querySelectorAll('.dash-tab').forEach(function(t, i) {
         t.classList.toggle('active', i === tabs[tab]);
       });
@@ -1360,6 +1438,7 @@
       document.getElementById('panelQuotes').classList.toggle('active', tab === 'quotes');
       document.getElementById('panelCords').classList.toggle('active', tab === 'cords');
       document.getElementById('panelLeads').classList.toggle('active', tab === 'leads');
+      document.getElementById('panelPricingLog').classList.toggle('active', tab === 'pricingLog');
     }
 
     // ─── MODAL ────────────────────────────────

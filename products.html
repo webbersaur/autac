@@ -1640,28 +1640,35 @@
         '<span>Pricing unlocked &mdash; prices shown below</span>';
     }
 
-    function fetchPricing() {
-      fetch('catalog/data/pricing.json')
-        .then(function(res) {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.json();
-        })
-        .then(function(data) {
-          pricingData = data;
-          document.querySelectorAll('.product-price').forEach(function(el) {
-            var catNo = el.getAttribute('data-catno');
-            if (catNo && pricingData[catNo]) {
-              var prices = pricingData[catNo];
-              var keys = Object.keys(prices).sort(function(a,b){return Number(a)-Number(b);});
-              if (keys.length > 0) {
-                el.innerHTML = 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
-              }
-            }
-          });
-        })
-        .catch(function(err) {
-          console.error('Failed to load pricing:', err);
+    async function fetchPricing() {
+      try {
+        var { data, error } = await supabaseClient.from('pricing').select('*');
+        if (error) throw error;
+        pricingData = {};
+        data.forEach(function(row) {
+          pricingData[row.catalog_number] = row.prices;
         });
+        document.querySelectorAll('.product-price').forEach(function(el) {
+          var catNo = el.getAttribute('data-catno');
+          if (catNo && pricingData[catNo]) {
+            var prices = pricingData[catNo];
+            var keys = Object.keys(prices).sort(function(a,b){return Number(a)-Number(b);});
+            if (keys.length > 0) {
+              el.innerHTML = 'From <strong>$' + prices[keys[0]].toFixed(2) + '</strong>/ft';
+            }
+          }
+        });
+        // Log pricing access
+        var { data: { session } } = await supabaseClient.auth.getSession();
+        if (session) {
+          supabaseClient.from('pricing_access_log').insert([{
+            user_id: session.user.id,
+            email: session.user.email
+          }]);
+        }
+      } catch(err) {
+        console.error('Failed to load pricing:', err);
+      }
     }
 
     // Modal controls
@@ -1696,6 +1703,44 @@
       });
     }
 
+    // Disposable/temporary email domains blocklist
+    var disposableDomains = [
+      'mailinator.com','tempmail.com','guerrillamail.com','throwaway.email','yopmail.com',
+      'tempinbox.com','dispostable.com','mailnesia.com','maildrop.cc','fakeinbox.com',
+      'sharklasers.com','guerrillamailblock.com','grr.la','guerrillamail.info','guerrillamail.net',
+      'guerrillamail.org','guerrillamail.de','trash-mail.com','trashmail.com','trashmail.me',
+      'trashmail.net','trashmail.org','trashymail.com','trashymail.net','getnada.com',
+      'mailcatch.com','mailexpire.com','mailforspam.com','mailhazard.com','mailhazard.us',
+      'mailmoat.com','mailnull.com','mailscrap.com','mailshell.com','mailsiphon.com',
+      'mailslite.com','mailzilla.com','mintemail.com','mytemp.email','nomail.xl.cx',
+      'nowmymail.com','spamgourmet.com','spamhereplease.com','tempr.email','throwam.com',
+      'tmail.ws','tmpmail.net','tmpmail.org','uggsrock.com','veryrealemail.com',
+      'wegwerfmail.de','wegwerfmail.net','wh4f.org','whyspam.me','willhackforfood.biz',
+      'wooltools.com','wuzup.net','wuzupmail.net','zoemail.org','10minutemail.com',
+      'binkmail.com','bobmail.info','chammy.info','devnullmail.com','emailigo.de',
+      'emailsensei.com','emailtemporario.com.br','emailwarden.com','fakedemail.com',
+      'fastacura.com','filzmail.com','inboxalias.com','jetable.org','klassmaster.com',
+      'mailblocks.com','mailinator.net','mailinator2.com','mailmetrash.com','mailnator.com',
+      'mytrashmail.com','nobulk.com','noclickemail.com','nogmailspam.info','nomail.pw',
+      'nomail2me.com','nospam.ze.tc','nospamfor.us','nowmymail.net','oneoffemail.com',
+      'pookmail.com','recode.me','safe-mail.net','safetymail.info','spambox.us',
+      'spamcannon.com','spamcannon.net','spamcero.com','spamcon.org','spamcowboy.com',
+      'spamcowboy.net','spamcowboy.org','spamday.com','spamex.com','spamfighter.cf',
+      'spamfree24.com','spamfree24.de','spamfree24.eu','spamfree24.info','spamfree24.net',
+      'spamfree24.org','spamgoes.in','spaml.com','spammotel.com','spamobox.com',
+      'spamslicer.com','spamspot.com','spamthis.co.uk','spamtrail.com','tempemail.co.za',
+      'tempemail.net','tempmaildemo.com','tempmailer.com','tempomail.fr','temporaryemail.net',
+      'temporaryforwarding.com','temporaryinbox.com','temporarymailaddress.com',
+      'thankyou2010.com','thisisnotmyrealemail.com','throwawayemailaddress.com',
+      'tittbit.in','tradermail.info','turual.com','twinmail.de','veryday.ch',
+      'wimsg.com','zetmail.com','zippymail.info','maildrop.cc','discard.email',
+      'mohmal.com','burnermail.io','temp-mail.org','tempail.com','emailondeck.com',
+      'crazymailing.com','emkei.cz','mailsac.com','harakirimail.com','33mail.com',
+      'maildax.com','tempsky.com','inboxbear.com','anonbox.net','nada.email',
+      'tempinbox.co.uk','getairmail.com','mailnesia.com','bund.us','boximail.com',
+      'tempmailaddress.com','spamwc.de','e4ward.com','incognitomail.org','mailtemp.info'
+    ];
+
     async function sendCode() {
       var email = document.getElementById('pricingEmail').value.trim();
       var errorEl = document.getElementById('emailError');
@@ -1705,6 +1750,14 @@
 
       if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
         errorEl.textContent = 'Please enter a valid email address.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Block disposable/temporary email providers
+      var emailDomain = email.split('@')[1].toLowerCase();
+      if (disposableDomains.indexOf(emailDomain) !== -1) {
+        errorEl.textContent = 'Please use a permanent email address. Temporary or disposable emails are not accepted.';
         errorEl.style.display = 'block';
         return;
       }
