@@ -1757,7 +1757,27 @@
       // Block disposable/temporary email providers
       var emailDomain = email.split('@')[1].toLowerCase();
       if (disposableDomains.indexOf(emailDomain) !== -1) {
-        errorEl.textContent = 'Please use a permanent email address. Temporary or disposable emails are not accepted.';
+        errorEl.textContent = 'Please use a company email address. Temporary or disposable emails are not accepted.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Require company email — block free/personal email providers
+      var freeEmailDomains = [
+        'gmail.com','yahoo.com','yahoo.co.uk','yahoo.ca','yahoo.com.au',
+        'hotmail.com','hotmail.co.uk','outlook.com','outlook.co.uk',
+        'live.com','live.co.uk','msn.com','aol.com','aol.co.uk',
+        'icloud.com','me.com','mac.com','mail.com','email.com',
+        'protonmail.com','proton.me','zoho.com','zohomail.com',
+        'yandex.com','yandex.ru','gmx.com','gmx.net','gmx.de',
+        'fastmail.com','fastmail.fm','hushmail.com','tutanota.com',
+        'tuta.com','tuta.io','inbox.com','mail.ru','seznam.cz',
+        'rediffmail.com','cox.net','sbcglobal.net','att.net',
+        'verizon.net','comcast.net','charter.net','earthlink.net',
+        'optonline.net','frontier.com','windstream.net','centurylink.net'
+      ];
+      if (freeEmailDomains.indexOf(emailDomain) !== -1) {
+        errorEl.textContent = 'Please use your company email address. Free or personal email addresses are not accepted.';
         errorEl.style.display = 'block';
         return;
       }
