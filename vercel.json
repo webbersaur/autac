@@ -1,6 +1,14 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "autacusa.com" }],
+      "destination": "https://www.autacusa.com/$1",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.html",
