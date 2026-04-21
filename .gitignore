@@ -8,3 +8,6 @@ review-notes.md
 Invoice *.pdf
 invoice-deposit.html
 .vercel
+.claude/
+mockup.html
+*.rtf
