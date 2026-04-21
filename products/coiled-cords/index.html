@@ -759,7 +759,7 @@
   <script>
     const CATEGORIES = ['shielded-comm', 'pvc-shielded', 'pvc-miniature', 'pvc-miniature-foil'];
 
-    fetch('../catalog/data/products.json')
+    fetch('/catalog/data/products.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('product-sections');

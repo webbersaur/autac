@@ -764,7 +764,7 @@
   <script>
     const CATEGORIES = ['comm-control', 'test-leads'];
 
-    fetch('../catalog/data/products.json')
+    fetch('/catalog/data/products.json')
       .then(res => res.json())
       .then(data => {
         const container = document.getElementById('product-sections');

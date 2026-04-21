@@ -1318,7 +1318,7 @@
       const filterCountEl = document.getElementById('filter-count');
 
       // Load product data
-      fetch('catalog/data/products.json')
+      fetch('/catalog/data/products.json')
         .then(function(res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();

@@ -1100,7 +1100,7 @@
 
     async function loadProducts() {
       try {
-        const response = await fetch('../catalog/data/products.json');
+        const response = await fetch('/catalog/data/products.json');
         const data = await response.json();
 
         POWER_CATEGORIES.forEach(categoryId => {
