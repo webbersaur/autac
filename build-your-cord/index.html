@@ -1303,10 +1303,12 @@
       'tempmailaddress.com','spamwc.de','e4ward.com','incognitomail.org','mailtemp.info'
     ];
 
-    // Supabase client
+    // Supabase client — anon-only; never reads/writes auth state so the
+    // pricing OTP session on /products can't bleed in and flip the role.
     var supabaseClient = supabase.createClient(
       'https://jsiozojgglsemzwjzcey.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU',
+      { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'autac-form-anon' } }
     );
 
     // Submit

@@ -1592,17 +1592,20 @@
     })();
 
     // === PRICING PROTECTION SYSTEM (Supabase Auth OTP) ===
+    // Session is scoped to its own storage key so it doesn't leak into form
+    // pages, which run as anon via persistSession:false on their own client.
     var pricingData = null;
     var supabaseClient = supabase.createClient(
       'https://jsiozojgglsemzwjzcey.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU'
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU',
+      { auth: { storageKey: 'autac-pricing-session' } }
     );
     var pendingEmail = '';
     var pendingOtpType = 'magiclink';
 
     function isPricingUnlocked() {
       // Check for Supabase session in localStorage
-      var storageKey = 'sb-jsiozojgglsemzwjzcey-auth-token';
+      var storageKey = 'autac-pricing-session';
       var stored = localStorage.getItem(storageKey);
       if (stored) {
         try {
