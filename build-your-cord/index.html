@@ -1373,8 +1373,7 @@
           console.error('[build-your-cord submit] Supabase error:', result.error, 'payload:', row);
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-          var detail = result.error.message || result.error.code || 'unknown error';
-          alert('Something went wrong submitting your request (' + detail + '). Please try again or call us at 800.243.3161.');
+          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
           return;
         }
         document.getElementById('formSuccess').style.display = 'block';
