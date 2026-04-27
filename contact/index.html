@@ -920,7 +920,9 @@
 
       supabaseClient.from('contacts').insert([row]).then(function(result) {
         if (result.error) {
-          alert('Something went wrong. Please try again or call us at 800.243.3161.');
+          console.error('[contact submit] Supabase error:', result.error, 'payload:', row);
+          var detail = result.error.message || result.error.code || 'unknown error';
+          alert('Something went wrong (' + detail + '). Please try again or call us at 800.243.3161.');
           return;
         }
         document.getElementById('formSuccess').style.display = 'block';

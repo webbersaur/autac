@@ -1528,9 +1528,11 @@
 
       supabaseClient.from('quotes').insert([row]).then(function(result) {
         if (result.error) {
+          console.error('[quote submit] Supabase error:', result.error, 'payload:', row);
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          var detail = result.error.message || result.error.code || 'unknown error';
+          alert('Something went wrong submitting your request (' + detail + '). Please try again or call us at 800.243.3161.');
           return;
         }
         document.querySelectorAll('.wizard-step').forEach(function(s) { s.classList.remove('active'); });

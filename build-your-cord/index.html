@@ -1370,9 +1370,11 @@
 
       supabaseClient.from('cord_configs').insert([row]).then(function(result) {
         if (result.error) {
+          console.error('[build-your-cord submit] Supabase error:', result.error, 'payload:', row);
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          var detail = result.error.message || result.error.code || 'unknown error';
+          alert('Something went wrong submitting your request (' + detail + '). Please try again or call us at 800.243.3161.');
           return;
         }
         document.getElementById('formSuccess').style.display = 'block';
