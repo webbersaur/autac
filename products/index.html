@@ -1671,7 +1671,9 @@
           supabaseClient.from('pricing_access_log').insert([{
             user_id: session.user.id,
             email: session.user.email
-          }]);
+          }]).then(function(r) {
+            if (r.error) console.error('[pricing_access_log] insert failed:', r.error);
+          });
         }
       } catch(err) {
         console.error('Failed to load pricing:', err);
@@ -1855,7 +1857,9 @@
 
         // Success — session is now stored by Supabase automatically
         // Record catalog lead
-        supabaseClient.from('catalog_leads').insert([{ email: pendingEmail }]);
+        supabaseClient.from('catalog_leads').insert([{ email: pendingEmail }]).then(function(r) {
+          if (r.error) console.error('[catalog_leads] insert failed:', r.error);
+        });
         showModalStep(3);
       } catch(e) {
         btn.disabled = false;
@@ -1873,7 +1877,9 @@
           email: result.data.session.user.email,
           page: window.location.pathname,
           title: document.title
-        }]);
+        }]).then(function(r) {
+          if (r.error) console.error('[page_views] insert failed:', r.error);
+        });
       }
     }
 
