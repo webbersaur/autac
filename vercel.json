@@ -8,6 +8,20 @@
       "destination": "https://www.autacusa.com/$1",
       "permanent": true
     },
+
+    { "source": "/coiled-extension-cords/", "destination": "/blog/coiled-extension-cords/", "permanent": true },
+    { "source": "/retractile-power-cords-manufactured/", "destination": "/retractile-cords/", "permanent": true },
+    { "source": "/women-of-excellence-luncheon/", "destination": "/news/women-of-excellence-luncheon/", "permanent": true },
+
+    { "source": "/products/coiled-cords/", "destination": "/coiled-cords/", "permanent": true },
+    { "source": "/products/curly-cords/", "destination": "/curly-cords/", "permanent": true },
+    { "source": "/products/retractile-cords/", "destination": "/retractile-cords/", "permanent": true },
+    { "source": "/products/cord-sets/", "destination": "/cord-sets/", "permanent": true },
+    { "source": "/products/color-charts/", "destination": "/color-charts/", "permanent": true },
+    { "source": "/autac-inc-products/", "destination": "/products/", "permanent": true },
+    { "source": "/about-us/", "destination": "/about/", "permanent": true },
+    { "source": "/news-press/", "destination": "/news/", "permanent": true },
+
     {
       "source": "/:path((?!404|proposal-v1|invoice-deposit|admin).*).html",
       "destination": "/:path/",
