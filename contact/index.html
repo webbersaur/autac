@@ -16,7 +16,7 @@
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VCNRLKCL6"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3VCNRLKCL6");</script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -701,6 +701,26 @@
               </div>
             </div>
 
+            <div class="form-row">
+              <div class="form-group">
+                <label for="companyName">Company</label>
+                <input type="text" id="companyName" name="companyName" required>
+              </div>
+              <div class="form-group">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry" required>
+                  <option value="">Select an industry...</option>
+                  <option value="industrial">Industrial / Manufacturing</option>
+                  <option value="medical">Medical Devices</option>
+                  <option value="military">Military / Defense</option>
+                  <option value="aerospace">Aerospace</option>
+                  <option value="automotive">Automotive</option>
+                  <option value="oem">OEM / Distributor</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+
             <div class="form-group">
               <label for="subject">Subject</label>
               <select id="subject" name="subject" required>
@@ -714,9 +734,16 @@
             </div>
 
             <div class="form-group">
+              <label for="applicationUse">What will the cord be used for?</label>
+              <textarea id="applicationUse" name="applicationUse" placeholder="Briefly describe the application or use case..." style="min-height:80px" required></textarea>
+            </div>
+
+            <div class="form-group">
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="Tell us about your project or question..." required></textarea>
             </div>
+
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADMEpasiu0J3pWIj" data-theme="light" style="margin-bottom:1rem"></div>
 
             <button type="submit" class="btn btn-red btn-full">Send Message &rarr;</button>
 
@@ -852,13 +879,8 @@
   </footer>
 
   <script>
-    // Anon-only client — pricing OTP session on /products is namespaced
-    // separately so it can't flip this client's role to authenticated.
-    var supabaseClient = supabase.createClient(
-      'https://jsiozojgglsemzwjzcey.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU',
-      { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'autac-form-anon' } }
-    );
+    var SUPABASE_URL = 'https://jsiozojgglsemzwjzcey.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU';
 
     var disposableDomains = [
       'mailinator.com','tempmail.com','guerrillamail.com','throwaway.email','yopmail.com',
@@ -905,33 +927,78 @@
     function handleSubmit(e) {
       e.preventDefault();
       var form = e.target;
-      var email = document.getElementById('email').value;
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var email = document.getElementById('email').value.trim().toLowerCase();
 
       if (isDisposableEmail(email)) {
         alert('Please use a permanent email address. Temporary or disposable emails are not accepted.');
         return;
       }
 
-      var row = {
+      var turnstileToken = (window.turnstile && typeof turnstile.getResponse === 'function')
+        ? turnstile.getResponse()
+        : '';
+      if (!turnstileToken) {
+        alert('Please complete the verification challenge before submitting.');
+        return;
+      }
+
+      var payload = {
+        form_type: 'contact',
+        turnstile_token: turnstileToken,
+        page_url: location.href,
         first_name: document.getElementById('firstName').value,
         last_name: document.getElementById('lastName').value,
         email: email,
         phone: document.getElementById('phone').value || null,
+        company_name: document.getElementById('companyName').value,
+        industry: document.getElementById('industry').value,
+        application_use: document.getElementById('applicationUse').value,
         subject: document.getElementById('subject').value,
         message: document.getElementById('message').value
       };
 
-      supabaseClient.from('contacts').insert([row]).then(function(result) {
-        if (result.error) {
-          console.error('[contact submit] Supabase error:', result.error, 'payload:', row);
-          alert('Something went wrong. Please try again or call us at 800.243.3161.');
+      submitBtn.disabled = true;
+      var originalLabel = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Sending...';
+
+      fetch(SUPABASE_URL + '/functions/v1/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify(payload)
+      }).then(function(res) {
+        return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+      }).then(function(result) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalLabel;
+        if (!result.ok) {
+          console.error('[contact submit] error:', result.data);
+          if (result.data && result.data.error === 'turnstile_failed') {
+            alert('Verification failed. Please refresh the page and try again.');
+          } else if (result.data && result.data.error === 'disposable_email') {
+            alert('Please use a permanent email address.');
+          } else {
+            alert('Something went wrong. Please try again or call us at 800.243.3161.');
+          }
+          if (window.turnstile) turnstile.reset();
           return;
         }
         document.getElementById('formSuccess').style.display = 'block';
         form.reset();
+        if (window.turnstile) turnstile.reset();
         setTimeout(function() {
           document.getElementById('formSuccess').style.display = 'none';
         }, 5000);
+      }).catch(function(err) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalLabel;
+        console.error('[contact submit] network error:', err);
+        alert('Network error. Please try again or call us at 800.243.3161.');
+        if (window.turnstile) turnstile.reset();
       });
     }
   </script>

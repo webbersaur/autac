@@ -16,7 +16,7 @@
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VCNRLKCL6"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3VCNRLKCL6");</script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -1131,6 +1131,7 @@
                 <span class="summary-value empty" id="sumColor">&mdash;</span>
               </div>
             </div>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAADMEpasiu0J3pWIj" data-theme="light" style="margin-bottom:1rem"></div>
             <div class="summary-actions">
               <button class="btn btn-red btn-full" onclick="submitQuote()">Submit Quote Request &rarr;</button>
               <button class="btn btn-outline btn-full" onclick="resetForm()">Reset Configuration</button>
@@ -1303,13 +1304,8 @@
       'tempmailaddress.com','spamwc.de','e4ward.com','incognitomail.org','mailtemp.info'
     ];
 
-    // Supabase client — anon-only; never reads/writes auth state so the
-    // pricing OTP session on /products can't bleed in and flip the role.
-    var supabaseClient = supabase.createClient(
-      'https://jsiozojgglsemzwjzcey.supabase.co',
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU',
-      { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false, storageKey: 'autac-form-anon' } }
-    );
+    var SUPABASE_URL = 'https://jsiozojgglsemzwjzcey.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzaW96b2pnZ2xzZW16d2p6Y2V5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0ODI0MDUsImV4cCI6MjA5MTA1ODQwNX0.sZsWS2jeeIPEnau9W0f1XqZlfM5XXlUwov7up4Y1VMU';
 
     // Submit
     function submitQuote() {
@@ -1337,7 +1333,18 @@
         return;
       }
 
-      var row = {
+      var turnstileToken = (window.turnstile && typeof turnstile.getResponse === 'function')
+        ? turnstile.getResponse()
+        : '';
+      if (!turnstileToken) {
+        alert('Please complete the verification challenge before submitting.');
+        return;
+      }
+
+      var payload = {
+        form_type: 'cord_config',
+        turnstile_token: turnstileToken,
+        page_url: location.href,
         material: cordConfig.material,
         jacket: cordConfig.jacket || null,
         conductors: document.getElementById('conductors').value || null,
@@ -1370,16 +1377,39 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting…';
 
-      supabaseClient.from('cord_configs').insert([row]).then(function(result) {
-        if (result.error) {
-          console.error('[build-your-cord submit] Supabase error:', result.error, 'payload:', row);
+      fetch(SUPABASE_URL + '/functions/v1/submit-form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY
+        },
+        body: JSON.stringify(payload)
+      }).then(function(res) {
+        return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+      }).then(function(result) {
+        if (!result.ok) {
+          console.error('[build-your-cord submit] error:', result.data);
           submitBtn.disabled = false;
           submitBtn.innerHTML = 'Submit Quote Request &rarr;';
-          alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          if (result.data && result.data.error === 'turnstile_failed') {
+            alert('Verification failed. Please refresh the page and try again.');
+          } else if (result.data && result.data.error === 'disposable_email') {
+            alert('Please use a permanent email address.');
+          } else {
+            alert('Something went wrong submitting your request. Please try again or call us at 800.243.3161.');
+          }
+          if (window.turnstile) turnstile.reset();
           return;
         }
         document.getElementById('formSuccess').style.display = 'block';
         window.scrollTo({ top: document.getElementById('formSuccess').offsetTop - 100, behavior: 'smooth' });
+      }).catch(function(err) {
+        console.error('[build-your-cord submit] network error:', err);
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Submit Quote Request &rarr;';
+        alert('Network error. Please try again or call us at 800.243.3161.');
+        if (window.turnstile) turnstile.reset();
       });
     }
 

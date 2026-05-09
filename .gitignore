@@ -11,3 +11,4 @@ invoice-deposit.html
 .claude/
 mockup.html
 *.rtf
+.turnstile-keys.txt

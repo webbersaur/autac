@@ -895,7 +895,7 @@
   </div>
 
   <script>
-    var ALLOWED_EMAILS = ['marie@autacusa.com', 'sales@autacusa.com'];
+    var ALLOWED_EMAILS = ['marie@autacusa.com', 'sales@autacusa.com', 'chrishauman@gmail.com'];
 
     var sb = supabase.createClient(
       'https://jsiozojgglsemzwjzcey.supabase.co',
@@ -1533,7 +1533,7 @@
         return;
       }
       if (!result.data || result.data.length === 0) {
-        alert('Delete blocked by Row Level Security.\n\nThe request succeeded but affected 0 rows — Supabase silently blocks deletes when no DELETE policy matches your user. Add an admin DELETE policy in the Supabase SQL editor:\n\ncreate policy "Admin allowlist can delete ' + d.table + '" on ' + d.table + '\n  for delete to authenticated\n  using (auth.jwt() ->> \'email\' in (\'marie@autacusa.com\', \'sales@autacusa.com\'));');
+        alert('Delete blocked by Row Level Security.\n\nThe request succeeded but affected 0 rows — Supabase silently blocks deletes when no DELETE policy matches your user. Add an admin DELETE policy in the Supabase SQL editor:\n\ncreate policy "Admin allowlist can delete ' + d.table + '" on ' + d.table + '\n  for delete to authenticated\n  using (auth.jwt() ->> \'email\' in (\'marie@autacusa.com\', \'sales@autacusa.com\', \'chrishauman@gmail.com\'));');
         btn.disabled = false;
         btn.textContent = 'Delete';
         return;
