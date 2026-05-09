@@ -677,6 +677,9 @@
           <input type="password" id="signinPassword" placeholder="Enter your password">
         </div>
         <button class="auth-btn btn-red" onclick="signIn()">Sign In</button>
+        <p style="text-align:center;margin-top:1rem;font-size:0.85rem;">
+          <a href="#" onclick="showForgotPassword();return false;" style="color:var(--text-light);text-decoration:underline;">Forgot your password?</a>
+        </p>
       </div>
 
       <!-- Set Password Form -->
@@ -696,6 +699,35 @@
           <input type="password" id="setupConfirm" placeholder="Confirm your password">
         </div>
         <button class="auth-btn btn-accent" onclick="setPassword()">Create Account</button>
+      </div>
+
+      <!-- Forgot Password Form -->
+      <div id="forgotForm" class="auth-form">
+        <h2>Reset your password</h2>
+        <p>Enter your email and we'll send you a link to reset your password.</p>
+        <div class="auth-field">
+          <label>Email</label>
+          <input type="email" id="forgotEmail" placeholder="marie@autacusa.com">
+        </div>
+        <button class="auth-btn btn-red" onclick="sendResetLink()">Send Reset Link</button>
+        <p style="text-align:center;margin-top:1rem;font-size:0.85rem;">
+          <a href="#" onclick="hideForgotPassword();return false;" style="color:var(--text-light);text-decoration:underline;">&larr; Back to Sign In</a>
+        </p>
+      </div>
+
+      <!-- Set New Password (Recovery Callback) Form -->
+      <div id="recoveryForm" class="auth-form">
+        <h2>Choose a new password</h2>
+        <p>Set the new password for your account.</p>
+        <div class="auth-field">
+          <label>New Password</label>
+          <input type="password" id="recoveryPassword" placeholder="At least 8 characters">
+        </div>
+        <div class="auth-field">
+          <label>Confirm New Password</label>
+          <input type="password" id="recoveryConfirm" placeholder="Re-enter your new password">
+        </div>
+        <button class="auth-btn btn-red" onclick="setNewPassword()">Update Password</button>
       </div>
     </div>
   </div>
@@ -918,8 +950,73 @@
       });
       document.getElementById('signinForm').classList.toggle('active', tab === 'signin');
       document.getElementById('setupForm').classList.toggle('active', tab === 'setup');
+      document.getElementById('forgotForm').classList.remove('active');
+      document.getElementById('recoveryForm').classList.remove('active');
       hideAuthMessages();
     }
+
+    function showForgotPassword() {
+      document.querySelectorAll('.auth-form').forEach(function(f) { f.classList.remove('active'); });
+      document.getElementById('forgotForm').classList.add('active');
+      var signinEmail = document.getElementById('signinEmail').value.trim();
+      if (signinEmail) document.getElementById('forgotEmail').value = signinEmail;
+      hideAuthMessages();
+    }
+
+    function hideForgotPassword() {
+      switchAuthTab('signin');
+    }
+
+    function showRecoveryForm() {
+      document.querySelectorAll('.auth-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.auth-form').forEach(function(f) { f.classList.remove('active'); });
+      document.getElementById('recoveryForm').classList.add('active');
+      document.getElementById('authScreen').style.display = 'flex';
+      document.getElementById('dashboard').classList.remove('active');
+      hideAuthMessages();
+    }
+
+    async function sendResetLink() {
+      hideAuthMessages();
+      var email = document.getElementById('forgotEmail').value.trim().toLowerCase();
+      if (!email) { showAuthError('Please enter your email.'); return; }
+      if (ALLOWED_EMAILS.indexOf(email) === -1) { showAuthError('This email is not authorized. Contact your administrator.'); return; }
+
+      var result = await sb.auth.resetPasswordForEmail(email, {
+        redirectTo: location.origin + '/admin.html'
+      });
+      if (result.error) {
+        showAuthError(result.error.message);
+        return;
+      }
+      showAuthSuccess('Reset link sent. Check your email — the link will return you here to set a new password.');
+    }
+
+    async function setNewPassword() {
+      hideAuthMessages();
+      var password = document.getElementById('recoveryPassword').value;
+      var confirm = document.getElementById('recoveryConfirm').value;
+      if (!password || !confirm) { showAuthError('Please enter and confirm your new password.'); return; }
+      if (password.length < 8) { showAuthError('Password must be at least 8 characters.'); return; }
+      if (password !== confirm) { showAuthError('Passwords do not match.'); return; }
+
+      var result = await sb.auth.updateUser({ password: password });
+      if (result.error) {
+        showAuthError(result.error.message);
+        return;
+      }
+      showAuthSuccess('Password updated! Loading dashboard…');
+      var sessionRes = await sb.auth.getSession();
+      setTimeout(function() {
+        if (sessionRes.data && sessionRes.data.session) {
+          showDashboard(sessionRes.data.session);
+        }
+      }, 1000);
+    }
+
+    sb.auth.onAuthStateChange(function(event, session) {
+      if (event === 'PASSWORD_RECOVERY') showRecoveryForm();
+    });
 
     function showAuthError(msg) {
       var el = document.getElementById('authError');
@@ -1549,6 +1646,14 @@
     // ─── INIT ─────────────────────────────────
 
     (async function() {
+      // If user landed here from a password-recovery email link, the URL
+      // hash carries `type=recovery`. Skip auto-dashboard and let the
+      // PASSWORD_RECOVERY listener show the new-password form instead.
+      var hash = location.hash || '';
+      if (hash.indexOf('type=recovery') !== -1) {
+        showRecoveryForm();
+        return;
+      }
       var result = await sb.auth.getSession();
       if (result.data.session) {
         showDashboard(result.data.session);
