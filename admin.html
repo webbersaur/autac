@@ -1177,8 +1177,16 @@
 
     async function cycleStatus(table, id, current) {
       var next = STATUS_CYCLE[current];
-      var result = await sb.from(table).update({ status: next }).eq('id', id);
-      if (!result.error) loadAllData();
+      var result = await sb.from(table).update({ status: next }).eq('id', id).select();
+      if (result.error) {
+        alert('Status update failed: ' + result.error.message);
+        return;
+      }
+      if (!result.data || result.data.length === 0) {
+        alert('Status update blocked by Row Level Security.\n\nThe request succeeded but affected 0 rows — Supabase silently blocks updates when no UPDATE policy matches your user. Check the ' + table + ' table policies in the Supabase dashboard.');
+        return;
+      }
+      loadAllData();
     }
 
     function countNew(rows) {
@@ -1408,7 +1416,26 @@
         });
       }
 
-      openModal('Catalog Lead — ' + email, rows);
+      openModal('Catalog Lead — ' + email, rows, {
+        label: 'lead ' + email + ' (and all their page views)',
+        customDelete: async function() {
+          var pvRes = await sb.from('page_views').delete().eq('email', email).select();
+          if (pvRes.error) {
+            alert('Failed to delete page views: ' + pvRes.error.message);
+            return false;
+          }
+          var leadRes = await sb.from('catalog_leads').delete().eq('email', email).select();
+          if (leadRes.error) {
+            alert('Failed to delete catalog lead: ' + leadRes.error.message);
+            return false;
+          }
+          if (!leadRes.data || leadRes.data.length === 0) {
+            alert('Delete blocked by Row Level Security. No DELETE policy on catalog_leads matched your user.');
+            return false;
+          }
+          return true;
+        }
+      });
     }
 
     // ─── PRICING ACCESS LOG ──────────────────
@@ -1457,7 +1484,21 @@
         ['First Access', fmtDate(accesses[accesses.length - 1].accessed_at)],
         ['Last Access', fmtDate(accesses[0].accessed_at)]
       ];
-      openModal('Pricing Access — ' + email, rows);
+      openModal('Pricing Access — ' + email, rows, {
+        label: 'pricing access history for ' + email,
+        customDelete: async function() {
+          var r = await sb.from('pricing_access_log').delete().eq('email', email).select();
+          if (r.error) {
+            alert('Failed to delete pricing access log: ' + r.error.message);
+            return false;
+          }
+          if (!r.data || r.data.length === 0) {
+            alert('Delete blocked by Row Level Security. No DELETE policy on pricing_access_log matched your user.');
+            return false;
+          }
+          return true;
+        }
+      });
     }
 
     // ─── INSIGHTS ─────────────────────────────
@@ -1621,6 +1662,23 @@
       var btn = document.getElementById('modalDeleteBtn');
       btn.disabled = true;
       btn.textContent = 'Deleting...';
+
+      if (d.customDelete) {
+        var ok = false;
+        try {
+          ok = await d.customDelete();
+        } catch (e) {
+          alert('Delete failed: ' + (e && e.message ? e.message : e));
+        }
+        if (!ok) {
+          btn.disabled = false;
+          btn.textContent = 'Delete';
+          return;
+        }
+        closeModal();
+        loadAllData();
+        return;
+      }
 
       var result = await sb.from(d.table).delete().eq('id', d.id).select();
       if (result.error) {

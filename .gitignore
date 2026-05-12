@@ -12,3 +12,6 @@ invoice-deposit.html
 mockup.html
 *.rtf
 .turnstile-keys.txt
+invoice-balance.html
+spam-fix-report.html
+seo-reports/urls-to-submit.txt
