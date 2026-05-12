@@ -1193,6 +1193,16 @@
       return rows.filter(function(r) { return r.status === 'new'; }).length;
     }
 
+    // Auto-advance status from "new" → "in_progress" when a row is opened.
+    // Fire-and-forget so the modal opens instantly; refresh the dashboard once
+    // the DB confirms the update.
+    async function markAsSeen(table, id, currentStatus) {
+      if (currentStatus !== 'new') return;
+      var result = await sb.from(table).update({ status: 'in_progress' }).eq('id', id).select();
+      if (result.error || !result.data || result.data.length === 0) return;
+      loadAllData();
+    }
+
     // ─── CONTACTS TABLE ───────────────────────
 
     function renderContacts() {
@@ -1216,6 +1226,7 @@
 
     function showContact(i) {
       var r = allContacts[i];
+      markAsSeen('contacts', r.id, r.status);
       openModal('Contact Message', [
         ['Date', fmtDate(r.created_at)],
         ['Name', r.first_name + ' ' + r.last_name],
@@ -1255,6 +1266,7 @@
 
     function showQuote(i) {
       var r = allQuotes[i];
+      markAsSeen('quotes', r.id, r.status);
       var env = Array.isArray(r.environment) ? r.environment.join(', ') : r.environment;
       openModal('Quote Request — ' + r.reference_number, [
         ['Date', fmtDate(r.created_at)],
@@ -1302,6 +1314,7 @@
 
     function showCord(i) {
       var r = allCords[i];
+      markAsSeen('cord_configs', r.id, r.status);
       openModal('Custom Cord Config', [
         ['Date', fmtDate(r.created_at)],
         ['Contact', r.contact_name],
