@@ -82,7 +82,7 @@ All three forms (`contact.html`, `quote.html`, `build-your-cord.html`) submit to
 - **products.html**: Pricing behind OTP auth (`verifyOtp` type: `magiclink` — required because the customized Magic Link template is what delivers the code; using type `email` returns "Token has expired or is invalid"), access logged to `pricing_access_log` and `page_views` tables
 
 ## SEO Status
-- Canonical tags on all pages (www.autacusa.com)
+- Canonical tags on all pages (autacusa.com)
 - Unique title tags and meta descriptions per page
 - JSON-LD structured data on all pages
 - Open Graph tags on homepage
