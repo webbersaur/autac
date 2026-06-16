@@ -99,6 +99,20 @@ def gsc_service():
     return build('searchconsole', 'v1', credentials=creds, cache_discovery=False)
 
 
+def norm_url(u: str) -> str:
+    """Canonicalize a URL for matching: drop scheme, leading www., trailing slash.
+
+    GSC keys its page dimension by whatever form the property uses (the
+    autacusa.com property is non-www), while TRACKED lists the www form. Without
+    this every lookup misses and the whole scorecard renders 0. Normalizing both
+    sides makes the comparison form-agnostic.
+    """
+    u = u.split('://', 1)[-1]
+    if u.startswith('www.'):
+        u = u[4:]
+    return u.rstrip('/')
+
+
 def fetch_pages(svc, start: date, end: date) -> dict[str, dict]:
     body = {
         'startDate': start.isoformat(),
@@ -108,7 +122,7 @@ def fetch_pages(svc, start: date, end: date) -> dict[str, dict]:
         'dataState': 'all',
     }
     resp = svc.searchanalytics().query(siteUrl=SITE_URL, body=body).execute()
-    return {row['keys'][0]: row for row in resp.get('rows', [])}
+    return {norm_url(row['keys'][0]): row for row in resp.get('rows', [])}
 
 
 def render_html(baseline: dict, premigration: dict, postmigration: dict,
@@ -136,9 +150,10 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
         rows = []
         cat_base = cat_pre = cat_post = 0
         for url in urls:
-            b = baseline.get(url, {'impressions': 0, 'clicks': 0, 'position': 0})
-            p = premigration.get(url, {'impressions': 0, 'clicks': 0, 'position': 0})
-            r = postmigration.get(url, {'impressions': 0, 'clicks': 0, 'position': 0})
+            key = norm_url(url)
+            b = baseline.get(key, {'impressions': 0, 'clicks': 0, 'position': 0})
+            p = premigration.get(key, {'impressions': 0, 'clicks': 0, 'position': 0})
+            r = postmigration.get(key, {'impressions': 0, 'clicks': 0, 'position': 0})
 
             grand['total'] += 1
             grand['baseline_impr'] += b['impressions']
