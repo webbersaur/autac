@@ -10,7 +10,10 @@ Pipeline:
 
 Usage:
     /Users/saurus/Documents/workspace/mcp-gsc/.venv/bin/python restore_posts.py [N]
-        N defaults to 25.
+        N defaults to 25. Restores the top-N candidates by lost impressions.
+    /Users/saurus/Documents/workspace/mcp-gsc/.venv/bin/python restore_posts.py slug-a,slug-b
+        Restore only the named slugs (use to restore specific dropped pages
+        without clobbering pages that are already live).
 """
 from __future__ import annotations
 
@@ -20,7 +23,7 @@ import sys
 from datetime import date, datetime
 from pathlib import Path
 
-REPO = Path('/Users/saurus/Documents/workspace/autac')
+REPO = Path(__file__).resolve().parent.parent
 TEMPLATE_PATH = REPO / 'blog' / 'coil-cable-guide' / 'index.html'
 SEO = REPO / 'seo-reports'
 
@@ -229,8 +232,8 @@ def build_post_html(template: str, *, slug: str, title: str, description: str,
 
     # Canonical/og URL
     html = html.replace(
-        'https://www.autacusa.com/blog/coil-cable-guide/',
-        f'https://www.autacusa.com/{slug}/'
+        'https://autacusa.com/blog/coil-cable-guide/',
+        f'https://autacusa.com/{slug}/'
     )
 
     # JSON-LD datePublished
@@ -298,7 +301,7 @@ def update_sitemap(slugs: list[str]) -> None:
 
     new_entries = []
     for slug in slugs:
-        url = f'https://www.autacusa.com/{slug}/'
+        url = f'https://autacusa.com/{slug}/'
         if url in sm:
             continue
         new_entries.append(
@@ -319,9 +322,17 @@ def update_sitemap(slugs: list[str]) -> None:
 
 
 def main() -> None:
-    n = int(sys.argv[1]) if len(sys.argv) > 1 else 25
-
-    candidates = json.loads((SEO / 'restoration-candidates.json').read_text())[:n]
+    arg = sys.argv[1] if len(sys.argv) > 1 else '25'
+    all_candidates = json.loads((SEO / 'restoration-candidates.json').read_text())
+    if arg.isdigit():
+        candidates = all_candidates[:int(arg)]
+    else:
+        wanted = [s.strip() for s in arg.split(',') if s.strip()]
+        by_slug = {c['slug']: c for c in all_candidates}
+        candidates = [by_slug[s] for s in wanted if s in by_slug]
+        missing = [s for s in wanted if s not in by_slug]
+        if missing:
+            print('  not in candidates.json:', ', '.join(missing))
     posts_by_slug = {p['post_name']: p for p in json.loads((SEO / 'wp-posts.json').read_text())}
     template = TEMPLATE_PATH.read_text()
 
