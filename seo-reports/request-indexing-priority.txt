@@ -1,13 +1,51 @@
-# AUTAC Request-Indexing priority (LIVE pages, non-www property, ~10/day)
-https://autacusa.com/why-does-a-coiled-extension-lead-heat-up/
-https://autacusa.com/how-to-fix-a-coiled-cord-with-ease/
-https://autacusa.com/telephone-cord/
-https://autacusa.com/can-extension-cords-get-wet/
-https://autacusa.com/the-best-extension-cord-for-power-washers/
-https://autacusa.com/ac-power-cable-cord-understanding-its-importance-and-uses/
-https://autacusa.com/wire-coil-everything-you-need-to-know/
-https://autacusa.com/coiled-cords/
-https://autacusa.com/coiled-instrument-cable/
-https://autacusa.com/coil-cables/
-https://autacusa.com/power-cord-for-lift-chair/
-https://autacusa.com/spiral-cables/
+# AUTAC — GSC Request-Indexing worklist (updated 2026-06-16)
+#
+# Property:  https://autacusa.com/   (NON-www URL-prefix property)
+# How:       URL Inspection > paste URL > Test Live URL > Request Indexing
+# Limit:     ~10 requests/day per property — work top-down, one batch per day.
+# Also do:   Sitemaps section > (re)submit  https://autacusa.com/sitemap.xml
+#            (covers all 105 URLs for the slower background crawl).
+#
+# Restored pages come first — they are brand-new to Google and need discovery.
+# Live pages come last — the sitemap resubmit already nudges those.
+# Number in () = lost baseline impressions (the recovery prize).
+
+# ---- DAY 1 — restored, highest traffic ----
+https://autacusa.com/straight-wiring-a-cooling-fan/                                         # (36,832)
+https://autacusa.com/how-to-repair-a-retractable-badge-reel/                                # (20,300)
+https://autacusa.com/how-to-fix-retractable-cord-on-iron/                                   # (18,140)
+https://autacusa.com/how-to-fix-a-retractable-badge-reel/                                   # (16,051)
+https://autacusa.com/tv-cables-cords-everything-you-need-to-know-for-the-best-home-entertainment-setup/  # (15,542)
+https://autacusa.com/how-to-hide-cable-cords-on-a-wall/                                     # (12,590)
+https://autacusa.com/yellow-ethernet-cable/                                                 # (10,908)
+https://autacusa.com/solving-cord-conundrums-step-by-step-guide-to-fixing-a-retractable-iron-cord/  # (6,630)
+https://autacusa.com/curly-phone-cord/                                                      # (6,529)
+https://autacusa.com/why-coiled-phone-cord-are-still-relevant-today/                        # (5,039)
+
+# ---- DAY 2 — rest of restored ----
+https://autacusa.com/no-tangle-desk-phone-cord/                                             # (3,834)
+https://autacusa.com/extension-cord-storage/                                                # (3,430)
+https://autacusa.com/how-to-straighten-wire-methods-tools-techniques-and-practical-tips/    # (3,384)
+https://autacusa.com/spectrum-power-cord-for-cable-box/                                      # (2,038)
+https://autacusa.com/extension-cords-recoil-maintenance-and-repair-guide/                   # (2,013)
+https://autacusa.com/hair-dryer-with-retractable-cord/                                       # (1,736)
+https://autacusa.com/iron-with-a-retractable-cord/                                           # (1,273)
+https://autacusa.com/automatic-cable-winder-best-way-to-organize-your-cables-and-declutter-your-space/  # (1,266)
+https://autacusa.com/coil-cord-for-telephone-a-comprehensive-guide/                          # (1,227)
+https://autacusa.com/the-evolution-of-recoil-extension-cords/                                # (742)
+
+# ---- DAY 3 — live top pages (survived migration, confirm re-crawl) ----
+https://autacusa.com/why-does-a-coiled-extension-lead-heat-up/                               # (31,629)
+https://autacusa.com/how-to-fix-a-coiled-cord-with-ease/                                     # (17,935)
+https://autacusa.com/telephone-cord/                                                         # (17,452)
+https://autacusa.com/can-extension-cords-get-wet/                                            # (16,476)
+https://autacusa.com/the-best-extension-cord-for-power-washers/                              # (12,340)
+https://autacusa.com/ac-power-cable-cord-understanding-its-importance-and-uses/              # (9,582)
+https://autacusa.com/wire-coil-everything-you-need-to-know/                                  # (8,819)
+https://autacusa.com/coiled-cords/                                                           # (6,167)
+https://autacusa.com/coiled-instrument-cable/                                                # (5,676)
+https://autacusa.com/coil-cables/                                                            # (4,822)
+
+# ---- DAY 4 — remaining live ----
+https://autacusa.com/power-cord-for-lift-chair/                                              # (4,569)
+https://autacusa.com/spiral-cables/                                                          # (4,170)
