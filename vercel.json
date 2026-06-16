@@ -409,6 +409,86 @@
       "permanent": true
     },
     {
+      "source": "/75th-anniversary-celebration/",
+      "destination": "/75th-anniversary/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-inc-celebrates-70-years-with-an-open-house/",
+      "destination": "/news/70-years-open-house/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-celebrates-60-years/",
+      "destination": "/news/celebrates-60-years/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-expands-into-the-service-industry/",
+      "destination": "/news/expands-service-industry/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-introduces-an-additional-rohs-compliant-alternative-to-neoprene-with-tpr/",
+      "destination": "/news/rohs-tpr-introduction/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-61st-year/",
+      "destination": "/news/61st-year/",
+      "permanent": true
+    },
+    {
+      "source": "/category/news/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/category/press-release/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/category/press-release/page/2/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/category/press-release/page/3/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-announces-shielded-cords-for-all-electrical-applications/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-introduces-tpe-cords-for-a-variety-of-applications/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-announces-neoprene-cords-for-industrial-applications/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-introduces-its-customizable-tpe-cords-a-smart-alternative-to-neoprene/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/245349-2/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/blog-vlog-series/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
       "source": "/:path((?!404|proposal-v1|invoice-deposit|admin).*).html",
       "destination": "/:path/",
       "permanent": true

@@ -13,6 +13,7 @@
 # ==== HUB / MONEY PAGES — do these FIRST (commercial product terms) ====
 # These survived the migration but lost their rankings; getting them re-crawled
 # is the highest-value action. 67 dead variant URLs now redirect into them.
+https://autacusa.com/products/
 https://autacusa.com/retractile-cords/
 https://autacusa.com/coiled-cords/
 https://autacusa.com/curly-cords/
