@@ -4,26 +4,410 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.autacusa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.autacusa.com"
+        }
+      ],
       "destination": "https://autacusa.com/$1",
       "permanent": true
     },
-
-    { "source": "/coiled-extension-cords/", "destination": "/blog/coiled-extension-cords/", "permanent": true },
-    { "source": "/retractile-power-cords-manufactured/", "destination": "/retractile-cords/", "permanent": true },
-    { "source": "/women-of-excellence-luncheon/", "destination": "/news/women-of-excellence-luncheon/", "permanent": true },
-
-    { "source": "/products/coiled-cords/", "destination": "/coiled-cords/", "permanent": true },
-    { "source": "/products/curly-cords/", "destination": "/curly-cords/", "permanent": true },
-    { "source": "/products/retractile-cords/", "destination": "/retractile-cords/", "permanent": true },
-    { "source": "/products/cord-sets/", "destination": "/cord-sets/", "permanent": true },
-    { "source": "/products/color-charts/", "destination": "/color-charts/", "permanent": true },
-    { "source": "/autac-inc-products/", "destination": "/products/", "permanent": true },
-    { "source": "/about-us/", "destination": "/about/", "permanent": true },
-    { "source": "/news-press/", "destination": "/news/", "permanent": true },
-
-    { "source": "/understanding-vga-cable-cord/", "destination": "/cord-sets/", "permanent": true },
-
+    {
+      "source": "/coiled-extension-cords/",
+      "destination": "/blog/coiled-extension-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-power-cords-manufactured/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/women-of-excellence-luncheon/",
+      "destination": "/news/women-of-excellence-luncheon/",
+      "permanent": true
+    },
+    {
+      "source": "/products/coiled-cords/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/products/curly-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/products/retractile-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/products/cord-sets/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/products/color-charts/",
+      "destination": "/color-charts/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-inc-products/",
+      "destination": "/products/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us/",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/news-press/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/understanding-vga-cable-cord/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/10-benefits-of-using-retractile-extension-cords-in-2023/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/12-gauge-retractable-extension-cord-reel/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/2-wire-coiled-cord/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/4-conductor-coiled-cable-flexible-reliable-tangle-free-power-transmission/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/a-comprehensive-guide-to-yealink-curly-cord/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-inc-the-leading-supplier-of-retractile-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-retractile-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-usa-inc-for-any-retractile-power-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/autac-usa-inc-the-one-stop-solution-for-retractile-cords-in-the-us/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/benefits-of-retractile-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/best-coiled-cords-in-branford-ct/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/best-coiled-curly-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/best-retractable-electric-cord-reel-complete-buying-guide-features-safety-tips/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/best-retractile-cables/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/budgit-cable-coil-the-essential-power-cord-solution-for-heavy-duty-hoist-systems/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/coil-wire/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/coiled-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/coiled-cables/page/2/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/coiled-cord/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/coiled-extension/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/curly-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/curly-cords/page/2/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/curly-cords/page/3/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractable-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractable-cords/page/2/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractable-cords/page/3/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-cords/page/2/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-cords/page/3/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-cords/page/4/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-cords/page/5/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-power-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-power-cords/page/2/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/category/retractile-power-cords/page/3/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/center-line-cord-retractable/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/choosing-a-retractable-power-lead/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/choosing-the-right-curly-cord-for-your-phone/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coil-cable-manufacturer/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coil-cables-2/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coil-cords/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coil-wire/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-ac-power-cords/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-cable-extension-leads/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-cable-manufacturers/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-cord-wires/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-elastic-cords/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-extension-cable/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-extension-cord-design-function-benefits-and-practical-applications/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-extension-cords-for-home-depot/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-extension-lead-fire-hazards-causes-risks-and-prevention/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-extension-lead-fire-risk-causes-dangers-and-safety-prevention-tips/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-wire-structure-types-uses-manufacturing-and-performance-explained/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiling-an-extension-cord/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiling-extension-cords/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-electric-retractable-cord-reel/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cord-coiled-cable-design-function-applications-advantages-and-manufacturing/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cord-retractor-the-ultimate-guide-to-flexible-durable-and-space-saving-solutions/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cords-a-comprehensive-guide/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cords-design-functionality-applications-and-advantages/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cords-for-digital-media/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cords-for-phones-design-functionality-uses-and-modern-relevance/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-cords-for-phones/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-recoil-cables/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/curly-wire-properties-types-manufacturing-uses-and-advantages/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-coiled-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/detailed-note-on-curly-power-cords-telephone-cords-and-flexible-wires/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/detailed-note-on-custom-keyboard-cables-and-coiled-keyboard-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
     {
       "source": "/:path((?!404|proposal-v1|invoice-deposit|admin).*).html",
       "destination": "/:path/",
@@ -34,19 +418,28 @@
     {
       "source": "/(.*)\\.html",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(png|jpg|jpeg|gif|svg|webp|ico)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     },
     {
       "source": "/(.*)\\.(css|js)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
       ]
     }
   ]

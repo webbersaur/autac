@@ -10,6 +10,15 @@
 # Live pages come last — the sitemap resubmit already nudges those.
 # Number in () = lost baseline impressions (the recovery prize).
 
+# ==== HUB / MONEY PAGES — do these FIRST (commercial product terms) ====
+# These survived the migration but lost their rankings; getting them re-crawled
+# is the highest-value action. 67 dead variant URLs now redirect into them.
+https://autacusa.com/retractile-cords/
+https://autacusa.com/coiled-cords/
+https://autacusa.com/curly-cords/
+https://autacusa.com/cord-sets/
+https://autacusa.com/color-charts/
+
 # ---- DAY 1 — restored, highest traffic ----
 https://autacusa.com/straight-wiring-a-cooling-fan/                                         # (36,832)
 https://autacusa.com/how-to-repair-a-retractable-badge-reel/                                # (20,300)
@@ -21,6 +30,7 @@ https://autacusa.com/yellow-ethernet-cable/                                     
 https://autacusa.com/solving-cord-conundrums-step-by-step-guide-to-fixing-a-retractable-iron-cord/  # (6,630)
 https://autacusa.com/curly-phone-cord/                                                      # (6,529)
 https://autacusa.com/why-coiled-phone-cord-are-still-relevant-today/                        # (5,039)
+Submitted 6/16/26
 
 # ---- DAY 2 — rest of restored ----
 https://autacusa.com/no-tangle-desk-phone-cord/                                             # (3,834)
