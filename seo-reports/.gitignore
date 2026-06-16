@@ -9,3 +9,6 @@ daily-impressions.json
 *.sql
 wp-posts.json
 wp-pages.json
+
+# launchd auto-refresh log
+scorecard-cron.log

@@ -1,0 +1,27 @@
+# AUTAC pages DROPPED in migration, ranked by lost baseline impressions
+# code 3xx = redirected to generic (soft-404); 404 = gone
+
+  36832  [308→/blog/]  /straight-wiring-a-cooling-fan/
+  20300  [308→/retractile-cords/]  /how-to-repair-a-retractable-badge-reel/
+  18140  [308→/retractile-cords/]  /how-to-fix-retractable-cord-on-iron/
+  16051  [308→/retractile-cords/]  /how-to-fix-a-retractable-badge-reel/
+  15542  [308→/blog/]  /tv-cables-cords-everything-you-need-to-know-for-the-best-home-entertainment-setup/
+  12590  [308→/blog/]  /how-to-hide-cable-cords-on-a-wall/
+  10908  [404]  /yellow-ethernet-cable/
+   6630  [404]  /solving-cord-conundrums-step-by-step-guide-to-fixing-a-retractable-iron-cord/
+   6529  [404]  /curly-phone-cord/
+   5039  [404]  /why-coiled-phone-cord-are-still-relevant-today/
+   4864  [404]  /what-are-the-best-retractable-water-hose-reel/
+   3834  [404]  /no-tangle-desk-phone-cord/
+   3430  [404]  /extension-cord-storage/
+   3384  [404]  /how-to-straighten-wire-methods-tools-techniques-and-practical-tips/
+   2038  [404]  /spectrum-power-cord-for-cable-box/
+   2013  [404]  /extension-cords-recoil-maintenance-and-repair-guide/
+   1902  [404]  /what-are-self-retracting-garden-hose-reel/
+   1736  [404]  /hair-dryer-with-retractable-cord/
+   1273  [404]  /iron-with-a-retractable-cord/
+   1266  [404]  /automatic-cable-winder-best-way-to-organize-your-cables-and-declutter-your-space/
+   1238  [404]  /meet/
+   1227  [404]  /coil-cord-for-telephone-a-comprehensive-guide/
+    742  [404]  /the-evolution-of-recoil-extension-cords/
+    114  [403]  /wp-content/uploads/2021/05/autac-catalog-2021.pdf
