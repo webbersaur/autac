@@ -1,0 +1,36 @@
+# Autac state blog posts — staggered publish queue.
+# Released by seo-reports/publish_blog_batch.py (run weekly by the scheduled routine).
+# One slug per line, in publish order. Remove nothing by hand — the script pops the top N.
+# When no slug lines remain, the routine is done.
+BATCH_SIZE=3
+
+retractile-cords-texas-oil-gas-energy
+retractile-cords-ohio-automotive-manufacturing
+retractile-cords-illinois-heavy-equipment
+retractile-cords-michigan-automotive-ev-battery
+retractile-cords-pennsylvania-steel-rail
+retractile-cords-indiana-rv-manufacturing
+retractile-cords-north-carolina-aerospace-manufacturing
+retractile-cords-georgia-aerospace-ev
+retractile-cords-new-york-optics-semiconductor
+retractile-cords-florida-aerospace-space-coast
+retractile-cords-minnesota-medical-device-manufacturing
+retractile-cords-tennessee-automotive-ev-manufacturing
+retractile-cords-massachusetts-medtech-robotics
+retractile-cords-new-jersey-pharma-medical
+retractile-cords-washington-aerospace-manufacturing
+sourcing-coiled-cords-texas
+sourcing-coiled-cords-ohio
+sourcing-coiled-cords-illinois
+sourcing-coiled-cords-michigan
+sourcing-coiled-cords-pennsylvania
+sourcing-coiled-cords-indiana
+sourcing-coiled-cords-north-carolina
+sourcing-coiled-cords-georgia
+sourcing-coiled-cords-new-york
+sourcing-coiled-cords-florida
+sourcing-coiled-cords-minnesota
+sourcing-coiled-cords-tennessee
+sourcing-coiled-cords-massachusetts
+sourcing-coiled-cords-new-jersey
+sourcing-coiled-cords-washington
