@@ -4,9 +4,6 @@
 # When no slug lines remain, the routine is done.
 BATCH_SIZE=3
 
-retractile-cords-texas-oil-gas-energy
-retractile-cords-ohio-automotive-manufacturing
-retractile-cords-illinois-heavy-equipment
 retractile-cords-michigan-automotive-ev-battery
 retractile-cords-pennsylvania-steel-rail
 retractile-cords-indiana-rv-manufacturing
