@@ -1,0 +1,27 @@
+# GSC Request-Indexing — new state geo-SEO pages + Service Areas hub
+# Created 2026-06-18
+#
+# How:   Search Console > URL Inspection > paste URL > Test Live URL > Request Indexing
+# Limit: ~10 requests/day per property — do Day 1, then Day 2 the next day.
+# Also:  Sitemaps > (re)submit https://autacusa.com/sitemap.xml for background crawl.
+# Priority-ordered (hub first, then by state economy size).
+
+# ---- Day 1 (10) ----
+https://autacusa.com/service-areas/
+https://autacusa.com/texas-retractile-cord-manufacturer/
+https://autacusa.com/florida-retractile-cord-manufacturer/
+https://autacusa.com/new-york-retractile-cord-manufacturer/
+https://autacusa.com/pennsylvania-retractile-cord-manufacturer/
+https://autacusa.com/illinois-retractile-cord-manufacturer/
+https://autacusa.com/ohio-retractile-cord-manufacturer/
+https://autacusa.com/georgia-retractile-cord-manufacturer/
+https://autacusa.com/north-carolina-retractile-cord-manufacturer/
+https://autacusa.com/michigan-retractile-cord-manufacturer/
+
+# ---- Day 2 (6) ----
+https://autacusa.com/new-jersey-retractile-cord-manufacturer/
+https://autacusa.com/massachusetts-retractile-cord-manufacturer/
+https://autacusa.com/indiana-retractile-cord-manufacturer/
+https://autacusa.com/tennessee-retractile-cord-manufacturer/
+https://autacusa.com/washington-retractile-cord-manufacturer/
+https://autacusa.com/minnesota-retractile-cord-manufacturer/
