@@ -15,3 +15,6 @@ mockup.html
 invoice-balance.html
 spam-fix-report.html
 seo-reports/urls-to-submit.txt
+seo-reports/__pycache__/
+*.pyc
+seo-reports/RUN-ON-MACBOOK.md
