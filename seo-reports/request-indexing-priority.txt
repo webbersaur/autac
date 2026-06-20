@@ -10,6 +10,25 @@
 # Live pages come last — the sitemap resubmit already nudges those.
 # Number in () = lost baseline impressions (the recovery prize).
 
+# ==== STALE "PAGE WITH REDIRECT" — re-submit to clear (added 2026-06-20) ====
+# GSC flagged these four (the oldest pages on the site) as "Page is not indexed:
+# Page with redirect." Verified 2026-06-20 this is a STALE crawl, not a real
+# problem — nothing to fix in the site:
+#   - autacusa.com/<page>/  returns 200 directly (NOT a redirect)
+#   - www.autacusa.com/<page>/  308-redirects -> non-www (correct direction)
+#   - each page's canonical = its own non-www URL (matches this property)
+#   - sitemap lists all four with the exact non-www trailing-slash form
+# An analyst claimed the canonicals point to www and non-www redirects to www —
+# both are false; they had the redirect direction backwards. Do NOT add a www
+# property and do NOT change canonicals. Google cached the verdict from an older
+# crawl (likely when the domain redirect ran the other way).
+# ACTION: URL Inspection > Test Live URL (ignores the cached verdict) > confirm
+# 200 + self-canonical > Request Indexing. Re-crawl clears the status on its own.
+https://autacusa.com/coiled-instrument-cable/                                                # stale redirect; (5,676)
+https://autacusa.com/coil-cables/                                                            # stale redirect; (4,822)
+https://autacusa.com/power-cord-for-lift-chair/                                              # stale redirect; (4,569)
+https://autacusa.com/spiral-cables/                                                          # stale redirect; (4,170)
+
 # ==== HUB / MONEY PAGES — do these FIRST (commercial product terms) ====
 # These survived the migration but lost their rankings; getting them re-crawled
 # is the highest-value action. 67 dead variant URLs now redirect into them.
@@ -34,6 +53,10 @@ https://autacusa.com/why-coiled-phone-cord-are-still-relevant-today/            
 Submitted 6/16/26
 
 # ---- DAY 2 — rest of restored ----
+https://autacusa.com/coiled-cords/
+https://autacusa.com/curly-cords/
+https://autacusa.com/cord-sets/
+https://autacusa.com/color-charts/
 https://autacusa.com/no-tangle-desk-phone-cord/                                             # (3,834)
 https://autacusa.com/extension-cord-storage/                                                # (3,430)
 https://autacusa.com/how-to-straighten-wire-methods-tools-techniques-and-practical-tips/    # (3,384)
@@ -41,6 +64,9 @@ https://autacusa.com/spectrum-power-cord-for-cable-box/                         
 https://autacusa.com/extension-cords-recoil-maintenance-and-repair-guide/                   # (2,013)
 https://autacusa.com/hair-dryer-with-retractable-cord/                                       # (1,736)
 https://autacusa.com/iron-with-a-retractable-cord/                                           # (1,273)
+
+
+
 https://autacusa.com/automatic-cable-winder-best-way-to-organize-your-cables-and-declutter-your-space/  # (1,266)
 https://autacusa.com/coil-cord-for-telephone-a-comprehensive-guide/                          # (1,227)
 https://autacusa.com/the-evolution-of-recoil-extension-cords/                                # (742)
@@ -53,7 +79,10 @@ https://autacusa.com/can-extension-cords-get-wet/                               
 https://autacusa.com/the-best-extension-cord-for-power-washers/                              # (12,340)
 https://autacusa.com/ac-power-cable-cord-understanding-its-importance-and-uses/              # (9,582)
 https://autacusa.com/wire-coil-everything-you-need-to-know/                                  # (8,819)
-https://autacusa.com/coiled-cords/                                                           # (6,167)
+https://autacusa.com/coiled-cords/      
+
+
+                                                     # (6,167)
 https://autacusa.com/coiled-instrument-cable/                                                # (5,676)
 https://autacusa.com/coil-cables/                                                            # (4,822)
 
@@ -68,7 +97,10 @@ https://autacusa.com/service-areas/                                             
 https://autacusa.com/texas-retractile-cord-manufacturer/                                     # geo-SEO
 https://autacusa.com/ohio-retractile-cord-manufacturer/                                       # geo-SEO
 https://autacusa.com/illinois-retractile-cord-manufacturer/                                   # geo-SEO
-https://autacusa.com/michigan-retractile-cord-manufacturer/                                   # geo-SEO
+https://autacusa.com/michigan-retractile-cord-manufacturer/   
+
+
+                                # geo-SEO
 https://autacusa.com/pennsylvania-retractile-cord-manufacturer/                               # geo-SEO
 https://autacusa.com/indiana-retractile-cord-manufacturer/                                    # geo-SEO
 https://autacusa.com/north-carolina-retractile-cord-manufacturer/                             # geo-SEO
@@ -80,6 +112,11 @@ https://autacusa.com/tennessee-retractile-cord-manufacturer/                    
 https://autacusa.com/massachusetts-retractile-cord-manufacturer/                              # geo-SEO
 https://autacusa.com/new-jersey-retractile-cord-manufacturer/                                 # geo-SEO
 https://autacusa.com/washington-retractile-cord-manufacturer/                                 # geo-SEO
+
+# ---- Newly linked from nav (added 2026-06-19) ----
+# Was in sitemap but orphaned; now linked in the header nav site-wide (Blog
+# moved to footer, Shop Online added). Request-index so Google discovers it.
+https://autacusa.com/shop-online/                                             # newly nav-linked
 
 # ---- Scheduled blog releases (staggered) ----
 https://autacusa.com/blog/retractile-cords-texas-oil-gas-energy/    # released 2026-06-18
