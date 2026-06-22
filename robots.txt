@@ -8,5 +8,6 @@ Disallow: /admin.html
 Disallow: /catalog/data/
 Disallow: /geo-seo-buildout-report-2026-06-01/
 Disallow: /competitor-seo-analysis-2026-06-22/
+Disallow: /competitor-action-plan-2026-06-22/
 
 Sitemap: https://autacusa.com/sitemap.xml
