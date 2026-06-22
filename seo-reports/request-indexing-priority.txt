@@ -10,25 +10,6 @@
 # Live pages come last — the sitemap resubmit already nudges those.
 # Number in () = lost baseline impressions (the recovery prize).
 
-# ==== STALE "PAGE WITH REDIRECT" — re-submit to clear (added 2026-06-20) ====
-# GSC flagged these four (the oldest pages on the site) as "Page is not indexed:
-# Page with redirect." Verified 2026-06-20 this is a STALE crawl, not a real
-# problem — nothing to fix in the site:
-#   - autacusa.com/<page>/  returns 200 directly (NOT a redirect)
-#   - www.autacusa.com/<page>/  308-redirects -> non-www (correct direction)
-#   - each page's canonical = its own non-www URL (matches this property)
-#   - sitemap lists all four with the exact non-www trailing-slash form
-# An analyst claimed the canonicals point to www and non-www redirects to www —
-# both are false; they had the redirect direction backwards. Do NOT add a www
-# property and do NOT change canonicals. Google cached the verdict from an older
-# crawl (likely when the domain redirect ran the other way).
-# ACTION: URL Inspection > Test Live URL (ignores the cached verdict) > confirm
-# 200 + self-canonical > Request Indexing. Re-crawl clears the status on its own.
-https://autacusa.com/coiled-instrument-cable/                                                # stale redirect; (5,676)
-https://autacusa.com/coil-cables/                                                            # stale redirect; (4,822)
-https://autacusa.com/power-cord-for-lift-chair/                                              # stale redirect; (4,569)
-https://autacusa.com/spiral-cables/                                                          # stale redirect; (4,170)
-
 # ==== HUB / MONEY PAGES — do these FIRST (commercial product terms) ====
 # These survived the migration but lost their rankings; getting them re-crawled
 # is the highest-value action. 67 dead variant URLs now redirect into them.
@@ -113,6 +94,7 @@ https://autacusa.com/massachusetts-retractile-cord-manufacturer/                
 https://autacusa.com/new-jersey-retractile-cord-manufacturer/                                 # geo-SEO
 https://autacusa.com/washington-retractile-cord-manufacturer/                                 # geo-SEO
 
+
 # ---- Newly linked from nav (added 2026-06-19) ----
 # Was in sitemap but orphaned; now linked in the header nav site-wide (Blog
 # moved to footer, Shop Online added). Request-index so Google discovers it.
@@ -122,6 +104,3 @@ https://autacusa.com/shop-online/                                             # 
 https://autacusa.com/blog/retractile-cords-texas-oil-gas-energy/    # released 2026-06-18
 https://autacusa.com/blog/retractile-cords-ohio-automotive-manufacturing/    # released 2026-06-18
 https://autacusa.com/blog/retractile-cords-illinois-heavy-equipment/    # released 2026-06-18
-https://autacusa.com/blog/retractile-cords-michigan-automotive-ev-battery/    # released 2026-06-22
-https://autacusa.com/blog/retractile-cords-pennsylvania-steel-rail/    # released 2026-06-22
-https://autacusa.com/blog/retractile-cords-indiana-rv-manufacturing/    # released 2026-06-22

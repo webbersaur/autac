@@ -6,6 +6,6 @@ Disallow: /invoice-balance.html
 Disallow: /mockup.html
 Disallow: /admin.html
 Disallow: /catalog/data/
-Disallow: /geo-seo-buildout-report-2026-06-18/
+Disallow: /geo-seo-buildout-report-2026-06-01/
 
 Sitemap: https://autacusa.com/sitemap.xml
