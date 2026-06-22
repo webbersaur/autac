@@ -26,7 +26,7 @@ from googleapiclient.discovery import build
 HERE = Path(__file__).resolve().parent
 ENV_PATH = Path.home() / ".env"
 SITE_URL = "https://autacusa.com/"
-SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
+SCOPES = ["https://www.googleapis.com/auth/webmasters"]
 
 # Tracked keywords grouped by category, with their Dec 2024 baseline positions.
 # `None` means "no baseline recorded" (renders as "—" in the report).

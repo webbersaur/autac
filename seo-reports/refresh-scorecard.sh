@@ -2,12 +2,12 @@
 # Weekly auto-refresh of the AUTAC recovery scorecard.
 # Pulls latest code, regenerates the scorecard from live GSC data, and pushes
 # the result so the numbers are visible from any machine. Driven by the
-# com.webbersaurus.autac-scorecard LaunchAgent (Mondays 08:00).
+# com.autac.refresh-scorecard LaunchAgent (Mondays 08:00).
 # Manual run: zsh seo-reports/refresh-scorecard.sh
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 REPO="/Users/newimac/Documents/workspace/autac"
-PY="/Users/newimac/Documents/workspace/mcp-gsc/.venv/bin/python"
+PY="/Users/newimac/gsc-reports/.venv/bin/python"
 LOG="$REPO/seo-reports/scorecard-cron.log"
 
 cd "$REPO" || { echo "$(date) repo not found" >> "$LOG"; exit 1; }

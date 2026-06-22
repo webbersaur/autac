@@ -25,7 +25,7 @@ from googleapiclient.discovery import build
 HERE = Path(__file__).resolve().parent
 ENV_PATH = Path.home() / ".env"
 SITE_URL = "https://autacusa.com/"
-SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
+SCOPES = ["https://www.googleapis.com/auth/webmasters"]
 MIGRATION_DATE = date(2026, 4, 26)      # New static site went live
 RESTORATION_DATE = date(2026, 5, 5)     # Hub-page move + 25 post restorations
 
