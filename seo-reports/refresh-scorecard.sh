@@ -22,7 +22,7 @@ fi
 "$PY" seo-reports/track_recovery.py >> "$LOG" 2>&1 || {
   echo "track_recovery.py failed (see above)" >> "$LOG"; exit 1; }
 
-git add seo-reports/recovery-scorecard.html seo-reports/recovery-scorecard-*.html
+git add seo-reports/recovery-scorecard seo-reports/recovery-scorecard-*
 if git diff --cached --quiet; then
   echo "no scorecard changes" >> "$LOG"
 else

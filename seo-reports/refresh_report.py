@@ -9,8 +9,8 @@ Usage:
 Outputs (written next to this script):
     autac-gsc-data-YYYY-MM-DD.json   archived raw GSC response
     autac-gsc-data.json              latest copy
-    autac-keyword-report-YYYY-MM-DD.html   archived report
-    autac-keyword-report.html        latest copy
+    autac-keyword-report-YYYY-MM-DD/index.html   archived report
+    autac-keyword-report/index.html        latest copy
 """
 from __future__ import annotations
 
@@ -336,17 +336,21 @@ def main() -> None:
 
     stamp = end.isoformat()
     archive_json = HERE / f"autac-gsc-data-{stamp}.json"
-    archive_html = HERE / f"autac-keyword-report-{stamp}.html"
+    # HTML reports use folder/index.html form so they resolve under
+    # vercel.json's trailingSlash:true (flat .html files 404).
+    archive_html = HERE / f"autac-keyword-report-{stamp}" / "index.html"
     latest_json = HERE / "autac-gsc-data.json"
-    latest_html = HERE / "autac-keyword-report.html"
+    latest_html = HERE / "autac-keyword-report" / "index.html"
 
     archive_json.write_text(json.dumps(data, indent=2))
     html = render_html(data, start, end)
+    archive_html.parent.mkdir(parents=True, exist_ok=True)
+    latest_html.parent.mkdir(parents=True, exist_ok=True)
     archive_html.write_text(html)
     shutil.copyfile(archive_json, latest_json)
     shutil.copyfile(archive_html, latest_html)
 
-    print(f"Wrote {archive_json.name}, {archive_html.name}, and refreshed latest copies.")
+    print(f"Wrote {archive_json.name}, {archive_html.parent.name}/index.html, and refreshed latest copies.")
 
 
 if __name__ == "__main__":

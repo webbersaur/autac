@@ -8,8 +8,8 @@ Usage:
     /Users/saurus/Documents/workspace/mcp-gsc/.venv/bin/python track_recovery.py
 
 Outputs (next to this script):
-    recovery-scorecard-YYYY-MM-DD.html        archived
-    recovery-scorecard.html                    latest
+    recovery-scorecard-YYYY-MM-DD/index.html        archived
+    recovery-scorecard/index.html                    latest
     recovery-data-YYYY-MM-DD.json              raw GSC data
 """
 from __future__ import annotations
@@ -381,11 +381,15 @@ def main() -> None:
         (pre_start, pre_end),
         (post_start, post_end),
     )
-    archive = HERE / f'recovery-scorecard-{stamp}.html'
+    # folder/index.html form so reports resolve under trailingSlash:true
+    archive = HERE / f'recovery-scorecard-{stamp}' / 'index.html'
+    latest = HERE / 'recovery-scorecard' / 'index.html'
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    latest.parent.mkdir(parents=True, exist_ok=True)
     archive.write_text(html)
-    shutil.copyfile(archive, HERE / 'recovery-scorecard.html')
+    shutil.copyfile(archive, latest)
 
-    print(f"\nWrote {archive.name} and refreshed recovery-scorecard.html")
+    print(f"\nWrote {archive.parent.name}/index.html and refreshed recovery-scorecard/index.html")
 
 
 if __name__ == '__main__':
