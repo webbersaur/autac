@@ -6,8 +6,8 @@
 # Manual run: zsh seo-reports/refresh-scorecard.sh
 
 export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
-REPO="/Users/saurus/Documents/workspace/old-proposals/autac"
-PY="/Users/saurus/Documents/workspace/mcp-gsc/.venv/bin/python"
+REPO="/Users/newimac/Documents/workspace/autac"
+PY="/Users/newimac/Documents/workspace/mcp-gsc/.venv/bin/python"
 LOG="$REPO/seo-reports/scorecard-cron.log"
 
 cd "$REPO" || { echo "$(date) repo not found" >> "$LOG"; exit 1; }
