@@ -4,9 +4,6 @@
 # When no slug lines remain, the routine is done.
 BATCH_SIZE=3
 
-retractile-cords-north-carolina-aerospace-manufacturing
-retractile-cords-georgia-aerospace-ev
-retractile-cords-new-york-optics-semiconductor
 retractile-cords-florida-aerospace-space-coast
 retractile-cords-minnesota-medical-device-manufacturing
 retractile-cords-tennessee-automotive-ev-manufacturing
