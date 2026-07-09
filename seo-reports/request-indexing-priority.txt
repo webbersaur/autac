@@ -107,3 +107,6 @@ https://autacusa.com/blog/retractile-cords-illinois-heavy-equipment/    # releas
 https://autacusa.com/blog/retractile-cords-north-carolina-aerospace-manufacturing/    # released 2026-07-06
 https://autacusa.com/blog/retractile-cords-georgia-aerospace-ev/    # released 2026-07-06
 https://autacusa.com/blog/retractile-cords-new-york-optics-semiconductor/    # released 2026-07-06
+https://autacusa.com/blog/retractile-cords-florida-aerospace-space-coast/    # released 2026-07-09
+https://autacusa.com/blog/retractile-cords-minnesota-medical-device-manufacturing/    # released 2026-07-09
+https://autacusa.com/blog/retractile-cords-tennessee-automotive-ev-manufacturing/    # released 2026-07-09
