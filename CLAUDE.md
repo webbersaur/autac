@@ -4,7 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static HTML/CSS/JS website for **Autac USA** (autacusa.com), a 100% woman-owned retractile cord manufacturer in North Branford, CT since 1947. No build system, no bundler, no CMS — all pages are self-contained HTML with inline `<style>` blocks.
+Static HTML/CSS/JS website for **Autac USA** (autacusa.com), a 100% woman-owned retractile cord manufacturer in Branford, CT since 1947. No build system, no bundler, no CMS - all pages are self-contained HTML with inline `<style>` blocks.
+
+**NAP (do not get this wrong - it was wrong in 158 files until 2026-07-14):**
+- Facility / schema / GBP address: **25 Thompson Rd, Branford, CT 06405**
+- Mailing & remittance only: P.O. Box 306, North Branford, CT 06471 - belongs on `contact/index.html` **only**, labeled. Never in schema, topbar, or footer.
+- Schema `telephone`: **+1-203-481-3444** (matches the Google Business Profile). The toll-free 800-243-3161 stays as a `contactPoint` with `contactType: "sales"`.
 
 **Repo:** github.com/webbersaur/autac.git (branch: `main`)
 **GitHub Pages:** https://webbersaur.github.io/autac/
