@@ -144,15 +144,29 @@ Schema `telephone` is now `+1-203-481-3444` everywhere. The 800 number is preser
 
 ## 6. Open actions
 
-| # | Action | Owner | Why |
-|---|---|---|---|
-| 1 | **Fix the ThomasNet listing** to 25 Thompson Rd, Branford, CT 06405 + (203) 481-3444 | Chris | ThomasNet is a top-authority B2B citation and currently contradicts the GBP |
-| 2 | Fix MapQuest and any other directory carrying "North Branford" | Chris | Same NAP contradiction |
-| 3 | Create `admin@autacusa.com` -> forward to Gmail (M365 distribution group, free, no license) | Chris | Needed to claim/fix the listings above. Requires M365 admin on Autac's tenant. |
-| 4 | Prune `include:websitewelcome.com` from the SPF record (stale HostGator entry) | Chris | An old host is still authorised to send mail as autacusa.com |
-| 5 | URL-Inspect / Request-Indexing the restored pages (~10/day, UI only) | Chris | Accelerates re-ranking. Worklist: `seo-reports/request-indexing-priority.txt` |
-| 6 | Clean up em dashes: 26 pages still have them in `<title>` | open | Workspace convention violation |
-| 7 | **Decide on the SEO budget** | Chris + client | Product pages rank 27-56 on authority, not on-page. More content will not fix it. |
+| # | Action | Owner | Status | Why |
+|---|---|---|---|---|
+| 1 | **Fix the ThomasNet listing** to 25 Thompson Rd, Branford, CT 06405 + (203) 481-3444 | Chris | **DONE 2026-07-14** | ThomasNet is the top-authority B2B citation and the one place a real buyer sends an RFQ |
+| 2 | Fix MapQuest | Chris | **Address DONE.** Description body copy unverified - may still say "North Branford" | Same NAP contradiction |
+| 3 | Create `admin@autacusa.com` -> forward to Gmail (M365 shared mailbox + Full Access + Send As) | Chris | In progress - getting tenant admin access | Needed to claim/fix remaining listings |
+| 4 | Prune `include:websitewelcome.com` from the SPF record (stale HostGator entry) | Chris | Open | An old host is still authorised to send mail as autacusa.com. DNS is at GoDaddy. |
+| 5 | URL-Inspect / Request-Indexing the restored pages (~10/day, UI only) | Chris | Open | Accelerates re-ranking. Worklist: `seo-reports/request-indexing-priority.txt` |
+| 6 | Clean up em dashes: 26 pages still have them in `<title>` | open | Open | Workspace convention violation |
+| 7 | **Decide on the SEO budget** | Chris + client | Open | Product pages rank 27-56 on authority, not on-page. More content will not fix it. |
+
+### Remaining citation cleanup (low priority - hygiene, not growth)
+
+The wrong address leaked off-site before it was fixed. Still carrying stale data as of 2026-07-14:
+
+- **Yahoo Local** (`local.yahoo.com/info-27075686-autac-inc-branford`) - unverified whether live-wrong or just cached
+- **latinbusinesses.com** - lists Autac under **"cleaning and restoration"**. Wrong *category*, which is worse than a wrong address.
+- General web search still surfaces "P.O. Box 306, North Branford, CT 06471" + the 800 number as Autac's NAP.
+
+**Free and worth more than MapQuest:** Bing Places and Apple Business Connect (both free, direct, ~15 min each). Foursquare Places syndicates widely and is a free claim.
+
+**On paying for citation cleanup:** BrightLocal Citation Builder is the right tool if it comes to that - a **one-time** purchase (~$100-200 for 20-30 citations), because BrightLocal's submissions are permanent. **Do NOT buy Yext, Semrush Listing Management, or Moz Local** - they all *lease* the correction and the data reverts to the old wrong address the moment you stop paying. Run BrightLocal's Citation Tracker audit first; the number of bad citations may be small enough to fix by hand for free.
+
+**Set expectations: citations are a local signal.** They feed the map pack and "near me" queries. Autac is a national B2B manufacturer - nobody sources a custom retractile cord by searching nearby. This is hygiene that protects the entity and stops the wrong address propagating. It will not move the commercial rankings, which are an authority problem (see section 3).
 
 ## 7. Infrastructure notes
 
