@@ -150,9 +150,24 @@ Schema `telephone` is now `+1-203-481-3444` everywhere. The 800 number is preser
 | 2 | Fix MapQuest | Chris | **Address DONE.** Description body copy unverified - may still say "North Branford" | Same NAP contradiction |
 | 3 | Create `admin@autacusa.com` -> forward to Gmail (M365 shared mailbox + Full Access + Send As) | Chris | In progress - getting tenant admin access | Needed to claim/fix remaining listings |
 | 4 | Prune `include:websitewelcome.com` from the SPF record (stale HostGator entry) | Chris | Open | An old host is still authorised to send mail as autacusa.com. DNS is at GoDaddy. |
-| 5 | URL-Inspect / Request-Indexing the restored pages (~10/day, UI only) | Chris | Open | Accelerates re-ranking. Worklist: `seo-reports/request-indexing-priority.txt` |
+| 5 | URL-Inspect / Request-Indexing the schema-changed pages (~10/day, GSC UI only) | Chris | **Ready - worklist reprioritized 2026-07-15, not yet started** | Gets the corrected NAP/schema in front of Google in days not weeks. See plan below. |
 | 6 | Clean up em dashes: 26 pages still have them in `<title>` | open | Open | Workspace convention violation |
 | 7 | **Decide on the SEO budget** | Chris + client | Open | Product pages rank 27-56 on authority, not on-page. More content will not fix it. |
+
+### Request-Indexing plan (action #5) - REPRIORITIZED 2026-07-15, ready to execute
+
+The old worklist was ordered around the June recovery (restored blog pages first). It has been rewritten to target the **address fix** instead - because Request-Indexing only makes Google re-crawl sooner, it does not raise rankings, so it is only worth doing on pages whose content actually changed. The corrected NAP/schema is live but Google still serves the old wrong address; this run fixes that.
+
+Verified 2026-07-15: all Day 1/2 URLs return 200, and live homepage + retractile-cords hub serve only `25 Thompson` / `06405` (no `North Branford` / `06471`). Safe to re-crawl.
+
+**Execution (GSC UI, `https://autacusa.com/` property, ~10-12/day cap):**
+- **First, once:** Sitemaps section -> resubmit `sitemap.xml` (background-crawls the tail so the hand-requests can focus on the pages that matter).
+- **Day 1 (10):** homepage, `/contact/`, the 5 product hubs, `/color-charts/`, `/about/`, `/solutions/` - where the schema changed.
+- **Day 2 (10):** `/service-areas/` hub + 9 state pages (they carried the corrected schema `telephone`).
+- **Day 3 (8):** the remaining 8 state pages.
+- Stop there. Everything below Day 3 in the worklist is already indexed; the sitemap resubmit covers it.
+
+Full ordered list: `seo-reports/request-indexing-priority.txt`. Old version backed up alongside it as `.bak-20260715`. **Status: not yet started - Chris to click through in GSC.**
 
 ### Remaining citation cleanup (low priority - hygiene, not growth)
 
