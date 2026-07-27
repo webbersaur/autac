@@ -85,6 +85,7 @@ https://autacusa.com/blog/retractile-cords-fire-apparatus-rescue-vehicles/    # 
 https://autacusa.com/blog/retractile-cords-ems-ambulance-equipment/    # released 2026-07-13
 
 # ---- ADDED 2026-07-27 — final 2 on-topic restorations + 5 restored pages Google hasn't re-indexed (0 impr last 3 wks) ----
+# ALL 7 SUBMITTED for indexing in GSC 2026-07-27 ✓
 https://autacusa.com/is-it-safe-to-bend-an-extension-cord-safety-risks-guidelines-best-practices/  # (988/30d pre-migration)
 https://autacusa.com/the-best-way-to-coil-an-extension-cord/                                 # (773/30d pre-migration)
 https://autacusa.com/how-to-fix-a-retractable-badge-reel/                                    # live 200, 0 impr — re-request
