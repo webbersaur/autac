@@ -83,3 +83,12 @@ https://autacusa.com/shop-online/                                             # 
 https://autacusa.com/blog/retractile-cords-police-law-enforcement-vehicles/    # released 2026-07-13
 https://autacusa.com/blog/retractile-cords-fire-apparatus-rescue-vehicles/    # released 2026-07-13
 https://autacusa.com/blog/retractile-cords-ems-ambulance-equipment/    # released 2026-07-13
+
+# ---- ADDED 2026-07-27 — final 2 on-topic restorations + 5 restored pages Google hasn't re-indexed (0 impr last 3 wks) ----
+https://autacusa.com/is-it-safe-to-bend-an-extension-cord-safety-risks-guidelines-best-practices/  # (988/30d pre-migration)
+https://autacusa.com/the-best-way-to-coil-an-extension-cord/                                 # (773/30d pre-migration)
+https://autacusa.com/how-to-fix-a-retractable-badge-reel/                                    # live 200, 0 impr — re-request
+https://autacusa.com/how-to-hide-cable-cords-on-a-wall/                                      # live 200, 0 impr — re-request
+https://autacusa.com/why-coiled-phone-cord-are-still-relevant-today/                         # live 200, 0 impr — re-request
+https://autacusa.com/curly-phone-cord/                                                       # live 200, 0 impr — re-request
+https://autacusa.com/no-tangle-desk-phone-cord/                                              # live 200, 0 impr — re-request

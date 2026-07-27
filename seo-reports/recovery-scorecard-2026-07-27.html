@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUTAC Recovery Scorecard</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --green: #00b894;
+    --red: #d63031;
+    --border: #dfe6e9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .header { background: var(--primary); color: white; padding: 2.5rem 0; margin-bottom: 2rem; }
+  .header .container { display: flex; justify-content: space-between; align-items: center; }
+  .header h1 { font-size: 1.6rem; font-weight: 700; }
+  .header h1 span { color: var(--accent); }
+  .header .meta { text-align: right; font-size: 0.85rem; opacity: 0.85; }
+  .summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .card { background: var(--card-bg); border-radius: 8px; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+  .card .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-light); margin-bottom: 0.25rem; }
+  .card .value { font-size: 1.6rem; font-weight: 700; }
+  .card .value.green { color: var(--green); }
+  .card .value.red { color: var(--red); }
+  .card .value.yellow { color: #e17055; }
+  h2 { font-size: 1.1rem; font-weight: 700; margin: 2rem 0 0.5rem; padding: 0.5rem 0; border-bottom: 2px solid var(--accent); color: var(--primary); }
+  .cat-summary { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.75rem; }
+  table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); margin-bottom: 0.5rem; font-size: 0.85rem; }
+  th { background: var(--primary); color: white; padding: 0.6rem 0.75rem; text-align: left; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; cursor: help; }
+  th:nth-child(n+2) { text-align: right; }
+  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+  td:nth-child(n+2) { text-align: right; font-variant-numeric: tabular-nums; }
+  td a { color: var(--text); text-decoration: none; }
+  td a:hover { color: var(--accent); }
+  tr:hover td { background: #f1f3f5; }
+  .up { color: var(--green); font-weight: 700; }
+  .down { color: var(--red); font-weight: 700; }
+  .flat { color: var(--text-light); }
+  .dim { color: #b2bec3; font-style: italic; }
+  .footer { text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-light); }
+  .note { background: #e8f4fd; border-left: 4px solid #2196f3; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1.5rem; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <h1>AUTAC <span>Recovery Scorecard</span></h1>
+    <div class="meta">
+      autacusa.com<br>
+      July 27, 2026<br>
+      Day 92 since migration (Apr 26)
+      &middot; Day 83 since restoration (May 5)
+    </div>
+  </div>
+</div>
+<div class="container">
+
+<div class="summary-cards">
+  <div class="card">
+    <div class="label">URLs Tracked</div>
+    <div class="value">30</div>
+  </div>
+  <div class="card">
+    <div class="label">Recovered (≥25% baseline)</div>
+    <div class="value yellow">3 / 30</div>
+  </div>
+  <div class="card">
+    <div class="label">Baseline Impr/Day</div>
+    <div class="value">3451.3</div>
+  </div>
+  <div class="card">
+    <div class="label">Post-Migration Impr/Day</div>
+    <div class="value red">337.2</div>
+  </div>
+  <div class="card">
+    <div class="label">Recovery vs Baseline</div>
+    <div class="value red">10%</div>
+  </div>
+  <div class="card">
+    <div class="label">Post-Migration Clicks</div>
+    <div class="value">165</div>
+  </div>
+</div>
+
+<div class="note">
+  <strong>How to read this:</strong> The new static site went live on <strong>Apr 26, 2026</strong>;
+  hub-page restorations + 25 deleted-post restorations shipped on <strong>May 5</strong>.
+  All numbers are normalized to <strong>impressions per day</strong> so windows of different lengths can be compared fairly.
+  <br><br>
+  • <strong>Baseline (91d)</strong>: Nov 5 2025 – Feb 3 2026, before the WP-era ranking decline. The "what we should be earning" target.<br>
+  • <strong>Pre-Migration (30d)</strong>: the WP-era decline period leading up to the Apr 26 launch.<br>
+  • <strong>Post-Migration (92d)</strong>: live data since the new site went up. Very small sample early on — check back weekly.<br>
+  • <strong>% Recovered</strong>: post-migration daily rate as a fraction of baseline daily rate. ≥25% = recovering, ≥50% = strong recovery.
+</div>
+
+<h2>Hub Pages (URL moved /products/<slug>/ → /<slug>/)</h2>
+<p class="cat-summary">Baseline: <strong>13,792</strong> impr (151.6/day) · Post-migration: <strong>3,887</strong> impr (42.2/day) · Recovery: <strong>28%</strong> of baseline daily rate</p>
+<table><thead><tr><th>URL</th><th title="2025-11-05 → 2026-02-03 (91 days, pre-decline)">Baseline (91d)</th><th title="2026-03-27 → 2026-04-25 (30 days, WP-decline period)">Pre-Migration (30d)</th><th title="2026-04-27 → 2026-07-27 (92 days, since new site launch)">Post-Migration (92d)</th><th>% Recovered</th><th>Post Clicks</th></tr></thead><tbody>
+<tr><td><a href="https://www.autacusa.com/coiled-cords/" target="_blank">/coiled-cords/</a></td><td>6167 <span class="dim">(67.8/d)</span></td><td>1233 <span class="dim">(41.1/d)</span></td><td>2069 <span class="dim">(22.5/d)</span></td><td><span class="flat">33%</span></td><td>8</td></tr>
+<tr><td><a href="https://www.autacusa.com/retractile-cords/" target="_blank">/retractile-cords/</a></td><td>2964 <span class="dim">(32.6/d)</span></td><td>391 <span class="dim">(13.0/d)</span></td><td>697 <span class="dim">(7.6/d)</span></td><td><span class="down">23%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/curly-cords/" target="_blank">/curly-cords/</a></td><td>3566 <span class="dim">(39.2/d)</span></td><td>504 <span class="dim">(16.8/d)</span></td><td>973 <span class="dim">(10.6/d)</span></td><td><span class="flat">27%</span></td><td>3</td></tr>
+<tr><td><a href="https://www.autacusa.com/cord-sets/" target="_blank">/cord-sets/</a></td><td>1000 <span class="dim">(11.0/d)</span></td><td>164 <span class="dim">(5.5/d)</span></td><td>114 <span class="dim">(1.2/d)</span></td><td><span class="down">11%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/color-charts/" target="_blank">/color-charts/</a></td><td>95 <span class="dim">(1.0/d)</span></td><td>45 <span class="dim">(1.5/d)</span></td><td>34 <span class="dim">(0.4/d)</span></td><td><span class="flat">35%</span></td><td>0</td></tr>
+</tbody></table>
+<h2>Restored Blog Posts (was 404, now serving original WP content)</h2>
+<p class="cat-summary">Baseline: <strong>162,781</strong> impr (1788.8/day) · Post-migration: <strong>21,595</strong> impr (234.7/day) · Recovery: <strong>13%</strong> of baseline daily rate</p>
+<table><thead><tr><th>URL</th><th title="2025-11-05 → 2026-02-03 (91 days, pre-decline)">Baseline (91d)</th><th title="2026-03-27 → 2026-04-25 (30 days, WP-decline period)">Pre-Migration (30d)</th><th title="2026-04-27 → 2026-07-27 (92 days, since new site launch)">Post-Migration (92d)</th><th>% Recovered</th><th>Post Clicks</th></tr></thead><tbody>
+<tr><td><a href="https://www.autacusa.com/why-does-a-coiled-extension-lead-heat-up/" target="_blank">/why-does-a-coiled-extension-lead-heat-up/</a></td><td>31629 <span class="dim">(347.6/d)</span></td><td>2183 <span class="dim">(72.8/d)</span></td><td>4088 <span class="dim">(44.4/d)</span></td><td><span class="down">13%</span></td><td>18</td></tr>
+<tr><td><a href="https://www.autacusa.com/can-extension-cords-get-wet/" target="_blank">/can-extension-cords-get-wet/</a></td><td>16476 <span class="dim">(181.1/d)</span></td><td>1300 <span class="dim">(43.3/d)</span></td><td>3611 <span class="dim">(39.2/d)</span></td><td><span class="down">22%</span></td><td>2</td></tr>
+<tr><td><a href="https://www.autacusa.com/how-to-fix-a-coiled-cord-with-ease/" target="_blank">/how-to-fix-a-coiled-cord-with-ease/</a></td><td>17935 <span class="dim">(197.1/d)</span></td><td>692 <span class="dim">(23.1/d)</span></td><td>896 <span class="dim">(9.7/d)</span></td><td><span class="down">5%</span></td><td>4</td></tr>
+<tr><td><a href="https://www.autacusa.com/telephone-cord/" target="_blank">/telephone-cord/</a></td><td>17452 <span class="dim">(191.8/d)</span></td><td>2861 <span class="dim">(95.4/d)</span></td><td>1716 <span class="dim">(18.7/d)</span></td><td><span class="down">10%</span></td><td>2</td></tr>
+<tr><td><a href="https://www.autacusa.com/wire-coil-everything-you-need-to-know/" target="_blank">/wire-coil-everything-you-need-to-know/</a></td><td>8819 <span class="dim">(96.9/d)</span></td><td>424 <span class="dim">(14.1/d)</span></td><td>1056 <span class="dim">(11.5/d)</span></td><td><span class="down">12%</span></td><td>3</td></tr>
+<tr><td><a href="https://www.autacusa.com/the-best-extension-cord-for-power-washers/" target="_blank">/the-best-extension-cord-for-power-washers/</a></td><td>12340 <span class="dim">(135.6/d)</span></td><td>2593 <span class="dim">(86.4/d)</span></td><td>2782 <span class="dim">(30.2/d)</span></td><td><span class="down">22%</span></td><td>17</td></tr>
+<tr><td><a href="https://www.autacusa.com/guide-to-spiral-cord-wraps/" target="_blank">/guide-to-spiral-cord-wraps/</a></td><td>8344 <span class="dim">(91.7/d)</span></td><td>1398 <span class="dim">(46.6/d)</span></td><td>1234 <span class="dim">(13.4/d)</span></td><td><span class="down">15%</span></td><td>3</td></tr>
+<tr><td><a href="https://www.autacusa.com/ac-power-cable-cord-understanding-its-importance-and-uses/" target="_blank">/ac-power-cable-cord-understanding-its-importance-and-uses/</a></td><td>9582 <span class="dim">(105.3/d)</span></td><td>646 <span class="dim">(21.5/d)</span></td><td>2102 <span class="dim">(22.8/d)</span></td><td><span class="down">22%</span></td><td>1</td></tr>
+<tr><td><a href="https://www.autacusa.com/coiled-instrument-cable/" target="_blank">/coiled-instrument-cable/</a></td><td>5676 <span class="dim">(62.4/d)</span></td><td>750 <span class="dim">(25.0/d)</span></td><td>1272 <span class="dim">(13.8/d)</span></td><td><span class="down">22%</span></td><td>2</td></tr>
+<tr><td><a href="https://www.autacusa.com/cord-cable/" target="_blank">/cord-cable/</a></td><td>4407 <span class="dim">(48.4/d)</span></td><td>180 <span class="dim">(6.0/d)</span></td><td>223 <span class="dim">(2.4/d)</span></td><td><span class="down">5%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/power-cord-for-lift-chair/" target="_blank">/power-cord-for-lift-chair/</a></td><td>4569 <span class="dim">(50.2/d)</span></td><td>311 <span class="dim">(10.4/d)</span></td><td>353 <span class="dim">(3.8/d)</span></td><td><span class="down">8%</span></td><td>6</td></tr>
+<tr><td><a href="https://www.autacusa.com/coil-cables/" target="_blank">/coil-cables/</a></td><td>4822 <span class="dim">(53.0/d)</span></td><td>445 <span class="dim">(14.8/d)</span></td><td>748 <span class="dim">(8.1/d)</span></td><td><span class="down">15%</span></td><td>1</td></tr>
+<tr><td><a href="https://www.autacusa.com/headphone-coiled-extension-cable/" target="_blank">/headphone-coiled-extension-cable/</a></td><td>3482 <span class="dim">(38.3/d)</span></td><td>203 <span class="dim">(6.8/d)</span></td><td>50 <span class="dim">(0.5/d)</span></td><td><span class="down">1%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/choosing-a-coiled-cable-what-you-need-to-know/" target="_blank">/choosing-a-coiled-cable-what-you-need-to-know/</a></td><td>3268 <span class="dim">(35.9/d)</span></td><td>187 <span class="dim">(6.2/d)</span></td><td>79 <span class="dim">(0.9/d)</span></td><td><span class="down">2%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/spiral-cables/" target="_blank">/spiral-cables/</a></td><td>4170 <span class="dim">(45.8/d)</span></td><td>619 <span class="dim">(20.6/d)</span></td><td>298 <span class="dim">(3.2/d)</span></td><td><span class="down">7%</span></td><td>3</td></tr>
+<tr><td><a href="https://www.autacusa.com/phone-extension-cord-everything-you-need-to-know/" target="_blank">/phone-extension-cord-everything-you-need-to-know/</a></td><td>3296 <span class="dim">(36.2/d)</span></td><td>199 <span class="dim">(6.6/d)</span></td><td>680 <span class="dim">(7.4/d)</span></td><td><span class="down">20%</span></td><td>1</td></tr>
+<tr><td><a href="https://www.autacusa.com/extension-cord-retractable/" target="_blank">/extension-cord-retractable/</a></td><td>3245 <span class="dim">(35.7/d)</span></td><td>411 <span class="dim">(13.7/d)</span></td><td>77 <span class="dim">(0.8/d)</span></td><td><span class="down">2%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/coil-cord-wire/" target="_blank">/coil-cord-wire/</a></td><td>3269 <span class="dim">(35.9/d)</span></td><td>404 <span class="dim">(13.5/d)</span></td><td>330 <span class="dim">(3.6/d)</span></td><td><span class="down">10%</span></td><td>1</td></tr>
+</tbody></table>
+<h2>Off-Topic Posts Redirected to Relevant Pages (May 5)</h2>
+<p class="cat-summary">Baseline: <strong>137,497</strong> impr (1511.0/day) · Post-migration: <strong>5,537</strong> impr (60.2/day) · Recovery: <strong>4%</strong> of baseline daily rate</p>
+<table><thead><tr><th>URL</th><th title="2025-11-05 → 2026-02-03 (91 days, pre-decline)">Baseline (91d)</th><th title="2026-03-27 → 2026-04-25 (30 days, WP-decline period)">Pre-Migration (30d)</th><th title="2026-04-27 → 2026-07-27 (92 days, since new site launch)">Post-Migration (92d)</th><th>% Recovered</th><th>Post Clicks</th></tr></thead><tbody>
+<tr><td><a href="https://www.autacusa.com/how-to-fix-retractable-cord-on-iron/" target="_blank">/how-to-fix-retractable-cord-on-iron/</a></td><td>18140 <span class="dim">(199.3/d)</span></td><td>2104 <span class="dim">(70.1/d)</span></td><td>1748 <span class="dim">(19.0/d)</span></td><td><span class="down">10%</span></td><td>53</td></tr>
+<tr><td><a href="https://www.autacusa.com/how-to-fix-a-retractable-badge-reel/" target="_blank">/how-to-fix-a-retractable-badge-reel/</a></td><td>16051 <span class="dim">(176.4/d)</span></td><td>1464 <span class="dim">(48.8/d)</span></td><td>2 <span class="dim">(0.0/d)</span></td><td><span class="down">0%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/how-to-repair-a-retractable-badge-reel/" target="_blank">/how-to-repair-a-retractable-badge-reel/</a></td><td>20300 <span class="dim">(223.1/d)</span></td><td>2474 <span class="dim">(82.5/d)</span></td><td>3631 <span class="dim">(39.5/d)</span></td><td><span class="down">18%</span></td><td>37</td></tr>
+<tr><td><a href="https://www.autacusa.com/understanding-vga-cable-cord/" target="_blank">/understanding-vga-cable-cord/</a></td><td>18042 <span class="dim">(198.3/d)</span></td><td>1687 <span class="dim">(56.2/d)</span></td><td>4 <span class="dim">(0.0/d)</span></td><td><span class="down">0%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/straight-wiring-a-cooling-fan/" target="_blank">/straight-wiring-a-cooling-fan/</a></td><td>36832 <span class="dim">(404.7/d)</span></td><td>454 <span class="dim">(15.1/d)</span></td><td>150 <span class="dim">(1.6/d)</span></td><td><span class="down">0%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/tv-cables-cords-everything-you-need-to-know-for-the-best-home-entertainment-setup/" target="_blank">/tv-cables-cords-everything-you-need-to-know-for-the-best…</a></td><td>15542 <span class="dim">(170.8/d)</span></td><td>949 <span class="dim">(31.6/d)</span></td><td>1 <span class="dim">(0.0/d)</span></td><td><span class="down">0%</span></td><td>0</td></tr>
+<tr><td><a href="https://www.autacusa.com/how-to-hide-cable-cords-on-a-wall/" target="_blank">/how-to-hide-cable-cords-on-a-wall/</a></td><td>12590 <span class="dim">(138.4/d)</span></td><td>984 <span class="dim">(32.8/d)</span></td><td>1 <span class="dim">(0.0/d)</span></td><td><span class="down">0%</span></td><td>0</td></tr>
+</tbody></table>
+
+<div class="footer">
+  Prepared by Webbersaurus · Data: Google Search Console API · Re-run with track_recovery.py
+</div>
+</div>
+</body>
+</html>
