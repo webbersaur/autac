@@ -3,25 +3,14 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "autac.vercel.app"
         }
       ],
-      "destination": "https://autacusa.com/",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "autac.vercel.app"
-        }
-      ],
-      "destination": "https://autacusa.com/:path*",
+      "destination": "https://autacusa.com/$1",
       "permanent": true
     },
     {
