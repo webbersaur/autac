@@ -1,8 +1,13 @@
 """Track SEO recovery on the 30 URLs we restored or moved on 2026-05-05.
 
 Pulls GSC page-dimension data for the most recent 30 days, the prior 30 days,
-and the pre-restoration baseline (Nov 5 2025 – Feb 3 2026), then renders a
+and the pre-restoration baseline (Nov 5 2025 - Feb 3 2026), then renders a
 focused HTML scorecard showing recovery for each tracked URL.
+
+Also renders a sitewide week-by-week trend chart above the per-URL tables. The
+per-URL columns are cumulative since the migration, which blends the near-zero
+May/June window into every later week and reads as "barely moving" even while
+the site is climbing; the weekly trend is what shows the current trajectory.
 
 Usage:
     /Users/saurus/Documents/workspace/mcp-gsc/.venv/bin/python track_recovery.py
@@ -70,9 +75,13 @@ TRACKED: list[tuple[str, list[str]]] = [
 ]
 
 # Pre-restoration baseline: a known good 90-day period before everything broke.
-# Nov 5 2025 – Feb 3 2026. We keep this fixed across runs so the comparison is stable.
+# Nov 5 2025 - Feb 3 2026. We keep this fixed across runs so the comparison is stable.
 BASELINE_START = date(2025, 11, 5)
 BASELINE_END = date(2026, 2, 3)
+
+# How many Mon-Sun weeks the sitewide trend chart looks back over. 20 reaches
+# back past the Apr 26 migration so the chart shows the drop and the climb.
+TREND_WEEKS = 20
 
 
 def load_env(path: Path) -> dict[str, str]:
@@ -125,11 +134,169 @@ def fetch_pages(svc, start: date, end: date) -> dict[str, dict]:
     return {norm_url(row['keys'][0]): row for row in resp.get('rows', [])}
 
 
+def fetch_weekly(svc, today: date, weeks: int = TREND_WEEKS) -> list[dict]:
+    """Sitewide clicks/impressions bucketed into Mon-Sun weeks, oldest first.
+
+    This is deliberately sitewide, not the 30 tracked URLs. The per-URL tables
+    below answer "did the pages we touched come back"; this answers "is the site
+    as a whole trending up", which the cumulative post-migration averages in the
+    summary cards cannot show - they blend the near-zero May/June window into
+    every later week and so understate the current run rate.
+
+    One API call over the whole span with the date dimension, bucketed locally,
+    rather than one call per week.
+    """
+    # Most recent complete week ends on the last Sunday. weekday(): Mon=0, Sun=6.
+    last_sunday = today - timedelta(days=today.weekday() + 1)
+    first_monday = last_sunday - timedelta(days=7 * weeks - 1)
+
+    body = {
+        'startDate': first_monday.isoformat(),
+        'endDate': today.isoformat(),
+        'dimensions': ['date'],
+        'rowLimit': 1000,
+        'dataState': 'all',
+    }
+    resp = svc.searchanalytics().query(siteUrl=SITE_URL, body=body).execute()
+    daily = {row['keys'][0]: row for row in resp.get('rows', [])}
+
+    buckets = []
+    week_start = first_monday
+    while week_start <= today:
+        week_end = min(week_start + timedelta(days=6), today)
+        clicks = impressions = 0
+        pos_weighted = 0.0
+        day = week_start
+        while day <= week_end:
+            row = daily.get(day.isoformat())
+            if row:
+                clicks += row['clicks']
+                impressions += row['impressions']
+                # GSC position is an impression-weighted average, so re-weight
+                # by impressions when rolling days up into a week.
+                pos_weighted += row.get('position', 0) * row['impressions']
+            day += timedelta(days=1)
+        buckets.append({
+            'week_start': week_start.isoformat(),
+            'week_end': week_end.isoformat(),
+            'clicks': clicks,
+            'impressions': impressions,
+            'ctr': (clicks / impressions) if impressions else 0,
+            'position': (pos_weighted / impressions) if impressions else 0,
+            # The in-progress week is short, and GSC lags 2-3 days besides, so
+            # it is never comparable to a settled week.
+            'partial': week_end < week_start + timedelta(days=6),
+        })
+        week_start += timedelta(days=7)
+    return buckets
+
+
+def render_trend(weekly: list[dict]) -> tuple[str, dict]:
+    """Render the sitewide weekly-trend section and the stats the cards need."""
+    complete = [w for w in weekly if not w['partial']]
+    if not complete:
+        return '', {}
+
+    latest = complete[-1]
+    trough = min(complete, key=lambda w: w['impressions'])
+
+    # Consecutive settled weeks of impression growth, counting back from latest.
+    streak = 0
+    for i in range(len(complete) - 1, 0, -1):
+        if complete[i]['impressions'] > complete[i - 1]['impressions']:
+            streak += 1
+        else:
+            break
+
+    peak = max(w['impressions'] for w in weekly) or 1
+    bars = []
+    for w in weekly:
+        start = date.fromisoformat(w['week_start'])
+        height = (w['impressions'] / peak * 100) if peak else 0
+        classes = ['bar']
+        if w['partial']:
+            classes.append('partial')
+        # Flag the weeks the migration and the restoration landed in.
+        if start <= MIGRATION_DATE <= start + timedelta(days=6):
+            classes.append('evt')
+        if start <= RESTORATION_DATE <= start + timedelta(days=6):
+            classes.append('evt')
+        label = start.strftime('%b %-d')
+        title = (f"{w['week_start']} to {w['week_end']}: "
+                 f"{w['clicks']:,} clicks, {w['impressions']:,} impressions"
+                 + (' (partial week)' if w['partial'] else ''))
+        bars.append(
+            f'<div class="{" ".join(classes)}" title="{title}">'
+            f'<span class="bar-val">{w["clicks"]:,}</span>'
+            f'<span class="bar-fill" style="height:{height:.1f}%"></span>'
+            f'<span class="bar-label">{label}</span>'
+            '</div>'
+        )
+
+    rows = []
+    for i, w in enumerate(weekly):
+        prev = weekly[i - 1] if i else None
+        if prev and prev['impressions'] and not w['partial'] and not prev['partial']:
+            delta = (w['impressions'] - prev['impressions']) / prev['impressions'] * 100
+            if abs(round(delta)) == 0:
+                # Avoid rendering a signed "-0%" for a sub-half-percent move.
+                delta_cell = '<span class="flat">0%</span>'
+            else:
+                cls = 'up' if delta > 0 else 'down'
+                delta_cell = f'<span class="{cls}">{delta:+.0f}%</span>'
+        else:
+            delta_cell = '<span class="dim">-</span>'
+        start = date.fromisoformat(w['week_start'])
+        name = start.strftime('%b %-d')
+        if w['partial']:
+            name += ' <span class="dim">(partial)</span>'
+        rows.append(
+            f'<tr><td>{name}</td>'
+            f'<td>{w["clicks"]:,}</td>'
+            f'<td>{w["impressions"]:,}</td>'
+            f'<td>{delta_cell}</td>'
+            f'<td>{w["ctr"] * 100:.2f}%</td>'
+            f'<td>{w["position"]:.1f}</td></tr>'
+        )
+
+    multiple = (latest['impressions'] / trough['impressions']) if trough['impressions'] else 0
+    trough_label = date.fromisoformat(trough['week_start']).strftime('%b %-d')
+    latest_label = date.fromisoformat(latest['week_start']).strftime('%b %-d')
+
+    html = f"""<h2>Sitewide Weekly Trend</h2>
+<p class="cat-summary">
+  Whole site, Mon-Sun weeks, last {len(complete)} settled weeks plus the week in
+  progress. Latest settled week
+  (<strong>{latest_label}</strong>): <strong>{latest['clicks']:,}</strong> clicks ·
+  <strong>{latest['impressions']:,}</strong> impressions · avg position
+  <strong>{latest['position']:.1f}</strong>. That is
+  <strong>{multiple:.0f}x</strong> the trough week of {trough_label}
+  ({trough['impressions']:,} impressions).
+  Bars are impressions; the number above each bar is clicks.
+  Outlined bars are the migration and restoration weeks; the faded bar is the
+  in-progress week and is not comparable.
+</p>
+<div class="chart">{''.join(bars)}</div>
+<table><thead><tr>
+<th>Week of</th><th>Clicks</th><th>Impressions</th><th>Impr WoW</th><th>CTR</th><th>Avg Pos</th>
+</tr></thead><tbody>
+{chr(10).join(rows)}
+</tbody></table>"""
+
+    return html, {
+        'latest_clicks': latest['clicks'],
+        'latest_impr': latest['impressions'],
+        'streak': streak,
+    }
+
+
 def render_html(baseline: dict, premigration: dict, postmigration: dict,
                 baseline_range: tuple[date, date],
                 premigration_range: tuple[date, date],
-                postmigration_range: tuple[date, date]) -> str:
+                postmigration_range: tuple[date, date],
+                weekly: list[dict] | None = None) -> str:
     sections_html = []
+    trend_html, trend_stats = render_trend(weekly or [])
 
     pre_days = (premigration_range[1] - premigration_range[0]).days + 1
     post_days = (postmigration_range[1] - postmigration_range[0]).days + 1
@@ -182,7 +349,7 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
             recovery_pct = (post_per_day / base_per_day * 100) if base_per_day else 0
             recovery_cls = 'up' if recovery_pct >= 50 else ('flat' if recovery_pct >= 25 else 'down')
             recovery_label = (f'<span class="{recovery_cls}">{recovery_pct:.0f}%</span>'
-                              if base_per_day else '<span class="dim">—</span>')
+                              if base_per_day else '<span class="dim">-</span>')
 
             def cell(total: int, daily: float) -> str:
                 return f'{total} <span class="dim">({daily:.1f}/d)</span>' if total else '<span class="flat">0</span>'
@@ -223,6 +390,19 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
     today = date.today().strftime('%B %-d, %Y')
     days_since_migration = (date.today() - MIGRATION_DATE).days
     days_since_restoration = (date.today() - RESTORATION_DATE).days
+
+    if trend_stats:
+        trend_cards = f"""
+  <div class="card">
+    <div class="label">Latest Full Week Clicks</div>
+    <div class="value green">{trend_stats['latest_clicks']:,}</div>
+  </div>
+  <div class="card">
+    <div class="label">Consecutive Growth Weeks</div>
+    <div class="value {'green' if trend_stats['streak'] >= 2 else 'yellow'}">{trend_stats['streak']}</div>
+  </div>"""
+    else:
+        trend_cards = ''
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -273,6 +453,14 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
   .dim {{ color: #b2bec3; font-style: italic; }}
   .footer {{ text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-light); }}
   .note {{ background: #e8f4fd; border-left: 4px solid #2196f3; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1.5rem; font-size: 0.9rem; }}
+  .chart {{ display: flex; align-items: flex-end; gap: 0.35rem; height: 190px; background: var(--card-bg); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 1.75rem 1rem 2.4rem; margin-bottom: 0.75rem; overflow-x: auto; }}
+  .bar {{ position: relative; flex: 1 1 0; min-width: 26px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }}
+  .bar-fill {{ display: block; width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 2px; transition: background 0.15s; }}
+  .bar:hover .bar-fill {{ background: var(--primary); }}
+  .bar.evt .bar-fill {{ background: repeating-linear-gradient(45deg, var(--accent), var(--accent) 4px, #ffffff 4px, #ffffff 7px); outline: 1px solid var(--accent); }}
+  .bar.partial .bar-fill {{ opacity: 0.35; }}
+  .bar-val {{ position: absolute; top: -1.35rem; left: 0; right: 0; text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--text-light); font-variant-numeric: tabular-nums; }}
+  .bar-label {{ position: absolute; bottom: -1.5rem; left: 0; right: 0; text-align: center; font-size: 0.62rem; color: var(--text-light); white-space: nowrap; }}
 </style>
 </head>
 <body>
@@ -313,7 +501,7 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
   <div class="card">
     <div class="label">Post-Migration Clicks</div>
     <div class="value">{grand['post_clicks']}</div>
-  </div>
+  </div>{trend_cards}
 </div>
 
 <div class="note">
@@ -321,11 +509,19 @@ def render_html(baseline: dict, premigration: dict, postmigration: dict,
   hub-page restorations + 25 deleted-post restorations shipped on <strong>{RESTORATION_DATE.strftime('%b %-d')}</strong>.
   All numbers are normalized to <strong>impressions per day</strong> so windows of different lengths can be compared fairly.
   <br><br>
-  • <strong>Baseline ({base_days}d)</strong>: Nov 5 2025 – Feb 3 2026, before the WP-era ranking decline. The "what we should be earning" target.<br>
+  • <strong>Baseline ({base_days}d)</strong>: Nov 5 2025 - Feb 3 2026, before the WP-era ranking decline. The "what we should be earning" target.<br>
   • <strong>Pre-Migration ({pre_days}d)</strong>: the WP-era decline period leading up to the Apr 26 launch.<br>
-  • <strong>Post-Migration ({post_days}d)</strong>: live data since the new site went up. Very small sample early on — check back weekly.<br>
+  • <strong>Post-Migration ({post_days}d)</strong>: live data since the new site went up. Very small sample early on - check back weekly.<br>
   • <strong>% Recovered</strong>: post-migration daily rate as a fraction of baseline daily rate. ≥25% = recovering, ≥50% = strong recovery.
+  <br><br>
+  <strong>Read the weekly trend first.</strong> The cards above average across all
+  {post_days} post-migration days, including the near-zero May/June window, so they
+  understate the current run rate. The trend below is the whole site week by week
+  and shows where things actually stand now; the per-URL tables after it show
+  whether the specific pages we restored or moved came back.
 </div>
+
+{trend_html}
 
 {chr(10).join(sections_html)}
 
@@ -361,6 +557,13 @@ def main() -> None:
     print("Fetching post-migration…")
     postmigration = fetch_pages(svc, post_start, post_end)
     print(f"  {len(postmigration)} URLs in post-migration window")
+    print(f"Fetching sitewide weekly trend ({TREND_WEEKS} weeks)…")
+    weekly = fetch_weekly(svc, today)
+    settled = [w for w in weekly if not w['partial']]
+    if settled:
+        last = settled[-1]
+        print(f"  latest settled week {last['week_start']}: "
+              f"{last['clicks']} clicks, {last['impressions']} impr")
 
     stamp = today.isoformat()
     raw = HERE / f'recovery-data-{stamp}.json'
@@ -368,6 +571,7 @@ def main() -> None:
         'baseline': baseline,
         'premigration': premigration,
         'postmigration': postmigration,
+        'weekly': weekly,
         'baseline_range': [BASELINE_START.isoformat(), BASELINE_END.isoformat()],
         'premigration_range': [pre_start.isoformat(), pre_end.isoformat()],
         'postmigration_range': [post_start.isoformat(), post_end.isoformat()],
@@ -380,6 +584,7 @@ def main() -> None:
         (BASELINE_START, BASELINE_END),
         (pre_start, pre_end),
         (post_start, post_end),
+        weekly,
     )
     # folder/index.html form so reports resolve under trailingSlash:true
     archive = HERE / f'recovery-scorecard-{stamp}' / 'index.html'

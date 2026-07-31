@@ -47,6 +47,14 @@
   .dim { color: #b2bec3; font-style: italic; }
   .footer { text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.8rem; color: var(--text-light); }
   .note { background: #e8f4fd; border-left: 4px solid #2196f3; padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1.5rem; font-size: 0.9rem; }
+  .chart { display: flex; align-items: flex-end; gap: 0.35rem; height: 190px; background: var(--card-bg); border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 1.75rem 1rem 2.4rem; margin-bottom: 0.75rem; overflow-x: auto; }
+  .bar { position: relative; flex: 1 1 0; min-width: 26px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; }
+  .bar-fill { display: block; width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; min-height: 2px; transition: background 0.15s; }
+  .bar:hover .bar-fill { background: var(--primary); }
+  .bar.evt .bar-fill { background: repeating-linear-gradient(45deg, var(--accent), var(--accent) 4px, #ffffff 4px, #ffffff 7px); outline: 1px solid var(--accent); }
+  .bar.partial .bar-fill { opacity: 0.35; }
+  .bar-val { position: absolute; top: -1.35rem; left: 0; right: 0; text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--text-light); font-variant-numeric: tabular-nums; }
+  .bar-label { position: absolute; bottom: -1.5rem; left: 0; right: 0; text-align: center; font-size: 0.62rem; color: var(--text-light); white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -88,6 +96,14 @@
     <div class="label">Post-Migration Clicks</div>
     <div class="value">177</div>
   </div>
+  <div class="card">
+    <div class="label">Latest Full Week Clicks</div>
+    <div class="value green">78</div>
+  </div>
+  <div class="card">
+    <div class="label">Consecutive Growth Weeks</div>
+    <div class="value green">6</div>
+  </div>
 </div>
 
 <div class="note">
@@ -95,11 +111,57 @@
   hub-page restorations + 25 deleted-post restorations shipped on <strong>May 5</strong>.
   All numbers are normalized to <strong>impressions per day</strong> so windows of different lengths can be compared fairly.
   <br><br>
-  • <strong>Baseline (91d)</strong>: Nov 5 2025 – Feb 3 2026, before the WP-era ranking decline. The "what we should be earning" target.<br>
+  • <strong>Baseline (91d)</strong>: Nov 5 2025 - Feb 3 2026, before the WP-era ranking decline. The "what we should be earning" target.<br>
   • <strong>Pre-Migration (30d)</strong>: the WP-era decline period leading up to the Apr 26 launch.<br>
-  • <strong>Post-Migration (96d)</strong>: live data since the new site went up. Very small sample early on — check back weekly.<br>
+  • <strong>Post-Migration (96d)</strong>: live data since the new site went up. Very small sample early on - check back weekly.<br>
   • <strong>% Recovered</strong>: post-migration daily rate as a fraction of baseline daily rate. ≥25% = recovering, ≥50% = strong recovery.
+  <br><br>
+  <strong>Read the weekly trend first.</strong> The cards above average across all
+  96 post-migration days, including the near-zero May/June window, so they
+  understate the current run rate. The trend below is the whole site week by week
+  and shows where things actually stand now; the per-URL tables after it show
+  whether the specific pages we restored or moved came back.
 </div>
+
+<h2>Sitewide Weekly Trend</h2>
+<p class="cat-summary">
+  Whole site, Mon-Sun weeks, last 20 settled weeks plus the week in
+  progress. Latest settled week
+  (<strong>Jul 20</strong>): <strong>78</strong> clicks ·
+  <strong>9,276</strong> impressions · avg position
+  <strong>12.1</strong>. That is
+  <strong>45x</strong> the trough week of Jun 8
+  (208 impressions).
+  Bars are impressions; the number above each bar is clicks.
+  Outlined bars are the migration and restoration weeks; the faded bar is the
+  in-progress week and is not comparable.
+</p>
+<div class="chart"><div class="bar" title="2026-03-09 to 2026-03-15: 57 clicks, 15,663 impressions"><span class="bar-val">57</span><span class="bar-fill" style="height:98.5%"></span><span class="bar-label">Mar 9</span></div><div class="bar" title="2026-03-16 to 2026-03-22: 61 clicks, 15,905 impressions"><span class="bar-val">61</span><span class="bar-fill" style="height:100.0%"></span><span class="bar-label">Mar 16</span></div><div class="bar" title="2026-03-23 to 2026-03-29: 62 clicks, 15,391 impressions"><span class="bar-val">62</span><span class="bar-fill" style="height:96.8%"></span><span class="bar-label">Mar 23</span></div><div class="bar" title="2026-03-30 to 2026-04-05: 42 clicks, 15,378 impressions"><span class="bar-val">42</span><span class="bar-fill" style="height:96.7%"></span><span class="bar-label">Mar 30</span></div><div class="bar" title="2026-04-06 to 2026-04-12: 59 clicks, 14,713 impressions"><span class="bar-val">59</span><span class="bar-fill" style="height:92.5%"></span><span class="bar-label">Apr 6</span></div><div class="bar" title="2026-04-13 to 2026-04-19: 38 clicks, 13,963 impressions"><span class="bar-val">38</span><span class="bar-fill" style="height:87.8%"></span><span class="bar-label">Apr 13</span></div><div class="bar evt" title="2026-04-20 to 2026-04-26: 52 clicks, 7,835 impressions"><span class="bar-val">52</span><span class="bar-fill" style="height:49.3%"></span><span class="bar-label">Apr 20</span></div><div class="bar" title="2026-04-27 to 2026-05-03: 10 clicks, 3,311 impressions"><span class="bar-val">10</span><span class="bar-fill" style="height:20.8%"></span><span class="bar-label">Apr 27</span></div><div class="bar evt" title="2026-05-04 to 2026-05-10: 5 clicks, 2,257 impressions"><span class="bar-val">5</span><span class="bar-fill" style="height:14.2%"></span><span class="bar-label">May 4</span></div><div class="bar" title="2026-05-11 to 2026-05-17: 8 clicks, 1,167 impressions"><span class="bar-val">8</span><span class="bar-fill" style="height:7.3%"></span><span class="bar-label">May 11</span></div><div class="bar" title="2026-05-18 to 2026-05-24: 2 clicks, 942 impressions"><span class="bar-val">2</span><span class="bar-fill" style="height:5.9%"></span><span class="bar-label">May 18</span></div><div class="bar" title="2026-05-25 to 2026-05-31: 7 clicks, 809 impressions"><span class="bar-val">7</span><span class="bar-fill" style="height:5.1%"></span><span class="bar-label">May 25</span></div><div class="bar" title="2026-06-01 to 2026-06-07: 1 clicks, 328 impressions"><span class="bar-val">1</span><span class="bar-fill" style="height:2.1%"></span><span class="bar-label">Jun 1</span></div><div class="bar" title="2026-06-08 to 2026-06-14: 4 clicks, 208 impressions"><span class="bar-val">4</span><span class="bar-fill" style="height:1.3%"></span><span class="bar-label">Jun 8</span></div><div class="bar" title="2026-06-15 to 2026-06-21: 22 clicks, 1,463 impressions"><span class="bar-val">22</span><span class="bar-fill" style="height:9.2%"></span><span class="bar-label">Jun 15</span></div><div class="bar" title="2026-06-22 to 2026-06-28: 44 clicks, 6,205 impressions"><span class="bar-val">44</span><span class="bar-fill" style="height:39.0%"></span><span class="bar-label">Jun 22</span></div><div class="bar" title="2026-06-29 to 2026-07-05: 41 clicks, 7,554 impressions"><span class="bar-val">41</span><span class="bar-fill" style="height:47.5%"></span><span class="bar-label">Jun 29</span></div><div class="bar" title="2026-07-06 to 2026-07-12: 46 clicks, 8,172 impressions"><span class="bar-val">46</span><span class="bar-fill" style="height:51.4%"></span><span class="bar-label">Jul 6</span></div><div class="bar" title="2026-07-13 to 2026-07-19: 62 clicks, 8,404 impressions"><span class="bar-val">62</span><span class="bar-fill" style="height:52.8%"></span><span class="bar-label">Jul 13</span></div><div class="bar" title="2026-07-20 to 2026-07-26: 78 clicks, 9,276 impressions"><span class="bar-val">78</span><span class="bar-fill" style="height:58.3%"></span><span class="bar-label">Jul 20</span></div><div class="bar partial" title="2026-07-27 to 2026-07-31: 31 clicks, 4,978 impressions (partial week)"><span class="bar-val">31</span><span class="bar-fill" style="height:31.3%"></span><span class="bar-label">Jul 27</span></div></div>
+<table><thead><tr>
+<th>Week of</th><th>Clicks</th><th>Impressions</th><th>Impr WoW</th><th>CTR</th><th>Avg Pos</th>
+</tr></thead><tbody>
+<tr><td>Mar 9</td><td>57</td><td>15,663</td><td><span class="dim">-</span></td><td>0.36%</td><td>13.1</td></tr>
+<tr><td>Mar 16</td><td>61</td><td>15,905</td><td><span class="up">+2%</span></td><td>0.38%</td><td>13.2</td></tr>
+<tr><td>Mar 23</td><td>62</td><td>15,391</td><td><span class="down">-3%</span></td><td>0.40%</td><td>11.6</td></tr>
+<tr><td>Mar 30</td><td>42</td><td>15,378</td><td><span class="flat">0%</span></td><td>0.27%</td><td>10.7</td></tr>
+<tr><td>Apr 6</td><td>59</td><td>14,713</td><td><span class="down">-4%</span></td><td>0.40%</td><td>12.2</td></tr>
+<tr><td>Apr 13</td><td>38</td><td>13,963</td><td><span class="down">-5%</span></td><td>0.27%</td><td>14.1</td></tr>
+<tr><td>Apr 20</td><td>52</td><td>7,835</td><td><span class="down">-44%</span></td><td>0.66%</td><td>17.9</td></tr>
+<tr><td>Apr 27</td><td>10</td><td>3,311</td><td><span class="down">-58%</span></td><td>0.30%</td><td>16.9</td></tr>
+<tr><td>May 4</td><td>5</td><td>2,257</td><td><span class="down">-32%</span></td><td>0.22%</td><td>18.8</td></tr>
+<tr><td>May 11</td><td>8</td><td>1,167</td><td><span class="down">-48%</span></td><td>0.69%</td><td>20.4</td></tr>
+<tr><td>May 18</td><td>2</td><td>942</td><td><span class="down">-19%</span></td><td>0.21%</td><td>26.0</td></tr>
+<tr><td>May 25</td><td>7</td><td>809</td><td><span class="down">-14%</span></td><td>0.87%</td><td>23.4</td></tr>
+<tr><td>Jun 1</td><td>1</td><td>328</td><td><span class="down">-59%</span></td><td>0.30%</td><td>28.9</td></tr>
+<tr><td>Jun 8</td><td>4</td><td>208</td><td><span class="down">-37%</span></td><td>1.92%</td><td>22.2</td></tr>
+<tr><td>Jun 15</td><td>22</td><td>1,463</td><td><span class="up">+603%</span></td><td>1.50%</td><td>14.5</td></tr>
+<tr><td>Jun 22</td><td>44</td><td>6,205</td><td><span class="up">+324%</span></td><td>0.71%</td><td>15.0</td></tr>
+<tr><td>Jun 29</td><td>41</td><td>7,554</td><td><span class="up">+22%</span></td><td>0.54%</td><td>15.4</td></tr>
+<tr><td>Jul 6</td><td>46</td><td>8,172</td><td><span class="up">+8%</span></td><td>0.56%</td><td>16.8</td></tr>
+<tr><td>Jul 13</td><td>62</td><td>8,404</td><td><span class="up">+3%</span></td><td>0.74%</td><td>13.9</td></tr>
+<tr><td>Jul 20</td><td>78</td><td>9,276</td><td><span class="up">+10%</span></td><td>0.84%</td><td>12.1</td></tr>
+<tr><td>Jul 27 <span class="dim">(partial)</span></td><td>31</td><td>4,978</td><td><span class="dim">-</span></td><td>0.62%</td><td>16.0</td></tr>
+</tbody></table>
 
 <h2>Hub Pages (URL moved /products/<slug>/ → /<slug>/)</h2>
 <p class="cat-summary">Baseline: <strong>13,792</strong> impr (151.6/day) · Post-migration: <strong>4,176</strong> impr (43.5/day) · Recovery: <strong>29%</strong> of baseline daily rate</p>
