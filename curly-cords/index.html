@@ -23,7 +23,7 @@
         "name": "What is a curly cord?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A curly cord is an electrical or signal cable wound into a helical spring shape that extends under tension and retracts to its compact resting length when released. The helix is permanently heat-set into the cable's jacket compound during manufacturing. Curly cord, coiled cord, retractile cord, and coil cord are all the same product family — 'curly cord' is the consumer-facing term, most often associated with telephone handset cords, while 'retractile cord' is the formal UL product category used in industrial purchasing."
+          "text": "A curly cord is an electrical or signal cable wound into a helical spring shape that extends under tension and retracts to its compact resting length when released. The helix is permanently heat-set into the cable's jacket compound during manufacturing. Curly cord is the consumer-facing term, most often associated with telephone handset cords and test leads. The same construction is called a coiled cord when specified by gauge and conductor count, and a retractile cord in the formal UL product category."
         }
       },
       {
@@ -55,7 +55,7 @@
         "name": "What's the difference between curly cords and coiled cords?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "There is no engineering difference. Curly cord, coiled cord, retractile cord, and coil cord all describe the same product: a cable wound into a heat-set helical shape that retracts to a compact resting length. The terminology reflects how different industries refer to the product. 'Curly cord' is consumer language, especially around phone cords. 'Coiled cord' is engineering language. 'Retractile cord' is UL product-category language. 'Coil cord' is purchasing language. Autac builds them all under the same UL-listed manufacturing process."
+          "text": "There is no engineering difference; the helical construction is identical. The words map to different buying contexts, and Autac splits its catalog the same way. Curly cord is the term for handset, headset, and test-lead cords, which is what this page covers. Coiled cord, or coil cord, is the term used when a cable is specified by wire gauge, conductor count, and shielding, and that range lives on the coiled cords page. Retractile cord is the formal UL product category covering the whole family, and that page carries the full stock and custom range."
         }
       },
       {
@@ -788,6 +788,93 @@
     .resources-grid a:hover {
       background: var(--red); color: var(--white); border-color: var(--red);
     }
+  
+    /* === CORD FAMILY DISAMBIGUATION === */
+    .cord-family {
+      padding: 4rem 0;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .cord-family .section-desc { max-width: 720px; }
+
+    .cord-family-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .cord-family-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.cord-family-card:hover {
+      border-color: var(--red);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    .cord-family-card.current {
+      background: var(--gray-100);
+      border-color: var(--gray-300);
+    }
+
+    .cord-family-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.2rem;
+    }
+
+    .cord-family-tag {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .cord-family-card.current .cord-family-tag { color: var(--text-light); }
+
+    .cord-family-card p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .cord-family-here {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .cord-family-go {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--red);
+    }
+
+    @media (max-width: 860px) {
+      .cord-family-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -805,6 +892,125 @@
     }
   }
   </script>
+  <!-- HUBSCHEMA:START -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProductGroup",
+    "name": "Autac Curly Cords",
+    "alternateName": [
+      "Curly Cable",
+      "Handset Cords",
+      "Coiled Phone Cords"
+    ],
+    "description": "UL-listed curly cords for telephone handsets, headsets, dispatch radios, control panels, and Auta-Prene test leads, built on the same heat-set helical construction as our industrial retractile range.",
+    "url": "https://autacusa.com/curly-cords/",
+    "productGroupID": "curly-cords",
+    "brand": {
+      "@type": "Brand",
+      "name": "Autac USA"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Autac USA Inc.",
+      "url": "https://autacusa.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "25 Thompson Rd",
+        "addressLocality": "Branford",
+        "addressRegion": "CT",
+        "postalCode": "06405",
+        "addressCountry": "US"
+      }
+    },
+    "variesBy": [
+      "Wire Gauge",
+      "Conductors",
+      "Jacket Materials"
+    ],
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Wire Gauge",
+        "value": "28 AWG to 16 AWG"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Conductors",
+        "value": "2 to 12"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Jacket Materials",
+        "value": "PVC, Auta-Prene TPE"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Typical Applications",
+        "value": "Handsets, headsets, control panels, test leads"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Extension Ratio",
+        "value": "Approximately 5:1"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Safety Listing",
+        "value": "UL Listed, UL Recognized"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Country of Origin",
+        "value": "Made in USA"
+      }
+    ],
+    "isSimilarTo": [
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Coiled Cords",
+        "url": "https://autacusa.com/coiled-cords/"
+      },
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Retractile Cords",
+        "url": "https://autacusa.com/retractile-cords/"
+      },
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Cord Sets",
+        "url": "https://autacusa.com/cord-sets/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autacusa.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://autacusa.com/products/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Curly Cords",
+        "item": "https://autacusa.com/curly-cords/"
+      }
+    ]
+  }
+  </script>
+  <!-- HUBSCHEMA:END -->
 </head>
 <body>
 
@@ -859,7 +1065,7 @@
     <div class="container">
       <div class="section-label">Overview</div>
       <div class="section-title">What Are Curly Cords Used For?</div>
-      <p class="section-desc">Curly cords &mdash; also known as retractile or coiled cords &mdash; keep workspaces organized while providing the reach you need. Autac curly cords are built for reliability in demanding communications, control, and testing environments.</p>
+      <p class="section-desc">Curly cords keep a handset, headset, or test lead within reach without leaving slack on the bench. Autac curly cords are built for reliability in demanding communications, control, and testing environments. For industrial and signal cable specified by gauge and conductor count, see <a href="/coiled-cords/">coiled cords</a>; for the full UL-listed stock range, see <a href="/retractile-cords/">retractile cords</a>.</p>
 
       <div class="overview-grid">
         <div class="overview-card">
@@ -881,6 +1087,36 @@
     </div>
   </section>
 
+    <!-- CORD FAMILY:START -->
+  <section class="cord-family">
+    <div class="container">
+      <div class="section-label">Which cord do you need?</div>
+      <h2 class="section-title">Coiled, Curly, or Retractile?</h2>
+      <p class="section-desc">These three names describe the same helical geometry, and the industry uses them interchangeably. Autac splits them by application so you land on the right stock range. Retractile is the term UL uses for the category as a whole.</p>
+      <div class="cord-family-grid">
+        <a class="cord-family-card" href="/coiled-cords/">
+          <span class="cord-family-tag">Also called coil cords</span>
+          <h3>Coiled Cords</h3>
+          <p>Industrial and signal coil cords: shielded multi-conductor cable, miniature cords for instrumentation, and heavy-gauge coiled power cable. Start here for any coil cord specified by gauge, conductor count, or shielding.</p>
+          <span class="cord-family-go">See coiled cords &rarr;</span>
+        </a>
+        <div class="cord-family-card current">
+          <span class="cord-family-tag">Phone, headset, and test leads</span>
+          <h3>Curly Cords</h3>
+          <p>Curly cords for telephone handsets, dispatch radios, headsets, control panels, and Auta-Prene test leads. Start here when the cord attaches to a handset, a headset, or a meter.</p>
+          <span class="cord-family-here">You are here</span>
+        </div>
+        <a class="cord-family-card" href="/retractile-cords/">
+          <span class="cord-family-tag">The UL term for the whole family</span>
+          <h3>Retractile Cords</h3>
+          <p>UL-listed retractile power cords in TPE, TPR, and PVC, 2 to 10 conductors, with 12 to 48 inch retracted lengths. Start here for the full stock range and custom retractile builds.</p>
+          <span class="cord-family-go">See retractile cords &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CORD FAMILY:END -->
+
   <!-- WHY ARE PHONE CORDS CURLY -->
   <section class="content-section">
     <div class="container">
@@ -889,15 +1125,9 @@
 
       <p>Curly cords are manufactured by winding straight insulated cable around a heated mandrel, then heat-curing the jacket compound at controlled temperature and time. The cure permanently sets the helix into the molecular structure of the jacket &mdash; not as a temporary deformation but as the cable's new resting shape. The same heat-set process Autac has refined since 1947 produces every Autac curly cord, from a 26 AWG telephone handset cord to a multi-conductor dispatch radio cable.</p>
 
-      <h3>Curly Cord vs. Coiled Cord vs. Retractile Cord: The Same Product</h3>
-      <p>The terminology gets confusing because every industry uses different words for the same product family.</p>
-      <ul>
-        <li><strong>Curly cord</strong> &mdash; the consumer term, especially for phone handsets and small electronics.</li>
-        <li><strong>Coiled cord</strong> &mdash; the engineering term used in industrial purchasing.</li>
-        <li><strong>Retractile cord</strong> &mdash; the formal UL product category used in safety and compliance documentation.</li>
-        <li><strong>Coil cord</strong> &mdash; the abbreviated purchasing term common in catalogs and spec sheets.</li>
-      </ul>
-      <p>Whichever term you searched for, you are looking at the same underlying product. Autac builds them all under the same UL-listed manufacturing process at our Branford facility.</p>
+      <h3>When to Call It a Curly Cord</h3>
+      <p>Curly cord is the term that sticks to a specific picture: a handset tethered to a base, a headset on a dispatch console, a test lead on a utility meter. It is consumer and operator language, and it is the right word when the cord is short, light, and attached to something a person picks up and puts down all day.</p>
+      <p>The same helical construction goes by other names elsewhere in the industry, and Autac splits its catalog along those lines so you land on the right stock range. If your requirement is specified by wire gauge, conductor count, or shielding, that is a <a href="/coiled-cords/">coiled cord</a>. If you are working from a UL product category or need the full stock and custom range, that is a <a href="/retractile-cords/">retractile cord</a>, which is the formal term UL uses for the whole family.</p>
     </div>
   </section>
 
@@ -971,7 +1201,7 @@
           <h3>What is a curly cord?</h3>
           <span class="faq-toggle" aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">A curly cord is an electrical or signal cable wound into a helical spring shape that extends under tension and retracts to its compact resting length when released. The helix is permanently heat-set into the cable's jacket compound during manufacturing. Curly cord, coiled cord, retractile cord, and coil cord are all the same product family &mdash; "curly cord" is the consumer-facing term most often associated with telephone handset cords.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">A curly cord is an electrical or signal cable wound into a helical spring shape that extends under tension and retracts to its compact resting length when released. The helix is permanently heat-set into the cable's jacket compound during manufacturing. Curly cord is the consumer-facing term, most often associated with telephone handset cords and test leads. The same construction is called a <a href="/coiled-cords/">coiled cord</a> when specified by gauge and conductor count, and a <a href="/retractile-cords/">retractile cord</a> in the formal UL product category.</div></div>
       </div>
 
       <div class="faq-item">
@@ -1003,7 +1233,7 @@
           <h3>What's the difference between curly and coiled cords?</h3>
           <span class="faq-toggle" aria-hidden="true">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">There is no engineering difference. Curly cord, coiled cord, retractile cord, and coil cord all describe the same product. The terminology reflects how different industries refer to it: "curly cord" is consumer language (especially for phones), "coiled cord" is engineering language, "retractile cord" is UL product-category language, and "coil cord" is purchasing language. Autac builds them all under the same UL-listed manufacturing process.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">There is no engineering difference; the helical construction is identical. The words map to different buying contexts, and Autac splits its catalog the same way. Curly cord is the term for handset, headset, and test-lead cords, which is what this page covers. Coiled cord, or coil cord, is the term used when a cable is specified by wire gauge, conductor count, and shielding &mdash; that range lives on <a href="/coiled-cords/">coiled cords</a>. Retractile cord is the formal UL product category covering the whole family, and <a href="/retractile-cords/">retractile cords</a> carries the full stock and custom range.</div></div>
       </div>
 
       <div class="faq-item">

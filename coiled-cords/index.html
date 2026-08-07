@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coiled Cords | Shielded & Miniature Retractile Cords | Autac USA</title>
-  <meta name="description" content="UL-listed coiled cords for industrial, medical, and signal applications. Shielded EMI-protected cords, miniature cords for tight spaces, and custom configurations. Manufactured in Connecticut since 1947.">
-  <meta property="og:title" content="Coiled Cords | Shielded & Miniature Retractile Cords | Autac USA">
-  <meta property="og:description" content="UL-listed coiled cords for industrial, medical, and signal applications. Shielded EMI-protected cords, miniature cords for tight spaces, and custom configurations. Manufactured in Connecticut since 1947.">
+  <title>Coiled Cords &amp; Coil Cords | Shielded, Miniature &amp; Custom | Autac USA</title>
+  <meta name="description" content="UL-listed coiled cords and coil cords for industrial, medical, and signal applications. Shielded EMI-protected cable, miniature cords for tight spaces, 2 to 10 conductors, and custom builds. Manufactured in Branford, CT since 1947.">
+  <meta property="og:title" content="Coiled Cords &amp; Coil Cords | Shielded, Miniature &amp; Custom | Autac USA">
+  <meta property="og:description" content="UL-listed coiled cords and coil cords for industrial, medical, and signal applications. Shielded EMI-protected cable, miniature cords for tight spaces, 2 to 10 conductors, and custom builds. Manufactured in Branford, CT since 1947.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://autacusa.com/coiled-cords/">
   <meta property="og:site_name" content="Autac USA">
@@ -883,13 +883,100 @@
       color: var(--white);
       border-color: var(--red);
     }
+  
+    /* === CORD FAMILY DISAMBIGUATION === */
+    .cord-family {
+      padding: 4rem 0;
+      background: var(--gray-50);
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .cord-family .section-desc { max-width: 720px; }
+
+    .cord-family-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .cord-family-card {
+      display: block;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.cord-family-card:hover {
+      border-color: var(--red);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    .cord-family-card.current {
+      background: var(--gray-100);
+      border-color: var(--gray-300);
+    }
+
+    .cord-family-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 0.2rem;
+    }
+
+    .cord-family-tag {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+
+    .cord-family-card.current .cord-family-tag { color: var(--text-light); }
+
+    .cord-family-card p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .cord-family-here {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .cord-family-go {
+      display: inline-block;
+      margin-top: 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--red);
+    }
+
+    @media (max-width: 860px) {
+      .cord-family-grid { grid-template-columns: 1fr; }
+    }
   </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Coiled Cords",
-    "description": "UL-listed coiled cords for industrial, medical, and signal applications. Shielded EMI-protected cords, miniature cords for tight spaces, and custom configurations. Manufactured in Connecticut since 1947.",
+    "description": "UL-listed coiled cords and coil cords for industrial, medical, and signal applications. Shielded EMI-protected cable, miniature cords for tight spaces, 2 to 10 conductors, and custom builds. Manufactured in Branford, CT since 1947.",
     "url": "https://autacusa.com/coiled-cords/",
     "isPartOf": { "@type": "WebSite", "name": "Autac USA", "url": "https://autacusa.com/" },
     "about": { "@type": "Thing", "name": "Coiled Cords" },
@@ -900,6 +987,125 @@
     }
   }
   </script>
+  <!-- HUBSCHEMA:START -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProductGroup",
+    "name": "Autac Coiled Cords",
+    "alternateName": [
+      "Coil Cords",
+      "Coiled Cable",
+      "Coiled Power Cords"
+    ],
+    "description": "UL-listed coiled cords and coil cords with heat-set helical geometry, including shielded EMI-protected cable, miniature cords for instrumentation, and heavy-gauge coiled power cable.",
+    "url": "https://autacusa.com/coiled-cords/",
+    "productGroupID": "coiled-cords",
+    "brand": {
+      "@type": "Brand",
+      "name": "Autac USA"
+    },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "Autac USA Inc.",
+      "url": "https://autacusa.com/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "25 Thompson Rd",
+        "addressLocality": "Branford",
+        "addressRegion": "CT",
+        "postalCode": "06405",
+        "addressCountry": "US"
+      }
+    },
+    "variesBy": [
+      "Wire Gauge",
+      "Conductors",
+      "Shielding"
+    ],
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Wire Gauge",
+        "value": "26 AWG to 10 AWG"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Conductors",
+        "value": "2 to 25"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Jacket Materials",
+        "value": "TPE, TPR, PVC, Auta-Prene, Neoprene"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Shielding",
+        "value": "Spiral serve, braided, foil with drain wire"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Extension Ratio",
+        "value": "Approximately 5:1"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Safety Listing",
+        "value": "UL Listed, UL Recognized, CUL"
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Country of Origin",
+        "value": "Made in USA"
+      }
+    ],
+    "isSimilarTo": [
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Curly Cords",
+        "url": "https://autacusa.com/curly-cords/"
+      },
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Retractile Cords",
+        "url": "https://autacusa.com/retractile-cords/"
+      },
+      {
+        "@type": "ProductGroup",
+        "name": "Autac Cord Sets",
+        "url": "https://autacusa.com/cord-sets/"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autacusa.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://autacusa.com/products/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Coiled Cords",
+        "item": "https://autacusa.com/coiled-cords/"
+      }
+    ]
+  }
+  </script>
+  <!-- HUBSCHEMA:END -->
 </head>
 <body>
 
@@ -945,7 +1151,7 @@
     <div class="container">
       <div class="page-hero-badge">Product Category</div>
       <h1>Coiled <span>Cords</span></h1>
-      <p>UL-listed coiled cords with self-retracting helical geometry &mdash; from miniature signal cords for instrumentation to shielded multi-conductor cables for industrial control. Engineered and manufactured in Branford, CT since 1947.</p>
+      <p>UL-listed coiled cords, sold across the industry as coil cords, with self-retracting helical geometry. From miniature signal cords for instrumentation to shielded multi-conductor cable for industrial control. Engineered and manufactured in Branford, CT since 1947.</p>
     </div>
   </section>
 
@@ -954,7 +1160,7 @@
     <div class="container">
       <div class="section-label">Overview</div>
       <div class="section-title">Shielded & Miniature Coiled Cords</div>
-      <p class="section-desc">Autac coiled cords deliver signal integrity and compact flexibility where it matters most. From EMI-protected shielded lines to ultra-compact miniature cords, every product is built to perform.</p>
+      <p class="section-desc">Autac coiled cords deliver signal integrity and compact flexibility where it matters most. From EMI-protected shielded lines to ultra-compact miniature cords, every product is built to perform. If you are sourcing a coil cord by wire gauge, conductor count, or shield type, this is the range to work from.</p>
 
       <div class="overview-grid">
         <div class="overview-card">
@@ -970,6 +1176,36 @@
       </div>
     </div>
   </section>
+
+    <!-- CORD FAMILY:START -->
+  <section class="cord-family">
+    <div class="container">
+      <div class="section-label">Which cord do you need?</div>
+      <h2 class="section-title">Coiled, Curly, or Retractile?</h2>
+      <p class="section-desc">These three names describe the same helical geometry, and the industry uses them interchangeably. Autac splits them by application so you land on the right stock range. Retractile is the term UL uses for the category as a whole.</p>
+      <div class="cord-family-grid">
+        <div class="cord-family-card current">
+          <span class="cord-family-tag">Also called coil cords</span>
+          <h3>Coiled Cords</h3>
+          <p>Industrial and signal coil cords: shielded multi-conductor cable, miniature cords for instrumentation, and heavy-gauge coiled power cable. Start here for any coil cord specified by gauge, conductor count, or shielding.</p>
+          <span class="cord-family-here">You are here</span>
+        </div>
+        <a class="cord-family-card" href="/curly-cords/">
+          <span class="cord-family-tag">Phone, headset, and test leads</span>
+          <h3>Curly Cords</h3>
+          <p>Curly cords for telephone handsets, dispatch radios, headsets, control panels, and Auta-Prene test leads. Start here when the cord attaches to a handset, a headset, or a meter.</p>
+          <span class="cord-family-go">See curly cords &rarr;</span>
+        </a>
+        <a class="cord-family-card" href="/retractile-cords/">
+          <span class="cord-family-tag">The UL term for the whole family</span>
+          <h3>Retractile Cords</h3>
+          <p>UL-listed retractile power cords in TPE, TPR, and PVC, 2 to 10 conductors, with 12 to 48 inch retracted lengths. Start here for the full stock range and custom retractile builds.</p>
+          <span class="cord-family-go">See retractile cords &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- CORD FAMILY:END -->
 
   <!-- EDUCATIONAL: WHAT IS A COILED CORD -->
   <section class="content-section">

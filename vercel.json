@@ -503,6 +503,321 @@
       "source": "/:path((?!404|proposal-v1|invoice-deposit|admin).*).html",
       "destination": "/:path/",
       "permanent": true
+    },
+    {
+      "source": "/understanding-the-coiled-cord-design-working-principles-uses-and-advantages/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/flexy-coiled-extension-cords-the-ultimate-guide-for-functionality-and-efficiency/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/the-complete-guide-to-coiled-extension-cables-and-flexible-cord-solutions/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-usb-extension-cable-features-benefits-uses-and-buying-guide/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-coil-cables-design-functionality-applications-and-advantages/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/expert-coiled-cables-the-ultimate-guide-to-performance-and-durability/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-the-purpose-of-coiled-cords-ultimate-guide/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-coiled-electrical-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-coil-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/coiled-keyboard-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/braided-keyboard-cables/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-coiled-cord/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/power-cord-coil/",
+      "destination": "/coiled-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-power-cords-retractable-coil-cable/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-cords-the-primary-benefits-associated-with-them/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-cords-the-ultimate-cable-management-solution/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/installing-your-retractable-power-lead/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/guide-to-retractile-power-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-electric-extension-cord/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-power-cords-ct/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-cords-and-cables/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-extension-lead/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-power-cord/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-power-cords/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-power-lead/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-cord/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/telephone-spiral-cables-a-comprehensive-guide-to-coiled-communication-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/white-telephone-coil-cord-the-sleek-upgrade-for-modern-communication/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/high-quality-telephone-line-cables-coil-cords-reliable-connectivity/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/why-choose-a-curly-power-cord-benefits-uses-explained/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-telephone-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-phone-cords/",
+      "destination": "/curly-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/international-rated-cables-global-safety-standards-applications-compliance-guide/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/international-power-cords-global-plug-types-compatibility-travel-power-solutions/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-choose-the-right-custom-electric-cable-for-your-project/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-electrical-cables-tailored-solutions-for-your-needs/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/multi-hole-plug-board-efficient-power-distribution-for-every-space/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/the-comprehensive-guide-to-electrical-cord-accessories/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-choose-industrial-electric-cord/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-molded-power-cords/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/flexible-cords-with-extension/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/electric-shield-power-cord/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/custom-cable-wire/",
+      "destination": "/cord-sets/",
+      "permanent": true
+    },
+    {
+      "source": "/complete-best-guide-on-spiral-cable-keyboard-in-2025/",
+      "destination": "/spiral-cables/",
+      "permanent": true
+    },
+    {
+      "source": "/spiral-lightning-cable-the-perfect-solution/",
+      "destination": "/spiral-cables/",
+      "permanent": true
+    },
+    {
+      "source": "/spiral-cable-vs-traditional-cords/",
+      "destination": "/spiral-cables/",
+      "permanent": true
+    },
+    {
+      "source": "/cable-with-magnetic-cord/",
+      "destination": "/spiral-cables/",
+      "permanent": true
+    },
+    {
+      "source": "/spiral-cable/",
+      "destination": "/spiral-cables/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-cord-steam-iron/",
+      "destination": "/how-to-fix-retractable-cord-on-iron/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-badge-reel/",
+      "destination": "/how-to-repair-a-retractable-badge-reel/",
+      "permanent": true
+    },
+    {
+      "source": "/how-to-repair-extension-cord-recoil-step-by-step-repair-guide/",
+      "destination": "/extension-cords-recoil-maintenance-and-repair-guide/",
+      "permanent": true
+    },
+    {
+      "source": "/extension-cord-for-your-power-washer/",
+      "destination": "/the-best-extension-cord-for-power-washers/",
+      "permanent": true
+    },
+    {
+      "source": "/say-goodbye-to-tangles-the-best-cable-cords-for-every-setup/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/retractable-cord-reel-for-small-appliances-design-benefits-and-applications/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/reel-extension-leads-types-benefits-and-safe-usage-guide/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/best-cable-cords-for-every-setup/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/extension-cords-make-life-easy-ct/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/reel-extension-leads/",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/communications-and-security-solutions/",
+      "destination": "/solutions/",
+      "permanent": true
+    },
+    {
+      "source": "/marie-louise-burkle-graduates-national-speakers-academy-class-of-2019/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/marie-louise-burkle-hits-20-year-milestone-as-ceo/",
+      "destination": "/news/",
+      "permanent": true
+    },
+    {
+      "source": "/tag/(.*)",
+      "destination": "/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/category/(.*)",
+      "destination": "/blog/",
+      "permanent": true
     }
   ],
   "headers": [

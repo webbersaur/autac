@@ -56,6 +56,57 @@ python3 -m http.server 8080
 
 ## Architecture & Patterns
 
+### Generated Content: the Product Catalog
+`products/index.html` contains a **pre-rendered** copy of the whole catalog so the
+page ships complete in the HTML response (it used to render client-side only,
+which meant Googlebot's first-wave crawl saw "Loading product catalog..." and
+nothing else). Edit `catalog/data/products.json`, then regenerate:
+
+```bash
+python3 scripts/build-catalog.py
+```
+
+Never hand-edit between the markers in `products/index.html`:
+- `<!-- CATFILTER:START/END -->` - category `<select>` options
+- `<!-- CATALOG:START/END -->` - category sections and product cards
+- `<!-- CATCOUNT:START/END -->` - the "Showing N products" count
+
+The page's `buildCard()`/`renderProducts()` JS still owns filtering and re-renders
+from the same JSON on every filter change, so **the generator's markup and
+`buildCard()` must stay byte-identical**. If you change one, change the other and
+re-verify by round-tripping a filter (apply a category filter, return to "All",
+and confirm the DOM is unchanged).
+
+### Generated Content: Hub Disambiguation and Schema
+Two more idempotent generators keep repeated blocks identical across the hubs.
+Both replace whatever sits between their markers, so re-run them rather than
+editing the output:
+
+```bash
+python3 scripts/add-hub-disambiguation.py   # <!-- CORD FAMILY:START/END -->
+python3 scripts/add-hub-product-schema.py   # <!-- HUBSCHEMA:START/END -->
+```
+
+- **Disambiguation block** (`coiled-cords`, `curly-cords`, `retractile-cords`) -
+  coiled/curly/retractile are near-synonyms, and Google was splitting the same
+  queries across all three. The block states identically on every hub which page
+  owns which term, rendering the current page as a non-linked "you are here"
+  card. **Do not let a hub claim the other hubs' terms in its own copy** - route
+  to them instead, or the cannibalization comes back.
+- **ProductGroup + BreadcrumbList schema** (those three plus `cord-sets`).
+
+Pricing is gated behind customer verification, so all product schema omits
+`offers` on purpose. Search Console reports that as a non-critical warning;
+that is expected. Never add a fabricated price to silence it.
+
+### Legacy URL Redirects
+`vercel.json` carries 160+ 301s, most of them WordPress URLs that survived the
+migration. Add new ones via `scripts/add-legacy-redirects.py` (idempotent).
+A redirect must land on a **topically equivalent** page - Google treats an
+irrelevant 301 as a soft 404, so off-topic legacy content (hose reels,
+magnetic-field explainers) is deliberately left to 404. That list, with reasons,
+is in the script's `LEAVE_404`.
+
 ### No Shared CSS/JS
 Every page has its own complete inline `<style>` block and `<script>` block. When creating new pages, copy the full header/nav/footer structure and CSS from an existing page. This means **sitewide changes (nav, footer, theme) must be applied to all pages individually**.
 
