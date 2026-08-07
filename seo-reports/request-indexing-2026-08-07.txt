@@ -1,0 +1,57 @@
+# AUTAC - GSC Request-Indexing worklist (2026-08-07)
+#
+# Property:  https://autacusa.com/   (NON-www URL-prefix property)
+# How:       URL Inspection > paste URL > Test Live URL > Request Indexing
+# Limit:     ~10-12 requests/day per property. This whole list is 5 URLs, so it
+#            fits in a single day. Do it in one sitting.
+#
+# WHAT CHANGED (commit 0772520, deployed and verified live 2026-08-07):
+#   - /products/ went from 251 crawlable words to 1,390. The catalog used to
+#     render client-side, so Google's first-wave crawl saw "Loading product
+#     catalog" and nothing else. All 25 catalog numbers and 10 category names
+#     now ship in the HTML. This page also gained its first JSON-LD ever.
+#   - /cord-sets/ went from 484 words to 2,295, 0 H2s to 10.
+#   - The three cord hubs gained a disambiguation block, ProductGroup +
+#     BreadcrumbList schema, and (on coiled-cords) a new title targeting the
+#     "coil cord" family.
+#
+# These are exactly the case Request-Indexing is for: the CONTENT changed
+# substantially and we want the new version crawled in days, not weeks.
+
+
+# ==== DO THESE 5 (one batch, today) ====
+https://autacusa.com/products/                  # 251 -> 1,390 words; first JSON-LD; biggest change on the site
+https://autacusa.com/cord-sets/                 # 484 -> 2,295 words; new title targets "cordsets"
+https://autacusa.com/coiled-cords/              # new title (Coiled Cords & Coil Cords); disambiguation; ProductGroup
+https://autacusa.com/curly-cords/               # copy + FAQ schema rewritten to stop claiming coil/retractile terms
+https://autacusa.com/retractile-cords/          # disambiguation block; ProductGroup schema
+
+
+# ==== ALSO DO (once, same day) ====
+# Sitemaps > resubmit. lastmod was bumped to 2026-08-07 on the 5 URLs above.
+https://autacusa.com/sitemap.xml
+
+
+# ==== DO NOT SUBMIT: the 63 new redirects ====
+# Commit 0772520 added 301/308s for 63 dead WordPress URLs. Do NOT spend quota
+# on them:
+#   1. Request-Indexing on a URL that redirects does nothing useful - there is
+#      no page to index. Google processes the redirect when it next recrawls
+#      the old URL, which it will do on its own because those URLs are still in
+#      the index and still being served in results.
+#   2. 63 URLs is six days of quota spent on the lowest-value action available.
+#   3. The redirect targets are the 5 pages above, which we ARE submitting. That
+#      is what actually accelerates consolidation.
+#
+# Expect the dead URLs to move to "Page with redirect" in the Coverage report
+# over roughly 2-4 weeks. Nothing to do but wait and watch.
+
+
+# ==== WHAT TO WATCH AFTERWARD ====
+# Do not judge this by next Monday's scorecard - redirect consolidation is slow.
+#   1. Coverage: dead URLs shifting to "Page with redirect" (2-4 weeks)
+#   2. "retractile cord" / "coiled cords" / "coil cord": success looks like ONE
+#      page climbing while the others drop out, not everything rising together
+#   3. /products/ earning any non-brand query (today it ranks 4.2 but only on
+#      "autac", "autac inc", "site:autacusa.com")
+#   4. /cord-sets/ on "cordsets" - baseline was 89 impr at position 36.5
