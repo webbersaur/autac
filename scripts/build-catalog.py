@@ -17,12 +17,11 @@ Markers:
   <!-- CATFILTER:START --> / <!-- CATFILTER:END -->  category <select> options
   <!-- CATALOG:START -->   / <!-- CATALOG:END -->    category sections + cards
   <!-- CATCOUNT:START -->  / <!-- CATCOUNT:END -->   "Showing N products"
-  <!-- CATSCHEMA:START --> / <!-- CATSCHEMA:END -->  ItemList of ProductGroups
+  <!-- CATSCHEMA:START --> / <!-- CATSCHEMA:END -->  ItemList of the catalog
 
-Pricing is gated behind customer verification, so the schema deliberately omits
-`offers`. Search Console will flag the missing field as a non-critical warning;
-that is correct and expected for a catalog without public pricing. Publishing a
-fabricated price to silence the warning would be worse than the warning.
+The catalog schema uses NO Product types - see build_schema() for why. Never
+"upgrade" it back to Product/ProductGroup to chase rich results: without a
+public price it cannot be eligible, and it only produces invalid items.
 """
 
 import json
@@ -176,15 +175,22 @@ def build_sections(data: dict) -> tuple[str, int]:
 
 
 def build_schema(data: dict) -> str:
-    """An ItemList of one ProductGroup per category, each carrying its real
-    catalog numbers as variants with their published specs."""
-    by_id = {c["id"]: c for c in data["categories"]}
+    """A nested ItemList enumerating every category and catalog number.
+
+    Deliberately uses NO Product or ProductGroup types. Google's product-snippet
+    validator requires offers, review, or aggregateRating on any Product entity;
+    pricing here is gated behind customer verification and there are no reviews,
+    so marking these up as Products produced 35 permanently-invalid items on this
+    page for no possible rich result. A plain ItemList carries the same catalog
+    information - category names, part numbers, full specs - and validates clean.
+    The four hubs keep one ProductGroup each, where the commercial signal earns
+    the single warning it costs.
+    """
     grouped: dict[str, list] = {c["id"]: [] for c in data["categories"]}
     for product in data["products"]:
         if product["category"] in grouped:
             grouped[product["category"]].append(product)
 
-    brand = {"@type": "Brand", "name": "Autac USA"}
     items = []
     position = 0
     for cat in data["categories"]:
@@ -192,50 +198,31 @@ def build_schema(data: dict) -> str:
         if not products:
             continue
         position += 1
-        variants = []
-        for p in products:
-            props = [
-                {"@type": "PropertyValue", "name": "Wire Gauge",
-                 "value": f"{p['awg']} AWG"},
-                {"@type": "PropertyValue", "name": "Conductors",
-                 "value": str(p["conductors"])},
-                {"@type": "PropertyValue", "name": "Cable Type", "value": p["type"]},
-                {"@type": "PropertyValue", "name": "Voltage Rating",
-                 "value": p["voltage"]},
-                {"@type": "PropertyValue", "name": "Amp Rating",
-                 "value": p["ampRating"]},
-                {"@type": "PropertyValue", "name": "Retracted Lengths",
-                 "value": ", ".join(f'{n}"' for n in p.get("retractedLengths", []))},
-                {"@type": "PropertyValue", "name": "Safety Listing",
-                 "value": cat.get("listing", "")},
-            ]
-            variants.append({
-                "@type": "Product",
+        entries = []
+        for n, p in enumerate(products, start=1):
+            lengths = ", ".join(f'{x}"' for x in p.get("retractedLengths", []))
+            spec_text = (
+                f"{p['conductors']} conductor, {p['awg']} AWG, {p['type']}, "
+                f"{p['voltage']}, {p['ampRating']}. "
+                f"Retracted lengths: {lengths}. {cat.get('listing', '')}."
+            )
+            entries.append({
+                "@type": "ListItem",
+                "position": n,
                 "name": f"Autac Cat. {p['catNo']} - {p['conductors']}/{p['awg']} AWG "
-                        f"{p['type']} Retractile Cord",
-                "sku": p["catNo"],
-                "mpn": p["catNo"],
-                "brand": brand,
-                "category": cat["name"],
-                "material": cat.get("jacket") or cat.get("insulation") or "",
-                "additionalProperty": props,
+                        f"{p['type']}",
+                "description": spec_text,
             })
         items.append({
             "@type": "ListItem",
             "position": position,
+            "name": cat["name"],
             "item": {
-                "@type": "ProductGroup",
+                "@type": "ItemList",
                 "name": f"Autac {cat['name']}",
                 "description": build_description(cat),
-                "brand": brand,
-                "manufacturer": {
-                    "@type": "Organization",
-                    "name": "Autac USA Inc.",
-                    "url": "https://autacusa.com/",
-                },
-                "productGroupID": cat["id"],
-                "variesBy": ["Wire Gauge", "Conductors", "Retracted Lengths"],
-                "hasVariant": variants,
+                "numberOfItems": len(entries),
+                "itemListElement": entries,
             },
         })
 
@@ -243,6 +230,10 @@ def build_schema(data: dict) -> str:
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": "Autac Retractile Cord Catalog",
+        "description": (
+            "Autac's UL-listed retractile cord catalog, grouped by jacket and "
+            "conductor construction. Pricing is available to verified customers."
+        ),
         "url": "https://autacusa.com/products/",
         "numberOfItems": len(items),
         "itemListElement": items,

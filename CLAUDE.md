@@ -95,9 +95,26 @@ python3 scripts/add-hub-product-schema.py   # <!-- HUBSCHEMA:START/END -->
   to them instead, or the cannibalization comes back.
 - **ProductGroup + BreadcrumbList schema** (those three plus `cord-sets`).
 
-Pricing is gated behind customer verification, so all product schema omits
-`offers` on purpose. Search Console reports that as a non-critical warning;
-that is expected. Never add a fabricated price to silence it.
+**Product schema and the `offers` problem.** Google's product-snippet validator
+requires `offers`, `review`, or `aggregateRating` on every Product-typed entity.
+Autac's pricing is gated behind customer verification and there are no reviews,
+so none of the three can be supplied honestly - which makes product rich results
+permanently unreachable here. Search Console reports the shortfall as an
+**error** ("invalid items"), not a warning. It does not affect indexing or
+rankings; it only means "ineligible for this feature".
+
+The deliberate split:
+- The four hubs each carry exactly **one** `ProductGroup` (4 invalid items
+  sitewide). Worth the noise for the commercial-entity signal on the pages that
+  matter.
+- `/products/` uses a plain nested `ItemList` with **no Product types**. Marking
+  its 10 categories and 25 part numbers as Products generated 35 permanently
+  invalid items for no possible rich result. The ItemList carries the same
+  catalog data and validates clean.
+- Never add `isSimilarTo` with `{name, url}` stubs to a ProductGroup. Google
+  counts each stub as its own Product entity, which turned 1 invalid item per
+  hub into 4. Cross-hub relationships live in the visible disambiguation links.
+- Never fabricate a price, review, or rating to turn the report green.
 
 ### Legacy URL Redirects
 `vercel.json` carries 160+ 301s, most of them WordPress URLs that survived the

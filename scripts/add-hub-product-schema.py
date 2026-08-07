@@ -142,13 +142,12 @@ def build(slug: str, spec: dict) -> str:
         "manufacturer": MANUFACTURER,
         "variesBy": spec["varies"],
         "additionalProperty": [prop(n, v) for n, v in spec["props"]],
-        "isSimilarTo": [
-            {"@type": "ProductGroup", "name": HUBS[other]["name"],
-             "url": f"https://autacusa.com/{other}/"}
-            for other in HUBS
-            if other != slug
-        ],
     }
+    # No isSimilarTo. Stub {name, url} ProductGroups there read to Google's
+    # product-snippet validator as three more Product entities, each missing the
+    # required offers/review/aggregateRating - so one hub reported 4 invalid
+    # items instead of 1. The visible disambiguation block already carries the
+    # relationship in links Google can follow.
     breadcrumb = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
