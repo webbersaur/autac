@@ -60,7 +60,6 @@ HUBS = {
             ("Safety Listing", "UL Listed, UL Recognized, CUL"),
             ("Country of Origin", "Made in USA"),
         ],
-        "varies": ["Wire Gauge", "Conductors", "Shielding"],
     },
     "curly-cords": {
         "crumb": "Curly Cords",
@@ -80,7 +79,6 @@ HUBS = {
             ("Safety Listing", "UL Listed, UL Recognized"),
             ("Country of Origin", "Made in USA"),
         ],
-        "varies": ["Wire Gauge", "Conductors", "Jacket Materials"],
     },
     "retractile-cords": {
         "crumb": "Retractile Cords",
@@ -101,7 +99,6 @@ HUBS = {
             ("Safety Listing", "UL Listed, UL Recognized, CUL"),
             ("Country of Origin", "Made in USA"),
         ],
-        "varies": ["Wire Gauge", "Conductors", "Retracted Lengths"],
     },
     "cord-sets": {
         "crumb": "Cord Sets",
@@ -123,7 +120,6 @@ HUBS = {
             ("Safety Listing", "UL Listed, CUL, RoHS compliant options"),
             ("Country of Origin", "Made in USA"),
         ],
-        "varies": ["Wire Gauge", "Conductors", "Plug Types"],
     },
 }
 
@@ -140,7 +136,11 @@ def build(slug: str, spec: dict) -> str:
         "productGroupID": slug,
         "brand": BRAND,
         "manufacturer": MANUFACTURER,
-        "variesBy": spec["varies"],
+        # No variesBy. It names the properties along which hasVariant members
+        # differ, and these groups carry no hasVariant - pricing is gated, so no
+        # variant can be published with the offers Google would then require.
+        # Declaring it advertised variants that do not exist, which is what made
+        # Search Console phrase the error as "hasVariant.offers".
         "additionalProperty": [prop(n, v) for n, v in spec["props"]],
     }
     # No isSimilarTo. Stub {name, url} ProductGroups there read to Google's
