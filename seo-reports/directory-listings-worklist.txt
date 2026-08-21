@@ -1,0 +1,124 @@
+# AUTAC - Industrial directory / off-site authority worklist (2026-08-21)
+#
+# WHY: commercial pages are ~6% of sitewide impressions and earned 4 clicks in
+# 28 days. The four cord hubs rank 10-35 for their head terms behind competitor
+# pages that are SHORTER and thinner than ours (Philatron ~475 words, Galaxy
+# Wire ~1,200 vs our 1,900-2,600). On-page depth is not the constraint. Off-site
+# authority in the industrial B2B directories is, and that is where Autac is
+# thinnest.
+#
+# Ahrefs API is fully plan-gated as of 2026-08-21 (Insufficient plan on every
+# paid endpoint, including the free domain-rating call), so none of this is
+# backed by referring-domain data. It is presence/absence checked by hand.
+#
+# NAP, for every listing below (see CLAUDE.md):
+#   Autac, Inc. / 25 Thompson Rd / Branford, CT 06405 / (203) 481-3444
+#   Website: https://autacusa.com   (non-www, https - www and http both redirect)
+#   NOT the P.O. Box (306, North Branford, CT 06471). Mailing/remittance only.
+
+
+# ==== TIER 1: FIX WHAT ALREADY EXISTS ====
+# These are live listings carrying wrong data. A wrong zip on a directory is a
+# NAP inconsistency working against the local/entity signal, and this is the
+# exact error that was wrong in 158 files until 2026-07-14.
+
+https://business.manufacturect.org/list/Details/autac-inc-4057718
+#   VERIFIED WRONG. Shows "25 Thompson Rd, Branford, CT 06471" - that zip is
+#   North Branford (the P.O. Box zip). Should be 06405.
+#   Also shows website as "http://www.autacusa.com" - http AND www, so every
+#   click double-redirects. Change to https://autacusa.com
+
+https://business.thomasnet.com/get-listed-on-thomasnet
+#   ThomasNet profile ALREADY EXISTS: company ID 469587. Free tier is real -
+#   claim it and check:
+#     - website field points at https://autacusa.com (not www/http)
+#     - address and zip
+#     - the hosted catalog PDF is stale: cdn.thomasnet.com/ccp/00469587/248628.pdf
+#       reads "For the past 64 years", which dates it to ~2011
+#     - add WBENC / 100% woman-owned and the UL listing data - the free tier
+#       supports certifications and diversity attributes, and neither is on
+#       the profile today
+#   ThomasNet blocks automated fetching (403), so this has to be eyes-on.
+
+https://www.shorelinechamberct.com/list/member/autac-incorporated-5197
+#   Live member listing. Page is JS-rendered so it could not be verified
+#   automatically - check the address, zip and website URL by hand.
+
+http://www.industrialinterface.com/company/telephone/899/autac-inc/
+#   Old listing, filed under "telephone". Low value. Update or ignore, but know
+#   it exists and is what some searches surface.
+
+
+# ==== TIER 2: FREE ADDS, NOT PRESENT TODAY ====
+
+https://www.macraesbluebook.com/getlisted/form1.cfm
+#   MacRAE'S Blue Book. Free company profile, industrial directory since 1893.
+#   No Autac listing found. Lowest-effort real add on this list - do it first.
+
+https://www.iqsdirectory.com/coiled-cable/
+#   IQS Directory "Coiled Cable" category. Autac is NOT listed, and the category
+#   profiles only FOUR companies (Bergen Cable, Lexco, Zauderer, Trinity Sling).
+#   A listing here would be prominent rather than buried. IQS is pay-to-play with
+#   no free self-serve form; contact route is https://www.iqsdirectory.com/faq/
+#   Ask for pricing on the coiled-cable and retractile-cord categories.
+
+https://www.globalspec.com/industrial-directory/client_service
+#   GlobalSpec / Engineering360 (IEEE-owned). No Autac supplier profile found.
+#   Closest audience to the new part-number tables: spec-driven engineers.
+#   Sales-led, blocks bots (403), so this is a phone/email conversation.
+
+
+# ==== TIER 3: CERTIFICATION DIRECTORIES ====
+# 100% woman-owned + WBENC is a genuine differentiator that appears NOWHERE
+# off-site today. Corporate diversity-sourcing teams search these databases
+# directly, and the traffic is high-intent rather than high-volume.
+
+WBENCLink2.0 (WBENC supplier database)
+#   Gated to WBENC corporate members, so it will not produce a public backlink.
+#   Do it anyway for RFP visibility, and make sure the profile lists retractile /
+#   coiled / curly cords and cord sets by name, not just "wire and cable".
+#   NOTE: buywomenowned.com is WBENC's CONSUMER-product directory (Baby & Kids,
+#   Beauty & Spa, Food & Beverage). Not a fit for a B2B cord manufacturer.
+https://cweonline.org/build-your-business/certification-programs/womens-business-enterprise-national-council-wbenc
+#   Center for Women & Enterprise is the regional WBENC partner covering CT.
+
+https://portal.ct.gov/das/procurement-programs-and-services/small-business/smbe-apply
+#   CT DAS SBE/MBE set-aside certification. Requires SAM.gov registration first,
+#   then the CT Gateway application. Pairs with CTsource supplier registration
+#   for state bidding: Portal.CT.gov/CTsource
+#   Contact: DAS-DLSupplierDiversity@ct.gov
+
+NWBOC (National Women Business Owners Corporation)
+#   Second woman-owned certifier with its own directory. NOT checked - verify
+#   whether Autac is already certified there before paying for anything.
+
+
+# ==== TIER 4: CONNECTICUT MANUFACTURING ORGS ====
+# Real links, local relevance, and the trade-press angle (1947, second-oldest
+# company in the retractile cord industry, 100% woman-owned).
+
+https://www.cbia.com/resources/manufacturing/connex-connecticut/
+#   CONNEX Connecticut - state manufacturing supply-chain database.
+https://www.connstep.org/about
+#   CONNSTEP, the CT State Technology Extension Program, a CBIA affiliate.
+#   Part of the Connecticut Manufacturers' Collaborative (1,200+ companies).
+
+
+# ==== ALSO WORTH KNOWING: THE UK NAMESAKE ====
+https://gb.kompass.com/c/autac-products-ltd/gb81009225/
+#   Autac Products Ltd of Macclesfield, UK - a DIFFERENT company that also makes
+#   retractable spiral cables. It is why /products/ picks up impressions for
+#   "autac macclesfield", "autac products ltd" and "autac services". Google is
+#   partially conflating the two entities. A US Kompass listing plus consistent
+#   NAP everywhere above is the cheapest way to pull the entities apart.
+
+
+# ==== HOW TO MEASURE THIS ====
+# Directory listings do not move rankings in days, and most of these will never
+# send meaningful referral traffic on their own. What they do is give Google
+# corroborating, consistent evidence about the entity, on sites that are already
+# topically authoritative for cords. Judge it at 8-12 weeks on hub positions for
+# the manufacturer-qualifier terms, not on referral sessions:
+#   "custom retractile cords" (17.9), "custom retractile cables" (15.1),
+#   "coiled cable suppliers" (27.3), "curly cable manufacturer" (24.9)
+# Positions are the 90 days ending 2026-08-21.
