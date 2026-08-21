@@ -77,6 +77,29 @@ from the same JSON on every filter change, so **the generator's markup and
 re-verify by round-tripping a filter (apply a category filter, return to "All",
 and confirm the DOM is unchanged).
 
+### Generated Content: Hub Catalog Tables
+The four hubs (`retractile-cords`, `coiled-cords`, `curly-cords`, `cord-sets`)
+used to build their catalog tables client-side from the same
+`catalog/data/products.json`, so the HTML response shipped "Loading product
+data..." and not one catalog number - the same first-wave-crawl problem
+`/products/` had before it was pre-rendered. All four are now generated:
+
+```bash
+python3 scripts/build-hub-tables.py           # rewrite
+python3 scripts/build-hub-tables.py --check   # exit 1 if stale
+```
+
+Markers: `<!-- HUBROWS:<category>:START/END -->` inside each retractile tbody
+(its section prose is hand-written and stays), `<!-- HUBTABLES:START/END -->`
+for the coiled/curly sections and the cord-sets platform table.
+
+The hubs have **no filter UI**, so unlike `/products/` there is no second
+renderer to keep byte-identical - the fetch/render scripts were deleted from all
+four pages. Do not add them back. Their templates also referenced fields that do
+not exist in `products.json` (`category.extensionRatio`, `product.cableOD` both
+printed "undefined") and wrote `${p.ampRating}A`, which doubled the unit into
+"7AA", since `ampRating` already carries it.
+
 ### Generated Content: Hub Disambiguation and Schema
 Two more idempotent generators keep repeated blocks identical across the hubs.
 Both replace whatever sits between their markers, so re-run them rather than

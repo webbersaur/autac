@@ -1,0 +1,67 @@
+# AUTAC - GSC Request-Indexing worklist (2026-08-21)
+#
+# Property:  https://autacusa.com/   (NON-www URL-prefix property)
+# How:       URL Inspection > paste URL > Test Live URL > Request Indexing
+# Limit:     ~10-12 requests/day per property. This list is 4 URLs plus a
+#            sitemap resubmit, so it fits in one sitting.
+#
+# WHAT CHANGED (deployed 2026-08-21):
+#   All four cord hubs were building their catalog tables client-side from
+#   catalog/data/products.json. The HTML response carried "Loading product
+#   data..." and zero catalog numbers, so Googlebot's first-wave crawl saw a
+#   capabilities page with no product data on it - the same failure /products/
+#   had before commit 0772520 pre-rendered it.
+#
+#   All 25 stock catalog numbers, with conductor count, AWG, UL type, voltage,
+#   amp rating, retracted lengths and UL listing, now ship in the HTML:
+#     /retractile-cords/   15 part numbers across 4 tables   2,395 -> 2,586 words
+#     /coiled-cords/        6 part numbers across 4 tables   1,714 -> 1,991 words
+#     /curly-cords/         4 part numbers across 2 tables   1,743 -> 1,899 words
+#     /cord-sets/          new base-cable platform table     2,406 -> 2,637 words
+#                          (all 10 platforms, all 25 cat. nos., links to the
+#                           three cord hubs)
+#
+#   Also fixed in the same pass: the old JS templates printed "undefined" for
+#   cableOD and extensionRatio, and "7AA" for amp ratings, on every row a real
+#   browser rendered.
+#
+# This is exactly what Request-Indexing is for: the content of the response
+# changed substantially and we want the new version crawled in days.
+
+
+# ==== DO THESE 4 (one batch, today) ====
+https://autacusa.com/retractile-cords/           # 15 cat. nos. now in the HTML; best-positioned hub (9.7)
+https://autacusa.com/coiled-cords/               # 6 cat. nos.; worst-positioned head term (24.2 for "coiled cords")
+https://autacusa.com/curly-cords/                # 4 cat. nos.; 14.0 for "curly cords", closest to page 1
+https://autacusa.com/cord-sets/                  # new platform table, first spec data the page has carried
+
+
+# ==== ALSO DO (once, same day) ====
+# Sitemaps > resubmit. lastmod bumped to 2026-08-21 on the 4 URLs above.
+https://autacusa.com/sitemap.xml
+
+
+# ==== DO NOT SUBMIT ====
+# Two legacy 301s were added this pass (both were 404ing while still indexed):
+#   /retractile-cords-manufacturer-in-branford-ct/   -> /retractile-cords/
+#   /retractile-cords-and-electric-cables-from-autac-inc/ -> /retractile-cords/
+# Request-Indexing on a redirecting URL does nothing - there is no page to
+# index. Google processes the redirect on its next natural recrawl.
+
+
+# ==== WHAT TO WATCH (do not expect clicks first) ====
+# Position moves before impressions, and impressions before clicks. The Aug 7
+# hub work moved /retractile-cords/ from 15.8 to 9.7 in 13 days with impressions
+# essentially flat, which is what progress looks like from position 20+.
+#
+# Check in GSC after ~2 and ~4 weeks, page dimension, these queries:
+#   /coiled-cords/    "coiled cords" (24.2), "coil cord" (28.8), "coiled cable suppliers" (27.3)
+#   /curly-cords/     "curly cords" (14.0), "curly cord" (16.4), "curly cable manufacturer" (24.9)
+#   /retractile-cords/ "retractile cord" (20.6), "custom retractile cords" (17.9)
+#   /cord-sets/       "cordsets" (35.6), "flexible cord sets" (14.6)
+# Baseline positions in parentheses are the 90 days ending 2026-08-21.
+#
+# Do not expect the generic head terms ("coiled cords", "cordsets") to reach
+# page 1 on this change alone. Those SERPs are distributors with public pricing
+# and in-stock inventory (McMaster-Carr, Amazon, prowireusa). The winnable set
+# is the manufacturer-qualifier terms, where page 1 is other manufacturers.

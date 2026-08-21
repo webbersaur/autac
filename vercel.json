@@ -818,6 +818,16 @@
       "source": "/category/(.*)",
       "destination": "/blog/",
       "permanent": true
+    },
+    {
+      "source": "/retractile-cords-manufacturer-in-branford-ct/",
+      "destination": "/retractile-cords/",
+      "permanent": true
+    },
+    {
+      "source": "/retractile-cords-and-electric-cables-from-autac-inc/",
+      "destination": "/retractile-cords/",
+      "permanent": true
     }
   ],
   "headers": [

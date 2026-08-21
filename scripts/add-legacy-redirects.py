@@ -53,6 +53,9 @@ route(
 route(
     "/retractile-cords/",
     "/retractile-power-cords-retractable-coil-cable/",
+    # Still indexed and 404ing as of 2026-08-21 (found via GSC page dimension):
+    "/retractile-cords-manufacturer-in-branford-ct/",
+    "/retractile-cords-and-electric-cables-from-autac-inc/",
     "/retractile-cords-the-primary-benefits-associated-with-them/",
     "/retractile-cords-the-ultimate-cable-management-solution/",
     "/installing-your-retractable-power-lead/",
