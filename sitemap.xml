@@ -748,4 +748,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://autacusa.com/blog/retractile-cords-first-responder-emergency-vehicles/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://autacusa.com/blog/retractile-cords-massachusetts-medtech-robotics/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://autacusa.com/blog/retractile-cords-new-jersey-pharma-medical/</loc>
+    <lastmod>2026-08-24</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -93,3 +93,8 @@ https://autacusa.com/how-to-hide-cable-cords-on-a-wall/                         
 https://autacusa.com/why-coiled-phone-cord-are-still-relevant-today/                         # live 200, 0 impr — re-request
 https://autacusa.com/curly-phone-cord/                                                       # live 200, 0 impr — re-request
 https://autacusa.com/no-tangle-desk-phone-cord/                                              # live 200, 0 impr — re-request
+
+# ---- Scheduled blog releases (staggered) ----
+https://autacusa.com/blog/retractile-cords-first-responder-emergency-vehicles/    # released 2026-08-24
+https://autacusa.com/blog/retractile-cords-massachusetts-medtech-robotics/    # released 2026-08-24
+https://autacusa.com/blog/retractile-cords-new-jersey-pharma-medical/    # released 2026-08-24

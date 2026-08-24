@@ -23,7 +23,11 @@ QUEUE = os.path.join(ROOT, "seo-reports", "blog-publish-queue.txt")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 INDEX = os.path.join(ROOT, "blog", "index.html")
 WORKLIST = os.path.join(ROOT, "seo-reports", "request-indexing-priority.txt")
-GRID_ANCHOR = '<div class="blog-grid">\n'
+GRID_ANCHOR = (
+    '  <section class="blog-listing">\n'
+    '    <div class="container">\n'
+    '      <div class="blog-grid">\n'
+)
 WORKLIST_HEADER = "# ---- Scheduled blog releases (staggered) ----"
 
 

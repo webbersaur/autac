@@ -4,9 +4,6 @@
 # When no slug lines remain, the routine is done.
 BATCH_SIZE=3
 
-retractile-cords-first-responder-emergency-vehicles
-retractile-cords-massachusetts-medtech-robotics
-retractile-cords-new-jersey-pharma-medical
 retractile-cords-washington-aerospace-manufacturing
 sourcing-coiled-cords-texas
 sourcing-coiled-cords-ohio
