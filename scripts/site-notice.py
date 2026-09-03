@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
-"""Site-wide announcement bar.
+"""Announcement bar.
 
-Inserts (or updates, or removes) a single banner immediately above the topbar on
-every public page. The block is self-contained - markup plus its own <style> -
-between <!-- SITENOTICE:START/END --> markers, so it can be re-run to change the
-wording and pulled back out cleanly when the notice is over:
+Inserts (or updates, or removes) a single banner immediately above the topbar.
+The block is self-contained - markup plus its own <style> - between
+<!-- SITENOTICE:START/END --> markers, so it can be re-run to change the wording
+and pulled back out cleanly when the notice is over:
 
-    python3 scripts/site-notice.py            # insert / update
+    python3 scripts/site-notice.py            # homepage only (default)
+    python3 scripts/site-notice.py --all      # every page with a topbar
     python3 scripts/site-notice.py --remove   # take it down
-    python3 scripts/site-notice.py --check    # exit 1 if any page is out of date
+    python3 scripts/site-notice.py --check    # exit 1 if anything is out of date
 
+Every run sweeps ALL pages and strips the block from any page outside the
+current scope, so narrowing the scope cleans up a wider previous run by itself.
 Non-indexed pages (admin, invoices, proposals, reports) have no topbar and are
 skipped automatically.
 """
@@ -20,6 +23,8 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+
+TARGETS = ["index.html"]  # scope when --all is not given
 
 START = "<!-- SITENOTICE:START -->"
 END = "<!-- SITENOTICE:END -->"
@@ -74,14 +79,19 @@ def apply(html, remove):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--all", action="store_true", help="show the notice on every page, not just the homepage")
     ap.add_argument("--remove", action="store_true", help="strip the notice from every page")
     ap.add_argument("--check", action="store_true", help="report stale pages, write nothing")
     args = ap.parse_args()
 
+    targets = {REPO / t for t in TARGETS}
     changed, skipped = [], []
     for path in pages():
         html = path.read_text(encoding="utf-8")
-        out = apply(html, args.remove)
+        # Anything outside the scope gets stripped, so a narrower scope cleans up
+        # after a wider run.
+        drop = args.remove or not (args.all or path in targets)
+        out = apply(html, drop)
         if out is None:
             skipped.append(path)
             continue
