@@ -1,0 +1,44 @@
+# AUTAC - GSC Request-Indexing worklist (2026-09-03)
+#
+# Property:  https://autacusa.com/   (NON-www URL-prefix property)
+# How:       URL Inspection > paste URL > Test Live URL > Request Indexing
+# Limit:     ~10-12 requests/day per property. This list is 6 URLs, one sitting.
+#
+# STATUS CHECK RUN FIRST (URL Inspection API, 2026-09-03):
+#   Every previously flagged restored URL is now "Submitted and indexed" with a
+#   crawl inside the last two weeks. The old "Request-Index the 20 restored
+#   URLs" item is CLOSED - nothing there needs resubmitting.
+#
+#   What does need it: every page changed today was last crawled between
+#   Aug 21 and Sep 1, so Google has not seen any of this yet.
+#
+# WHAT CHANGED (deployed 2026-09-03):
+#   Diagnosis was hub-vs-blog cannibalisation. Every commercial head term had
+#   3-4 Autac URLs competing and the blog guide was beating its own hub:
+#   "coil cords" = /blog/coil-cable-guide/ 18.1 vs /coiled-cords/ 29.8.
+#   Cause was depth - the hubs were the thinnest pages targeting their own
+#   terms. Fixed by deepening the two thin hubs and cleaning up the splits.
+
+
+# ==== STATUS 2026-09-03 ====
+# [DONE] = submitted, "URL was added to a priority crawl queue" confirmed on screen.
+# [TODO] = still needs a manual submit; the GSC inspection search box would not
+#          reliably take programmatic input, so the last two were left for Chris.
+
+# ==== DONE (4) ====
+[DONE] https://autacusa.com/coiled-cords/                          # 1,893 -> 2,745 words, 3 -> 8 h2; new "How to Specify" + "Jacket Materials" sections
+[DONE] https://autacusa.com/curly-cords/                           # 1,801 -> 2,607 words, 5 -> 9 h2; new Handset Cords + Test Leads + coil-memory sections
+[DONE] https://autacusa.com/telephone-cord/                        # retitled at "handset cords" (1,223 impr, pos 12.5, zero clicks); now links to /curly-cords/
+[DONE] https://autacusa.com/how-to-repair-a-retractable-badge-reel/ # absorbed the duplicate /how-to-fix-.../ page + retitled; the 301 needs recrawling too
+
+# ==== STILL TO DO (2) - paste each into the GSC inspection bar, then Request Indexing ====
+[TODO] https://autacusa.com/blog/phone-cord-tangles/               # retitled to lead with "how to untangle a phone cord" (pos 4.8, was 0.33% CTR)
+[TODO] https://autacusa.com/can-extension-cords-get-wet/           # retitled to answer the question (pos 9.9, was zero clicks)
+
+# ==== ALSO ====
+# Sitemap resubmitted via API 2026-09-03 (141 URLs, down from 142 after the
+# badge-reel consolidation).
+#
+# NOT worth a request: the 146 pages that only gained <h2> markup. Real
+# improvement, but not the kind of change Request Indexing is for - they will
+# pick it up on the normal crawl.
