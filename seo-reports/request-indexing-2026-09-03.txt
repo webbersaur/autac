@@ -22,8 +22,8 @@
 
 # ==== STATUS 2026-09-03 ====
 # [DONE] = submitted, "URL was added to a priority crawl queue" confirmed on screen.
-# [TODO] = still needs a manual submit; the GSC inspection search box would not
-#          reliably take programmatic input, so the last two were left for Chris.
+# [TODO] = was left for Chris after the GSC inspection search box refused
+#          programmatic input. Chris submitted both on 2026-09-04. ALL 6 DONE.
 
 # ==== DONE (4) ====
 [DONE] https://autacusa.com/coiled-cords/                          # 1,893 -> 2,745 words, 3 -> 8 h2; new "How to Specify" + "Jacket Materials" sections
@@ -31,9 +31,9 @@
 [DONE] https://autacusa.com/telephone-cord/                        # retitled at "handset cords" (1,223 impr, pos 12.5, zero clicks); now links to /curly-cords/
 [DONE] https://autacusa.com/how-to-repair-a-retractable-badge-reel/ # absorbed the duplicate /how-to-fix-.../ page + retitled; the 301 needs recrawling too
 
-# ==== STILL TO DO (2) - paste each into the GSC inspection bar, then Request Indexing ====
-[TODO] https://autacusa.com/blog/phone-cord-tangles/               # retitled to lead with "how to untangle a phone cord" (pos 4.8, was 0.33% CTR)
-[TODO] https://autacusa.com/can-extension-cords-get-wet/           # retitled to answer the question (pos 9.9, was zero clicks)
+# ==== DONE (2) - submitted manually by Chris 2026-09-04 ====
+[DONE] https://autacusa.com/blog/phone-cord-tangles/               # retitled to lead with "how to untangle a phone cord" (pos 4.8, was 0.33% CTR)
+[DONE] https://autacusa.com/can-extension-cords-get-wet/           # retitled to answer the question (pos 9.9, was zero clicks)
 
 # ==== ALSO ====
 # Sitemap resubmitted via API 2026-09-03 (141 URLs, down from 142 after the
