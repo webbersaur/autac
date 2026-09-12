@@ -1081,6 +1081,14 @@
     @media (max-width: 860px) {
       .cord-family-grid { grid-template-columns: 1fr; }
     }
+    /* PHOTOS:START */
+    .photo-gallery { padding: 4rem 0; background: var(--white); }
+    .photo-gallery .section-desc { max-width: 720px; color: var(--text-light); }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .photo-grid figure { margin: 0; border-radius: 0.75rem; overflow: hidden; background: var(--gray-100); border: 1px solid var(--gray-200); }
+    .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photo-grid figcaption { font-size: 0.85rem; color: var(--text-light); padding: 0.75rem 1rem; line-height: 1.4; }
+    /* PHOTOS:END */
   </style>
   <script type="application/ld+json">
   {
@@ -1386,6 +1394,34 @@
   <div id="product-categories">
 
     <!-- TPE Power Cords -->
+  <!-- PHOTOS:START -->
+  <section class="photo-gallery" aria-labelledby="photo-gallery-title">
+    <div class="container">
+      <div class="section-label">From Our Production Floor</div>
+      <h2 class="section-title" id="photo-gallery-title">Retractile Cords Made in Branford, Connecticut</h2>
+      <p class="section-desc">Every retractile cord we ship is wound, heat set, and inspected at 25 Thompson Rd. A few from recent runs:</p>
+      <div class="photo-grid">
+        <figure>
+          <img src="/images/coiled-battery-cable-red-black-winding-mandrel-branford-ct.webp" alt="Heavy gauge red and black coiled battery cable on a winding mandrel" width="1200" height="675" loading="lazy" decoding="async">
+          <figcaption>Heavy gauge battery cable coming off the winding mandrel</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/retractile-cords-multiple-colors-branford-ct.webp" alt="Retractile coil cords in white, red, black, yellow, gray, and green jackets" width="1200" height="674" loading="lazy" decoding="async">
+          <figcaption>Stock and custom jacket colors</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/spiral-cable-stretched-coiled-cord-branford-ct.webp" alt="Black retractile cord stretched to its full extended length" width="900" height="1200" loading="lazy" decoding="async">
+          <figcaption>Retracted to extended: 1:5 ratio standard</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/retractile-power-cord-black-coiled-branford-ct.webp" alt="Black retractile power cord in its retracted coiled state" width="1200" height="1200" loading="lazy" decoding="async">
+          <figcaption>Retracted and ready to ship</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <!-- PHOTOS:END -->
+
     <section class="category-section" id="tpe-power">
       <div class="container">
         <div class="category-header">

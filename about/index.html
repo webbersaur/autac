@@ -679,6 +679,14 @@
         text-align: center;
       }
     }
+    /* PHOTOS:START */
+    .photo-gallery { padding: 4rem 0; background: var(--white); }
+    .photo-gallery .section-desc { max-width: 720px; color: var(--text-light); }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .photo-grid figure { margin: 0; border-radius: 0.75rem; overflow: hidden; background: var(--gray-100); border: 1px solid var(--gray-200); }
+    .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photo-grid figcaption { font-size: 0.85rem; color: var(--text-light); padding: 0.75rem 1rem; line-height: 1.4; }
+    /* PHOTOS:END */
   </style>
 </head>
 <body>
@@ -797,6 +805,34 @@
       </div>
     </div>
   </section>
+
+  <!-- PHOTOS:START -->
+  <section class="photo-gallery" aria-labelledby="photo-gallery-title">
+    <div class="container">
+      <div class="section-label">Inside the Plant</div>
+      <h2 class="section-title" id="photo-gallery-title">25 Thompson Road, Branford, Connecticut</h2>
+      <p class="section-desc">Every cord we sell is made by our own team, in our own building, in the same Connecticut town where the company has operated for decades.</p>
+      <div class="photo-grid">
+        <figure>
+          <img src="/images/yellow-coiled-cords-manufacturing-rack-technician-branford-ct.webp" alt="Autac technician racking yellow coiled cords on mandrels for heat setting" width="675" height="1200" loading="lazy" decoding="async">
+          <figcaption>Racking coiled cords before heat set</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/cooling-department-equipment-fresh-paint-branford-ct.webp" alt="Freshly painted cooling department equipment on the Autac manufacturing floor" width="900" height="1200" loading="lazy" decoding="async">
+          <figcaption>The cooling department, freshly repainted</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/autac-usa-trade-show-booth-retractile-cords-branford-ct.webp" alt="Autac USA trade show booth showing retractile cords for medical, communication, transportation, and military industries" width="1200" height="675" loading="lazy" decoding="async">
+          <figcaption>Our booth: medical, communication, transportation, military</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/autac-usa-facility-exterior-branford-ct.webp" alt="Exterior of the Autac USA manufacturing facility in Branford, Connecticut" width="1200" height="451" loading="lazy" decoding="async">
+          <figcaption>The Autac USA plant at 25 Thompson Rd</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <!-- PHOTOS:END -->
 
   <!-- EXPERIENCE -->
   <section class="experience">

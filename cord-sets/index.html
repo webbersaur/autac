@@ -991,6 +991,14 @@
       .product-table th,
       .product-table td { padding: 0.5rem 0.6rem; }
     }
+    /* PHOTOS:START */
+    .photo-gallery { padding: 4rem 0; background: var(--white); }
+    .photo-gallery .section-desc { max-width: 720px; color: var(--text-light); }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .photo-grid figure { margin: 0; border-radius: 0.75rem; overflow: hidden; background: var(--gray-100); border: 1px solid var(--gray-200); }
+    .photo-grid img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+    .photo-grid figcaption { font-size: 0.85rem; color: var(--text-light); padding: 0.75rem 1rem; line-height: 1.4; }
+    /* PHOTOS:END */
   </style>
   <!-- HUBSCHEMA:START -->
   <script type="application/ld+json">
@@ -1356,6 +1364,34 @@
   </section>
 
   <!-- SPECIFICATIONS -->
+  <!-- PHOTOS:START -->
+  <section class="photo-gallery" aria-labelledby="photo-gallery-title">
+    <div class="container">
+      <div class="section-label">Cord Sets on Real Equipment</div>
+      <h2 class="section-title" id="photo-gallery-title">Autac Cord Sets in the Field</h2>
+      <p class="section-desc">Terminated, strain relieved, and installed on the equipment they were built for. All manufactured in Branford, Connecticut.</p>
+      <div class="photo-grid">
+        <figure>
+          <img src="/images/coiled-power-cord-portable-led-work-light-branford-ct.webp" alt="Black coiled power cord with twist-lock plug on a portable LED scene light" width="1200" height="1108" loading="lazy" decoding="async">
+          <figcaption>Coiled power cord on a portable LED scene light</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/coiled-extension-cord-tripod-led-light-stand-branford-ct.webp" alt="Black coiled extension cord on a telescoping tripod LED light" width="657" height="1200" loading="lazy" decoding="async">
+          <figcaption>Coiled extension cord on a tripod light stand</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/retractile-cord-emergency-vehicle-branford-ct.webp" alt="Gray retractile cord in use on emergency vehicle equipment" width="945" height="1200" loading="lazy" decoding="async">
+          <figcaption>Retractile cord on emergency vehicle equipment</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/curly-power-cord-black-three-prong-plug-branford-ct.webp" alt="Black curly power cord with molded three-prong plug" width="1200" height="900" loading="lazy" decoding="async">
+          <figcaption>Molded three-prong plug on a curly power cord</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  <!-- PHOTOS:END -->
+
   <section class="specs-section">
     <div class="container">
       <div class="section-label" style="text-align:center;">Specifications</div>

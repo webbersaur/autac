@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://autacusa.com/</loc>
     <lastmod>2026-06-16</lastmod>
@@ -9,6 +9,22 @@
     <loc>https://autacusa.com/about/</loc>
     <lastmod>2026-06-16</lastmod>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/yellow-coiled-cords-manufacturing-rack-technician-branford-ct.webp</image:loc>
+      <image:title>Autac technician racking yellow coiled cords on mandrels for heat setting</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/cooling-department-equipment-fresh-paint-branford-ct.webp</image:loc>
+      <image:title>Freshly painted cooling department equipment on the Autac manufacturing floor</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/autac-usa-trade-show-booth-retractile-cords-branford-ct.webp</image:loc>
+      <image:title>Autac USA trade show booth showing retractile cords for medical, communication, transportation, and military industries</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/autac-usa-facility-exterior-branford-ct.webp</image:loc>
+      <image:title>Exterior of the Autac USA manufacturing facility in Branford, Connecticut</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/products/</loc>
@@ -19,16 +35,64 @@
     <loc>https://autacusa.com/retractile-cords/</loc>
     <lastmod>2026-08-21</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-battery-cable-red-black-winding-mandrel-branford-ct.webp</image:loc>
+      <image:title>Heavy gauge red and black coiled battery cable on a winding mandrel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/retractile-cords-multiple-colors-branford-ct.webp</image:loc>
+      <image:title>Retractile coil cords in white, red, black, yellow, gray, and green jackets</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/spiral-cable-stretched-coiled-cord-branford-ct.webp</image:loc>
+      <image:title>Black retractile cord stretched to its full extended length</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/retractile-power-cord-black-coiled-branford-ct.webp</image:loc>
+      <image:title>Black retractile power cord in its retracted coiled state</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/curly-cords/</loc>
     <lastmod>2026-08-21</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/curly-cords-claw-crane-arcade-machine-branford-ct.webp</image:loc>
+      <image:title>Black curly cords feeding the claw mechanism of an arcade crane game</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/spiral-cable-black-coiled-cord-branford-ct.webp</image:loc>
+      <image:title>Black matte jacket curly coiled cord</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/custom-retractile-gray-coiled-cable-branford-ct.webp</image:loc>
+      <image:title>Gray curly coiled cable with modular connector</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/spiral-cable-conductor-cross-section-branford-ct.webp</image:loc>
+      <image:title>Cut end of a coiled cable showing multi-conductor construction</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/coiled-cords/</loc>
     <lastmod>2026-08-21</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/custom-green-coiled-cables-production-rack-branford-ct.webp</image:loc>
+      <image:title>Rack of custom green coiled cables wound on mandrels</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-cords-red-white-blue-on-mandrels-branford-ct.webp</image:loc>
+      <image:title>Red, white, and blue striped coiled cords on winding mandrels</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/custom-yellow-coiled-cords-finished-batch-branford-ct.webp</image:loc>
+      <image:title>Finished batch of yellow coiled cords bundled on the bench</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/red-coiled-safety-lanyard-cord-with-clip-branford-ct.webp</image:loc>
+      <image:title>Red coiled safety lanyard cord with molded clip</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/color-charts/</loc>
@@ -39,6 +103,18 @@
     <loc>https://autacusa.com/solutions/</loc>
     <lastmod>2026-06-16</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/retractile-cord-emergency-vehicle-branford-ct.webp</image:loc>
+      <image:title>Gray retractile cord in use on emergency vehicle equipment</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-power-cord-portable-led-work-light-branford-ct.webp</image:loc>
+      <image:title>Black coiled power cord with twist-lock plug on a portable LED scene light</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-extension-cord-tripod-led-light-stand-branford-ct.webp</image:loc>
+      <image:title>Black coiled extension cord on a telescoping tripod LED light</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/contact/</loc>
@@ -244,6 +320,22 @@
     <loc>https://autacusa.com/cord-sets/</loc>
     <lastmod>2026-08-21</lastmod>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-power-cord-portable-led-work-light-branford-ct.webp</image:loc>
+      <image:title>Black coiled power cord with twist-lock plug on a portable LED scene light</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/coiled-extension-cord-tripod-led-light-stand-branford-ct.webp</image:loc>
+      <image:title>Black coiled extension cord on a telescoping tripod LED light</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/retractile-cord-emergency-vehicle-branford-ct.webp</image:loc>
+      <image:title>Gray retractile cord in use on emergency vehicle equipment</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://autacusa.com/images/curly-power-cord-black-three-prong-plug-branford-ct.webp</image:loc>
+      <image:title>Black curly power cord with molded three-prong plug</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://autacusa.com/faq/</loc>
