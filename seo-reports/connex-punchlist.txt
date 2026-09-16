@@ -1,0 +1,77 @@
+CONNEX MARKETPLACE / CONNEX CT - Autac, Inc. profile, reviewed 2026-09-09
+Approved 2026-09-09 13:35 UTC. Profile (State Access, free):
+  https://app.connexmarketplace.com/organization/02790865-23ef-4ad0-96a1-18ea785d2947
+Login: Chris's personal account (add Marie-Louise as a user).
+
+WHAT IS LIVE AND CORRECT
+  Name Autac, Inc. | 25 Thompson Rd, Branford, CT 06405 | (203) 481-3444
+  Website https://autacusa.com | Manufacturer | NAICS 335929
+  Industries: Aviation/Aerospace, Automotive, Medical Devices, Defense,
+    Marine Equipment, Electronics
+  About: 977-char description (macraes copy, trimmed)
+
+DUPLICATE TO MERGE (CONNSTEP-seeded, id 35b8067d-99bc-11ed-a3db-42010a61300d)
+  "Autac Inc" - About "Woman owned small business manufacturing power cables
+  since 1947", NAICS 335929, DUNS 042282408, process Extrusion,
+  floor space 5,000-24,999 sq ft, Engineers 1-5, Touch labor 6-20,
+  Office/support 1-5, Total employees 6-20.
+  No self-serve merge. Reply to Bernice Zampano at ConnStep (email on file,
+  cc N. Lynn) asking to merge the seeded record INTO ours and
+  keep our id. Verify the employee/floor-space numbers with Marie-Louise
+  before we adopt them.
+
+EMPTY FIELDS - DONE 2026-09-09 (verified on the public profile)
+  General: Email sales@autacusa.com
+           LinkedIn https://www.linkedin.com/company/autac-incorporated
+           Facebook https://www.facebook.com/autacusa/
+           DUNS 042282408 (from the seeded profile)
+           Logo: https://autacusa.com/logo.png (239x136 png; upload as-is or
+             pad to square)
+           Header image: none on the site suitable; ask client for a facility
+             or product photo (png/jpg up to 15MB)
+  Products tab: Product Producer > Component Manufacturer; Made in America: Yes
+           Product details rows: Retractile power cords; Coiled / curly cords;
+             Shielded and miniature coil cords; Test lead cords; Handset and
+             communication cords; Cord sets (NEMA / IEC, straight and
+             retractile); Custom cable assemblies
+  Services tab: Custom coiled cords to spec (no minimum); Coil-only service
+             for customer-supplied cable; In-house straight wire
+  Capabilities: Processes: Extrusion (from seeded record), Coiling / cable
+             coiling, Overmolding (molded plugs), Cable assembly
+           Materials: TPE, TPR, PVC, Polyurethane, copper conductors
+           Certifications & Recognitions: UL Listed, CSA Certified, WBENC
+             (women-owned), RoHS / REACH compliant
+           Employees & Capacities: take from seeded record after client OK
+  Contacts: Marie-Louise Burkle, CEO, direct email on file, 203-481-3444
+           (Bernice already has her as the contact); sales@autacusa.com as
+           the RFQ contact.
+
+NEEDS CLIENT INPUT
+  CAGE code: site footer says "3AWWO" (letter O), macraes copy says "3AWW0"
+    (zero). SAM public API lookup 404'd. Confirm on SAM.gov and fix whichever
+    is wrong (the site footer is in 3 files).
+  UEI (12-char, SAM.gov) and CAGE expiration date.
+  SBA programs: only if Autac holds WOSB; WBENC is not an SBA cert.
+  Header photo; equipment list (coiling machines, extruders) if they want
+    the Equipment table filled; capability statement PDF if one exists.
+
+OPTIONAL
+  Exchange Center post (CONNEX CT guide attached to Bernice's email):
+    "Retractile / coiled cord manufacturer in Branford, no minimum order,
+    same-day ship on 400+ UL part numbers" - the CT buyer-facing feature.
+  National supplier access is $650/yr; skip unless out-of-state RFQs matter.
+
+DONE 2026-09-09
+  General: email, Facebook, LinkedIn, DUNS 042282408, logo uploaded.
+  Products: Component Manufacturer; Made in America; 7 product rows.
+  Services: Product Design / Analysis; 3 service rows.
+  Capabilities: processes Assembly, Extrusion, Wire Harness; materials
+    Thermoplastic, PVC, Polyurethane, Copper (USE); certifications (type
+    Other) UL, CSA, WBENC, RoHS/REACH.
+  Contacts: Marie-Louise Burkle CEO; Sales Department (sales@, 800 number).
+  Reply to Bernice drafted in Gmail (merge request) - Chris to send.
+  Still open: CAGE spelling (About text says 3AWW0), UEI, header photo,
+    SBA/WOSB, Equipment list, Employees & Capacities (after merge), Gallery,
+    Exchange Center post. Add Marie-Louise as a CONNEX user (Admin > Users).
+  Browser note: clicking the Name field in the Add Certification dialog
+    freezes the Chrome MCP tab (another extension grabs it); fill via JS.

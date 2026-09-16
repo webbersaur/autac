@@ -126,8 +126,9 @@ https://www.cbia.com/resources/manufacturing/connex-connecticut/
 #   SBA Programs left blank (WBENC is not an SBA cert; confirm WOSB with client
 #   before adding). Status: "registration request is being processed", every
 #   org is reviewed; email support@connexmarketplace.com after 7 days if silent.
-#   Once approved: finish the profile (capabilities, certifications, photos)
-#   and record the public profile URL here.
+#   [APPROVED 2026-09-09] profile https://app.connexmarketplace.com/organization/02790865-23ef-4ad0-96a1-18ea785d2947
+#   Punch list in connex-punchlist.txt (duplicate seeded "Autac Inc" record
+#   to merge via Bernice Zampano, empty fields, client questions).
 #   It is the CT tier of CONNEX Marketplace. "State Access"
 #   is FREE for CT manufacturers (statewide profile, in-state search, in-state
 #   RFQs); national supplier access is $650/yr. Sign-up is a personal account
