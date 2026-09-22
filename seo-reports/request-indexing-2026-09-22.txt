@@ -1,0 +1,14 @@
+Request Indexing in GSC (URL Inspection -> Request Indexing), 2026-09-22
+Curly-cords consolidation: /blog/curly-cords-guide/ (pos 5.9 for "curly cord",
+752 impr/28d) merged into the hub and 301'd. The hub held 11.0 on 465 impr.
+Goal: one URL for "curly cord" / "curly cord phone" / "curley cord".
+
+1. https://autacusa.com/curly-cords/          (rewritten: new title, +1,600 words, 14 h2)
+2. https://autacusa.com/blog/curly-cords-guide/   (now 301 -> /curly-cords/; request so Google sees the redirect)
+3. https://autacusa.com/blog/                  (card removed)
+
+Watch (2 to 6 weeks): /curly-cords/ position for "curly cord", "curly cord phone",
+"curley cord"; combined impressions of hub + guide (baseline ~1,200/28d).
+Badge-reel precedent: expect a dip for 1 to 3 weeks after Google processes the 301.
+Do NOT flip the redirect back if it dips; the hub has 153 inbound internal links
+to the guide's 3, unlike the badge-reel pair.

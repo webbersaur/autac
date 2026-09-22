@@ -858,6 +858,11 @@
       "source": "/curly-phone-cord/",
       "destination": "/curly-cords/",
       "permanent": true
+    },
+    {
+      "source": "/blog/curly-cords-guide/",
+      "destination": "/curly-cords/",
+      "permanent": true
     }
   ],
   "headers": [
