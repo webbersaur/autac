@@ -3,344 +3,2916 @@
     {
       "id": "tpe-power",
       "name": "TPE Power Cords",
-      "conductor": "Bare copper",
+      "conductor": "Soft bare copper",
       "insulation": "TPE",
-      "jacket": "TPE",
+      "jacket": "TPR",
       "shield": false,
-      "listing": "UL Listed"
+      "listing": "UL/cUL Listed",
+      "extension": "1:5",
+      "catalogPage": 6,
+      "notes": "TPE insulated, TPR black jacket. W suffix: white jacket."
     },
     {
       "id": "tpr-power",
       "name": "TPR Power Cords",
-      "conductor": "Bare copper",
-      "insulation": "TPR",
+      "conductor": "Soft bare copper",
+      "insulation": "TPE",
       "jacket": "TPR",
       "shield": false,
-      "listing": "UL Listed"
+      "listing": "UL/cUL Listed",
+      "extension": "1:5",
+      "catalogPage": 7,
+      "notes": "TPE insulated, TPR black jacket."
     },
     {
       "id": "pvc-power",
       "name": "PVC Power Cords",
-      "conductor": "Bare copper",
+      "conductor": "Soft bare copper",
       "insulation": "PVC",
       "jacket": "PVC",
       "shield": false,
-      "listing": "UL Listed"
+      "listing": "UL/cUL Listed",
+      "extension": "1:5",
+      "catalogPage": 8,
+      "notes": "PVC insulated, PVC black jacket. Numbers ending in W are the same cord in white."
     },
     {
       "id": "tpe-power-bare",
-      "name": "TPE Power Cords (Bare Ends)",
-      "conductor": "Bare copper",
+      "name": "TPE Power Cords (TPE Jacket)",
+      "conductor": "Soft bare copper",
       "insulation": "TPE",
       "jacket": "TPE",
       "shield": false,
-      "listing": "UL Recognized"
+      "listing": "UL/cUL Listed",
+      "extension": "1:5",
+      "catalogPage": 10,
+      "notes": "TPE throughout, insulation and jacket. E suffix series."
     },
     {
       "id": "comm-control",
-      "name": "Communications & Control Cables",
-      "conductor": "Tinned copper",
-      "insulation": "PVC",
-      "jacket": "PVC",
+      "name": "Communications & Electronic Control Cords",
+      "conductor": "Soft tinned copper",
+      "insulation": "Polypropylene",
+      "jacket": "PVC or Auta-Prene TPE",
       "shield": false,
-      "listing": "UL Listed"
+      "listing": "UL Recognized AWM (cUL available)",
+      "extension": "1:5",
+      "catalogPage": 11,
+      "notes": "Number ending in 5P = PVC jacket, 7P = Auta-Prene TPE jacket. Colors on request."
     },
     {
       "id": "test-leads",
-      "name": "Test Lead Cords",
-      "conductor": "Tinned copper",
-      "insulation": "PVC",
-      "jacket": "PVC",
+      "name": "Auta-Prene Test Leads",
+      "conductor": "Soft tinned copper",
+      "insulation": "TPE",
+      "jacket": "Auta-Prene TPE",
       "shield": false,
-      "listing": "UL Recognized"
+      "listing": "UL Recognized",
+      "extension": "1:5",
+      "catalogPage": 11,
+      "notes": "Single-conductor 5000V test leads. Stocked in 12 and 24 inch retracted lengths."
     },
     {
       "id": "shielded-comm",
-      "name": "Shielded Communications Cables",
-      "conductor": "Tinned copper",
-      "insulation": "TPE",
-      "jacket": "TPE",
+      "name": "PVC or Auta-Prene Shielded Cords",
+      "conductor": "Soft tinned copper",
+      "insulation": "Polypropylene",
+      "jacket": "PVC or Auta-Prene TPE",
       "shield": true,
-      "listing": "UL Listed"
+      "listing": "UL Recognized AWM (cUL available)",
+      "extension": "1:5",
+      "catalogPage": 12,
+      "notes": "Each conductor individually served shielded with 36 AWG soft tinned copper, average 90% coverage. Conductors white and/or black. Capacitance values on request."
     },
     {
       "id": "pvc-shielded",
-      "name": "PVC Shielded Cables",
-      "conductor": "Tinned copper",
-      "insulation": "PVC",
+      "name": "PVC Shielded Cords",
+      "conductor": "Soft tinned copper",
+      "insulation": "Polypropylene",
       "jacket": "PVC",
       "shield": true,
-      "listing": "UL Listed"
+      "listing": "UL Recognized AWM (CSA available)",
+      "extension": "1:5",
+      "catalogPage": 13,
+      "notes": "Overall served shield, 36 AWG soft tinned copper, average 90% coverage. Black jacket, colors on request. Capacitance values on request."
     },
     {
       "id": "pvc-miniature",
-      "name": "Miniature PVC Cords",
-      "conductor": "Bare copper",
-      "insulation": "PVC",
+      "name": "PVC Miniature Cords",
+      "conductor": "Soft tinned copper",
+      "insulation": "Polypropylene",
       "jacket": "PVC",
       "shield": false,
-      "listing": "UL Recognized"
+      "listing": "UL Recognized AWM (cUL available)",
+      "extension": "1:5",
+      "catalogPage": 14,
+      "notes": "28 AWG miniature cords, black jacket. Colors on request."
     },
     {
       "id": "pvc-miniature-foil",
-      "name": "Miniature PVC Foil-Shielded Cords",
-      "conductor": "Tinned copper",
-      "insulation": "PVC",
+      "name": "PVC Miniature Cords with Foil Shield",
+      "conductor": "Soft tinned copper",
+      "insulation": "Polypropylene",
       "jacket": "PVC",
       "shield": true,
-      "listing": "UL Recognized"
+      "listing": "UL Recognized AWM (cUL available)",
+      "extension": "1:5",
+      "catalogPage": 14,
+      "notes": "Overall foil shield, black jacket. Colors on request. Capacitance values on request."
     }
   ],
   "products": [
     {
-      "catNo": "1601",
+      "catNo": "72180",
       "category": "tpe-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVEO/SVTO",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".242",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.35,
+        0.48,
+        0.76,
+        0.9
+      ]
+    },
+    {
+      "catNo": "72180W",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVEO/SVTO",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".242",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.3,
+        0.35,
+        0.52,
+        0.68
+      ]
+    },
+    {
+      "catNo": "73180",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVEO/SVTO",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".260",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.35,
+        0.36,
+        0.51,
+        0.67
+      ]
+    },
+    {
+      "catNo": "72181",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".300",
+      "coilOD": "1",
+      "weightLbs": [
+        0.48,
+        0.5,
+        0.7,
+        0.93
+      ]
+    },
+    {
+      "catNo": "73181",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".308",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.55,
+        0.8,
+        1.1,
+        1.5
+      ]
+    },
+    {
+      "catNo": "74181",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 4,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".340",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.64,
+        0.84,
+        1.2,
+        1.6
+      ]
+    },
+    {
+      "catNo": "75181",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 5,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".385",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.82,
+        0.9,
+        1.3,
+        1.8
+      ]
+    },
+    {
+      "catNo": "77181",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 7,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".430",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        0.85,
+        1.5,
+        2.2,
+        3.0
+      ]
+    },
+    {
+      "catNo": "73182",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SJEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".375",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.61,
+        0.86,
+        1.2,
+        1.6
+      ]
+    },
+    {
+      "catNo": "77182",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 7,
+      "type": "SJEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".500",
+      "coilOD": "1 7/8",
+      "weightLbs": [
+        1.4,
+        1.7,
+        2.5,
+        3.2
+      ]
+    },
+    {
+      "catNo": "710182",
+      "category": "tpe-power",
+      "awg": "18",
+      "conductors": 10,
+      "type": "SJEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".590",
+      "coilOD": "2 3/8",
+      "weightLbs": [
+        2.2,
+        2.8,
+        4.1,
+        5.4
+      ]
+    },
+    {
+      "catNo": "72161",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 2,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".300",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.49,
+        0.55,
+        0.81,
+        1.2
+      ]
+    },
+    {
+      "catNo": "73161",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJEOW/SJTOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".340",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.65,
+        0.88,
+        2.3,
+        1.7
+      ]
+    },
+    {
+      "catNo": "73162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".385",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        0.73,
+        0.9,
+        1.3,
+        1.8
+      ]
+    },
+    {
+      "catNo": "74161",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SEOW/STOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".365",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.82,
+        0.96,
+        1.4,
+        1.9
+      ]
+    },
+    {
+      "catNo": "74162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".425",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        1.2,
+        1.3,
+        1.9,
+        2.3
+      ]
+    },
+    {
+      "catNo": "75162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 5,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".495",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        1.5,
+        1.7,
+        2.9,
+        3.9
+      ]
+    },
+    {
+      "catNo": "76162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 6,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".530",
+      "coilOD": "2",
+      "weightLbs": [
+        1.8,
+        2.4,
+        3.5,
+        4.6
+      ]
+    },
+    {
+      "catNo": "77162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 7,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".535",
+      "coilOD": "2",
+      "weightLbs": [
+        1.9,
+        2.6,
+        3.6,
+        4.7
+      ]
+    },
+    {
+      "catNo": "78162",
+      "category": "tpr-power",
+      "awg": "16",
+      "conductors": 8,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".570",
+      "coilOD": "2 1/8",
+      "weightLbs": [
+        2.1,
+        2.7,
+        3.6,
+        4.8
+      ]
+    },
+    {
+      "catNo": "73141",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SEOW/STOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".390",
+      "coilOD": "1 9/16",
+      "weightLbs": [
+        1.1,
+        2.2,
+        3.2,
+        4.2
+      ]
+    },
+    {
+      "catNo": "73142",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "12A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".540",
+      "coilOD": "2 1/8",
+      "weightLbs": [
+        1.9,
+        2.4,
+        3.5,
+        4.8
+      ]
+    },
+    {
+      "catNo": "74142",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 4,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "12A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".570",
+      "coilOD": "2 1/8",
+      "weightLbs": [
+        2.3,
+        2.7,
+        4.0,
+        5.3
+      ]
+    },
+    {
+      "catNo": "75141",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 5,
+      "type": "SEOW/STOW",
+      "voltage": "300V",
+      "ampRating": "12A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".465",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        1.9,
+        1.9,
+        2.3,
+        3.0
+      ]
+    },
+    {
+      "catNo": "77142",
+      "category": "tpr-power",
+      "awg": "14",
+      "conductors": 7,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "12A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".700",
+      "coilOD": "2 3/8",
+      "weightLbs": [
+        2.1,
+        2.3,
+        3.4,
+        4.5
+      ]
+    },
+    {
+      "catNo": "72121",
+      "category": "tpr-power",
+      "awg": "12",
+      "conductors": 2,
+      "type": "SEOW/STOW",
+      "voltage": "300V",
+      "ampRating": "12A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/30",
+      "tempC": 105,
+      "conductorOD": ".420",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        1.3,
+        1.4,
+        2.2,
+        2.8
+      ]
+    },
+    {
+      "catNo": "73122",
+      "category": "tpr-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "20A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/30",
+      "tempC": 105,
+      "conductorOD": ".580",
+      "coilOD": "2 3/8",
+      "weightLbs": [
+        2.36,
+        3.13,
+        4.61,
+        6.11
+      ]
+    },
+    {
+      "catNo": "74122",
+      "category": "tpr-power",
+      "awg": "12",
+      "conductors": 4,
+      "type": "SEOW/STOW",
+      "voltage": "600V",
+      "ampRating": "20A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/30",
+      "tempC": 105,
+      "conductorOD": ".660",
+      "coilOD": "2 3/8",
+      "weightLbs": [
+        2.82,
+        3.43,
+        5.16,
+        6.7
+      ]
+    },
+    {
+      "catNo": "92180",
+      "category": "pvc-power",
       "awg": "18",
       "conductors": 2,
       "type": "SVT",
       "voltage": "300V",
-      "ampRating": "7A",
-      "retractedLengths": [2, 4, 6, 8, 10]
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".250",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.31,
+        0.33,
+        0.48,
+        0.63
+      ]
     },
     {
-      "catNo": "1602",
-      "category": "tpe-power",
-      "awg": "18",
-      "conductors": 3,
-      "type": "SVT",
-      "voltage": "300V",
-      "ampRating": "7A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "1610",
-      "category": "tpe-power",
-      "awg": "16",
-      "conductors": 3,
-      "type": "SJT",
-      "voltage": "300V",
-      "ampRating": "13A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15, 20]
-    },
-    {
-      "catNo": "1615",
-      "category": "tpe-power",
-      "awg": "14",
-      "conductors": 3,
-      "type": "SJT",
-      "voltage": "300V",
-      "ampRating": "15A",
-      "retractedLengths": [4, 6, 8, 10, 15, 20]
-    },
-    {
-      "catNo": "1620",
-      "category": "tpe-power",
-      "awg": "12",
-      "conductors": 3,
-      "type": "SJTO",
-      "voltage": "300V",
-      "ampRating": "20A",
-      "retractedLengths": [4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "2201",
-      "category": "tpr-power",
-      "awg": "16",
-      "conductors": 3,
-      "type": "SJTO",
-      "voltage": "300V",
-      "ampRating": "13A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "2210",
-      "category": "tpr-power",
-      "awg": "14",
-      "conductors": 3,
-      "type": "SJTO",
-      "voltage": "300V",
-      "ampRating": "15A",
-      "retractedLengths": [4, 6, 8, 10, 15, 20]
-    },
-    {
-      "catNo": "2215",
-      "category": "tpr-power",
-      "awg": "12",
-      "conductors": 3,
-      "type": "SO",
-      "voltage": "600V",
-      "ampRating": "20A",
-      "retractedLengths": [4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "3301",
+      "catNo": "92180W",
       "category": "pvc-power",
       "awg": "18",
       "conductors": 2,
       "type": "SVT",
       "voltage": "300V",
-      "ampRating": "7A",
-      "retractedLengths": [2, 4, 6, 8, 10]
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".250",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.41,
+        0.44,
+        0.64,
+        0.85
+      ]
     },
     {
-      "catNo": "3310",
+      "catNo": "93180",
       "category": "pvc-power",
-      "awg": "16",
-      "conductors": 3,
-      "type": "SJT",
-      "voltage": "300V",
-      "ampRating": "13A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "3315",
-      "category": "pvc-power",
-      "awg": "14",
-      "conductors": 3,
-      "type": "SJT",
-      "voltage": "300V",
-      "ampRating": "15A",
-      "retractedLengths": [4, 6, 8, 10, 15, 20]
-    },
-    {
-      "catNo": "3320",
-      "category": "pvc-power",
-      "awg": "12",
-      "conductors": 3,
-      "type": "SOW",
-      "voltage": "600V",
-      "ampRating": "20A",
-      "retractedLengths": [4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "3325",
-      "category": "pvc-power",
-      "awg": "10",
-      "conductors": 3,
-      "type": "SOW",
-      "voltage": "600V",
-      "ampRating": "30A",
-      "retractedLengths": [6, 8, 10, 15]
-    },
-    {
-      "catNo": "4401",
-      "category": "tpe-power-bare",
       "awg": "18",
       "conductors": 3,
-      "type": "SVTO",
-      "voltage": "300V",
-      "ampRating": "7A",
-      "retractedLengths": [2, 4, 6, 8, 10]
-    },
-    {
-      "catNo": "4410",
-      "category": "tpe-power-bare",
-      "awg": "16",
-      "conductors": 4,
-      "type": "SJT",
-      "voltage": "300V",
-      "ampRating": "13A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "5501",
-      "category": "comm-control",
-      "awg": "18",
-      "conductors": 4,
-      "type": "CMG",
-      "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6, 8, 10]
-    },
-    {
-      "catNo": "5510",
-      "category": "comm-control",
-      "awg": "16",
-      "conductors": 4,
-      "type": "CMG",
-      "voltage": "300V",
-      "ampRating": "8A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
-    },
-    {
-      "catNo": "6601",
-      "category": "test-leads",
-      "awg": "18",
-      "conductors": 2,
       "type": "SVT",
       "voltage": "300V",
-      "ampRating": "7A",
-      "retractedLengths": [2, 4, 6]
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".260",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.35,
+        0.36,
+        0.51,
+        0.67
+      ]
     },
     {
-      "catNo": "6610",
-      "category": "test-leads",
-      "awg": "16",
+      "catNo": "93180W",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".260",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.38,
+        0.39,
+        0.56,
+        0.73
+      ]
+    },
+    {
+      "catNo": "92181",
+      "category": "pvc-power",
+      "awg": "18",
       "conductors": 2,
       "type": "SJT",
       "voltage": "300V",
       "ampRating": "10A",
-      "retractedLengths": [2, 4, 6, 8]
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".295",
+      "coilOD": "1",
+      "weightLbs": [
+        0.38,
+        0.4,
+        0.57,
+        0.75
+      ]
     },
     {
-      "catNo": "7701",
-      "category": "shielded-comm",
+      "catNo": "92181W",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".295",
+      "coilOD": "1",
+      "weightLbs": [
+        0.4,
+        0.42,
+        0.6,
+        0.79
+      ]
+    },
+    {
+      "catNo": "93181",
+      "category": "pvc-power",
       "awg": "18",
       "conductors": 3,
-      "type": "SJTO",
+      "type": "SJT",
       "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6, 8, 10]
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".330",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.52,
+        0.7,
+        1.0,
+        1.4
+      ]
     },
     {
-      "catNo": "7710",
-      "category": "shielded-comm",
+      "catNo": "93181W",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".330",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.56,
+        0.75,
+        1.1,
+        1.5
+      ]
+    },
+    {
+      "catNo": "94181",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 4,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".360",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.6,
+        0.73,
+        1.2,
+        1.5
+      ]
+    },
+    {
+      "catNo": "94181W",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 4,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".360",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.68,
+        0.82,
+        1.2,
+        1.6
+      ]
+    },
+    {
+      "catNo": "95181",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 5,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "5.6A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".440",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        1.2,
+        1.2,
+        1.7,
+        2.3
+      ]
+    },
+    {
+      "catNo": "95181W",
+      "category": "pvc-power",
+      "awg": "18",
+      "conductors": 5,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "5.6A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".440",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        1.1,
+        1.1,
+        1.5,
+        2.1
+      ]
+    },
+    {
+      "catNo": "92161",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 2,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".315",
+      "coilOD": "1 1/8",
+      "weightLbs": [
+        0.47,
+        0.52,
+        0.77,
+        1.0
+      ]
+    },
+    {
+      "catNo": "92161W",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 2,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".315",
+      "coilOD": "1 1/8",
+      "weightLbs": [
+        0.49,
+        0.54,
+        0.8,
+        1.1
+      ]
+    },
+    {
+      "catNo": "93161",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".355",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.68,
+        0.83,
+        1.2,
+        1.6
+      ]
+    },
+    {
+      "catNo": "93161W",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".355",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.67,
+        0.82,
+        1.2,
+        1.6
+      ]
+    },
+    {
+      "catNo": "94161",
+      "category": "pvc-power",
       "awg": "16",
       "conductors": 4,
       "type": "SJT",
       "voltage": "300V",
-      "ampRating": "8A",
-      "retractedLengths": [2, 4, 6, 8, 10, 15]
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".410",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        0.92,
+        1.4,
+        2.1,
+        2.8
+      ]
     },
     {
-      "catNo": "8801",
+      "catNo": "94161W",
+      "category": "pvc-power",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".410",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        0.9,
+        1.4,
+        2.1,
+        2.8
+      ]
+    },
+    {
+      "catNo": "93141",
+      "category": "pvc-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".390",
+      "coilOD": "1 9/16",
+      "weightLbs": [
+        1.1,
+        2.1,
+        3.1,
+        4.1
+      ]
+    },
+    {
+      "catNo": "93141W",
+      "category": "pvc-power",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".390",
+      "coilOD": "1 9/16",
+      "weightLbs": [
+        1.1,
+        2.1,
+        3.2,
+        4.2
+      ]
+    },
+    {
+      "catNo": "93121",
+      "category": "pvc-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "20A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/30",
+      "tempC": 105,
+      "conductorOD": ".435",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        1.7,
+        1.8,
+        2.6,
+        3.5
+      ]
+    },
+    {
+      "catNo": "93121W",
+      "category": "pvc-power",
+      "awg": "12",
+      "conductors": 3,
+      "type": "SJT",
+      "voltage": "300V",
+      "ampRating": "20A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/30",
+      "tempC": 105,
+      "conductorOD": ".435",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        1.8,
+        1.9,
+        2.8,
+        3.6
+      ]
+    },
+    {
+      "catNo": "92180E",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SVEO/SVT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".250",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.41,
+        0.44,
+        0.64,
+        0.85
+      ]
+    },
+    {
+      "catNo": "93180E",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SVEO/SVT",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".260",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.34,
+        0.34,
+        0.5,
+        0.66
+      ]
+    },
+    {
+      "catNo": "92181E",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 2,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".295",
+      "coilOD": "1",
+      "weightLbs": [
+        0.41,
+        0.41,
+        0.6,
+        0.8
+      ]
+    },
+    {
+      "catNo": "93181E",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 3,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".330",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.55,
+        0.78,
+        1.1,
+        1.5
+      ]
+    },
+    {
+      "catNo": "94181E",
+      "category": "tpe-power-bare",
+      "awg": "18",
+      "conductors": 4,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "7A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/34",
+      "tempC": 105,
+      "conductorOD": ".350",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.61,
+        0.77,
+        1.1,
+        1.5
+      ]
+    },
+    {
+      "catNo": "92161E",
+      "category": "tpe-power-bare",
+      "awg": "16",
+      "conductors": 2,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".315",
+      "coilOD": "1 1/8",
+      "weightLbs": [
+        0.52,
+        0.58,
+        0.85,
+        1.1
+      ]
+    },
+    {
+      "catNo": "93161E",
+      "category": "tpe-power-bare",
+      "awg": "16",
+      "conductors": 3,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "13A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".355",
+      "coilOD": "1 3/8",
+      "weightLbs": [
+        0.65,
+        0.8,
+        1.2,
+        1.5
+      ]
+    },
+    {
+      "catNo": "94161E",
+      "category": "tpe-power-bare",
+      "awg": "16",
+      "conductors": 4,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "10A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "65/34",
+      "tempC": 105,
+      "conductorOD": ".410",
+      "coilOD": "1 5/8",
+      "weightLbs": [
+        0.9,
+        1.0,
+        1.5,
+        2.0
+      ]
+    },
+    {
+      "catNo": "93141E",
+      "category": "tpe-power-bare",
+      "awg": "14",
+      "conductors": 3,
+      "type": "SJEOOW/SJTOOW",
+      "voltage": "300V",
+      "ampRating": "15A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "41/30",
+      "tempC": 105,
+      "conductorOD": ".390",
+      "coilOD": "1 1/2",
+      "weightLbs": [
+        1.1,
+        2.1,
+        3.1,
+        4.1
+      ]
+    },
+    {
+      "catNo": "22235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 2,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.17,
+        0.18,
+        0.27,
+        0.35
+      ]
+    },
+    {
+      "catNo": "22237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 2,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.17,
+        0.18,
+        0.27,
+        0.35
+      ]
+    },
+    {
+      "catNo": "23235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".190",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.19,
+        0.22,
+        0.32,
+        0.43
+      ]
+    },
+    {
+      "catNo": "23237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".190",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.2,
+        0.23,
+        0.34,
+        0.45
+      ]
+    },
+    {
+      "catNo": "24235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".200",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.21,
+        0.22,
+        0.33,
+        0.44
+      ]
+    },
+    {
+      "catNo": "24237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".200",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.21,
+        0.22,
+        0.33,
+        0.44
+      ]
+    },
+    {
+      "catNo": "25235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 5,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".215",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.22,
+        0.24,
+        0.35,
+        0.46
+      ]
+    },
+    {
+      "catNo": "25237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 5,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".215",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.25,
+        0.26,
+        0.38,
+        0.5
+      ]
+    },
+    {
+      "catNo": "26235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 6,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.27,
+        0.33,
+        0.48,
+        0.64
+      ]
+    },
+    {
+      "catNo": "26237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 6,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.27,
+        0.33,
+        0.48,
+        0.64
+      ]
+    },
+    {
+      "catNo": "27235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 7,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.28,
+        0.33,
+        0.48,
+        0.64
+      ]
+    },
+    {
+      "catNo": "27237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 7,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.28,
+        0.33,
+        0.49,
+        0.65
+      ]
+    },
+    {
+      "catNo": "28235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 8,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".245",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.31,
+        0.34,
+        0.5,
+        0.67
+      ]
+    },
+    {
+      "catNo": "28237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 8,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".245",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.33,
+        0.37,
+        0.54,
+        0.71
+      ]
+    },
+    {
+      "catNo": "210235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 10,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".280",
+      "coilOD": "15/16",
+      "weightLbs": [
+        0.46,
+        0.46,
+        0.68,
+        0.89
+      ]
+    },
+    {
+      "catNo": "210237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 10,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".280",
+      "coilOD": "15/16",
+      "weightLbs": [
+        0.47,
+        0.47,
+        0.69,
+        0.92
+      ]
+    },
+    {
+      "catNo": "212235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 12,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".285",
+      "coilOD": "1",
+      "weightLbs": [
+        0.48,
+        0.52,
+        0.76,
+        1.1
+      ]
+    },
+    {
+      "catNo": "212237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 12,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".285",
+      "coilOD": "1",
+      "weightLbs": [
+        0.5,
+        0.54,
+        0.8,
+        1.1
+      ]
+    },
+    {
+      "catNo": "215235P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 15,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".310",
+      "coilOD": "1 1/16",
+      "weightLbs": [
+        0.58,
+        0.62,
+        0.91,
+        1.2
+      ]
+    },
+    {
+      "catNo": "215237P",
+      "category": "comm-control",
+      "awg": "23",
+      "conductors": 15,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".310",
+      "coilOD": "1 1/16",
+      "weightLbs": [
+        0.63,
+        0.67,
+        1.2,
+        1.3
+      ]
+    },
+    {
+      "catNo": "91207",
+      "category": "test-leads",
+      "awg": "20",
+      "conductors": 1,
+      "type": "Test lead",
+      "voltage": "5000V",
+      "ampRating": "4A",
+      "retractedLengths": [
+        12,
+        24
+      ],
+      "strand": "41/36",
+      "tempC": 105,
+      "conductorOD": ".165",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.17,
+        0.19
+      ]
+    },
+    {
+      "catNo": "91208R",
+      "category": "test-leads",
+      "awg": "20",
+      "conductors": 1,
+      "type": "Test lead",
+      "voltage": "5000V",
+      "ampRating": "4A",
+      "retractedLengths": [
+        12,
+        24
+      ],
+      "strand": "41/36",
+      "tempC": 105,
+      "conductorOD": ".165",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.17,
+        0.19
+      ]
+    },
+    {
+      "catNo": "31235P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 1,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".165",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.16,
+        0.19,
+        0.28,
+        0.37
+      ]
+    },
+    {
+      "catNo": "31237P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 1,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".165",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.18,
+        0.2,
+        0.3,
+        0.4
+      ]
+    },
+    {
+      "catNo": "32235P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 2,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".210",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.26,
+        0.29,
+        0.43,
+        0.57
+      ]
+    },
+    {
+      "catNo": "32237P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 2,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".210",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.26,
+        0.29,
+        0.43,
+        0.57
+      ]
+    },
+    {
+      "catNo": "33235P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".205",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.21,
+        0.24,
+        0.36,
+        0.48
+      ]
+    },
+    {
+      "catNo": "33237P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".205",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.23,
+        0.25,
+        0.37,
+        0.49
+      ]
+    },
+    {
+      "catNo": "34235P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.3,
+        0.37,
+        0.54,
+        0.71
+      ]
+    },
+    {
+      "catNo": "34237P",
+      "category": "shielded-comm",
+      "awg": "23",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.29,
+        0.35,
+        0.52,
+        0.68
+      ]
+    },
+    {
+      "catNo": "62235P",
       "category": "pvc-shielded",
-      "awg": "18",
+      "awg": "23",
       "conductors": 2,
-      "type": "SVT",
+      "type": "AWM",
       "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6, 8]
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.18,
+        0.22,
+        0.33,
+        0.43
+      ]
     },
     {
-      "catNo": "9901",
-      "category": "pvc-miniature",
-      "awg": "18",
-      "conductors": 2,
-      "type": "SVT",
-      "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6]
-    },
-    {
-      "catNo": "9910",
-      "category": "pvc-miniature",
-      "awg": "18",
+      "catNo": "63235P",
+      "category": "pvc-shielded",
+      "awg": "23",
       "conductors": 3,
-      "type": "SVT",
+      "type": "AWM",
       "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6, 8]
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".190",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.22,
+        0.24,
+        0.36,
+        0.47
+      ]
     },
     {
-      "catNo": "9950",
+      "catNo": "64235P",
+      "category": "pvc-shielded",
+      "awg": "23",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".205",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.23,
+        0.24,
+        0.35,
+        0.47
+      ]
+    },
+    {
+      "catNo": "65235P",
+      "category": "pvc-shielded",
+      "awg": "23",
+      "conductors": 5,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".215",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.31,
+        0.32,
+        0.48,
+        0.63
+      ]
+    },
+    {
+      "catNo": "66235P",
+      "category": "pvc-shielded",
+      "awg": "23",
+      "conductors": 6,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".230",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.32,
+        0.38,
+        0.57,
+        0.75
+      ]
+    },
+    {
+      "catNo": "67235P",
+      "category": "pvc-shielded",
+      "awg": "23",
+      "conductors": 7,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".235",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.34,
+        0.4,
+        0.59,
+        0.78
+      ]
+    },
+    {
+      "catNo": "68235P",
+      "category": "pvc-shielded",
+      "awg": "23",
+      "conductors": 8,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "1A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "21/36",
+      "tempC": 80,
+      "conductorOD": ".245",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.38,
+        0.42,
+        0.61,
+        0.81
+      ]
+    },
+    {
+      "catNo": "22285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 2,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".150",
+      "coilOD": "1/2",
+      "weightLbs": [
+        0.09,
+        0.1,
+        0.14,
+        0.19
+      ]
+    },
+    {
+      "catNo": "23285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".150",
+      "coilOD": "1/2",
+      "weightLbs": [
+        0.09,
+        0.1,
+        0.14,
+        0.2
+      ]
+    },
+    {
+      "catNo": "24285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".155",
+      "coilOD": "1/2",
+      "weightLbs": [
+        0.09,
+        0.1,
+        0.14,
+        0.2
+      ]
+    },
+    {
+      "catNo": "25285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 5,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".165",
+      "coilOD": "9/16",
+      "weightLbs": [
+        0.1,
+        0.11,
+        0.16,
+        0.21
+      ]
+    },
+    {
+      "catNo": "26285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 6,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.15,
+        0.16,
+        0.23,
+        0.31
+      ]
+    },
+    {
+      "catNo": "27285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 7,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.17,
+        0.18,
+        0.26,
+        0.34
+      ]
+    },
+    {
+      "catNo": "28285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 8,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".200",
+      "coilOD": "5/8",
+      "weightLbs": [
+        0.18,
+        0.19,
+        0.24,
+        0.32
+      ]
+    },
+    {
+      "catNo": "210285P",
+      "category": "pvc-miniature",
+      "awg": "28",
+      "conductors": 10,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".235",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.23,
+        0.27,
+        0.39,
+        0.52
+      ]
+    },
+    {
+      "catNo": "82285P",
       "category": "pvc-miniature-foil",
-      "awg": "18",
-      "conductors": 3,
-      "type": "SVT",
+      "awg": "28",
+      "conductors": 2,
+      "type": "AWM",
       "voltage": "300V",
-      "ampRating": "5A",
-      "retractedLengths": [2, 4, 6]
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".155",
+      "coilOD": "1/2",
+      "weightLbs": [
+        0.12,
+        0.15,
+        0.17,
+        0.22
+      ]
+    },
+    {
+      "catNo": "83285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 3,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".160",
+      "coilOD": "1/2",
+      "weightLbs": [
+        0.12,
+        0.15,
+        0.18,
+        0.23
+      ]
+    },
+    {
+      "catNo": "84285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 4,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "9/16",
+      "weightLbs": [
+        0.13,
+        0.15,
+        0.19,
+        0.24
+      ]
+    },
+    {
+      "catNo": "85285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 5,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".180",
+      "coilOD": "9/16",
+      "weightLbs": [
+        0.14,
+        0.15,
+        0.22,
+        0.25
+      ]
+    },
+    {
+      "catNo": "86285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 6,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".190",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.18,
+        0.2,
+        0.29,
+        0.39
+      ]
+    },
+    {
+      "catNo": "87285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 7,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".195",
+      "coilOD": "11/16",
+      "weightLbs": [
+        0.19,
+        0.21,
+        0.31,
+        0.41
+      ]
+    },
+    {
+      "catNo": "88285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 8,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".205",
+      "coilOD": "3/4",
+      "weightLbs": [
+        0.2,
+        0.22,
+        0.32,
+        0.42
+      ]
+    },
+    {
+      "catNo": "810285P",
+      "category": "pvc-miniature-foil",
+      "awg": "28",
+      "conductors": 10,
+      "type": "AWM",
+      "voltage": "300V",
+      "ampRating": "0.5A",
+      "retractedLengths": [
+        12,
+        24,
+        36,
+        48
+      ],
+      "strand": "7/36",
+      "tempC": 80,
+      "conductorOD": ".235",
+      "coilOD": "7/8",
+      "weightLbs": [
+        0.22,
+        0.26,
+        0.38,
+        0.51
+      ]
     }
   ]
 }

@@ -77,6 +77,24 @@ from the same JSON on every filter change, so **the generator's markup and
 re-verify by round-tripping a filter (apply a category filter, return to "All",
 and confirm the DOM is unchanged).
 
+### Product Data Source of Truth
+`catalog/data/products.json` is a transcription of Autac's **printed catalog**
+(`catalog/autac-catalog.pdf`, the Illustrator document, pages 6-14): 10
+categories, 112 stock catalog numbers (72180, 93161W, 22235P, 91207, ...), all
+in 12/24/36/48 inch retracted lengths, with strand, temperature, conductor OD,
+coil OD and weight fields. Until 2026-09-22 it held 25 placeholder numbers
+(1601, 5501, 9901, ...) that never existed in the real catalog, and the hubs'
+prose quoted those placeholder specs. The transcription lives in
+`scripts/transcribe-print-catalog.py` (row tuples, one per printed line) and
+regenerates the JSON; edit that script, not the JSON, then run every generator
+below. Extra fields are ignored by the generators and by `buildCard()`.
+
+**Printable PDF** of the same data: `python3 scripts/build-catalog-pdf.py`
+writes `catalog/autac-product-catalog-web.pdf` (letter, 9 pages) through
+headless Chrome. `catalog/autac-product-catalog-web-v1.pdf` is the frozen first
+cut built from the placeholder data, kept for comparison. Never overwrite
+`catalog/autac-catalog.pdf`.
+
 ### Generated Content: Hub Catalog Tables
 The four hubs (`retractile-cords`, `coiled-cords`, `curly-cords`, `cord-sets`)
 used to build their catalog tables client-side from the same
@@ -131,8 +149,8 @@ The deliberate split:
   sitewide). Worth the noise for the commercial-entity signal on the pages that
   matter.
 - `/products/` uses a plain nested `ItemList` with **no Product types**. Marking
-  its 10 categories and 25 part numbers as Products generated 35 permanently
-  invalid items for no possible rich result. The ItemList carries the same
+  its 10 categories and 112 part numbers as Products would generate 122
+  permanently invalid items for no possible rich result. The ItemList carries the same
   catalog data and validates clean.
 - Never add `isSimilarTo` with `{name, url}` stubs to a ProductGroup. Google
   counts each stub as its own Product entity, which turned 1 invalid item per
