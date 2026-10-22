@@ -9,7 +9,17 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3VCNRLKCL6"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3VCNRLKCL6");</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-3VCNRLKCL6");
+    // Send call/text taps to GA4 (marked as key events there)
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"]');
+      if (!a) return;
+      var area = a.closest('header, footer, .topbar');
+      gtag('event', a.href.indexOf('tel:') === 0 ? 'click_to_call' : 'click_to_text', {
+        link_location: area ? (area.classList.contains('topbar') ? 'topbar' : area.tagName.toLowerCase()) : 'content'
+      });
+    });
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
