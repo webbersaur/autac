@@ -1117,15 +1117,13 @@
           </div>
 
           <div class="form-group">
-            <label for="howHeard">How did you hear about us? <span class="optional">(optional)</span></label>
-            <select id="howHeard">
+            <label for="howHeard">How did you find us? *</label>
+            <select id="howHeard" required>
               <option value="">Select...</option>
-              <option value="Google Search">Google Search</option>
-              <option value="Industry Referral">Industry Referral</option>
-              <option value="Trade Show">Trade Show</option>
-              <option value="Existing Customer">Existing Customer</option>
-              <option value="Thomas / Industrial Directory">Thomas / Industrial Directory</option>
-              <option value="Social Media">Social Media</option>
+              <option value="Google Search">Google</option>
+              <option value="ThomasNet">ThomasNet</option>
+              <option value="Existing Customer">Existing customer</option>
+              <option value="Referral">Referral</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -1389,7 +1387,7 @@
 
     // Validate contact step
     function validateContact() {
-      var fields = ['firstName', 'lastName', 'companyName', 'email', 'phone'];
+      var fields = ['firstName', 'lastName', 'companyName', 'email', 'phone', 'howHeard'];
       var valid = true;
       for (var i = 0; i < fields.length; i++) {
         var el = document.getElementById(fields[i]);
