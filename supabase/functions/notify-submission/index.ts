@@ -66,6 +66,7 @@ Deno.serve(async (req) => {
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Phone</td><td style="padding:6px 12px;">${esc(record.phone) || "—"}</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Subject</td><td style="padding:6px 12px;">${esc(record.subject)}</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Message</td><td style="padding:6px 12px;">${esc(record.message)}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">How Found</td><td style="padding:6px 12px;">${esc(record.how_heard) || "—"}</td></tr>
         </table>
         ${submissionMeta(record)}
         <p style="margin-top:12px;font-size:13px;color:#888;"><a href="https://www.autacusa.com/admin.html">View in Dashboard</a></p>
@@ -87,6 +88,7 @@ Deno.serve(async (req) => {
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Industry</td><td style="padding:6px 12px;">${esc(record.industry)}</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Quantity</td><td style="padding:6px 12px;">${esc(record.quantity)}</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Timeline</td><td style="padding:6px 12px;font-weight:${isUrgent ? "bold;color:#b91c1c" : "normal;color:#333"}">${esc(timeline)}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">How Found</td><td style="padding:6px 12px;">${esc(record.how_heard) || "—"}</td></tr>
         </table>
         ${submissionMeta(record)}
         <p style="margin-top:12px;font-size:13px;color:#888;"><a href="https://www.autacusa.com/admin.html">View in Dashboard</a></p>
@@ -104,6 +106,7 @@ Deno.serve(async (req) => {
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Jacket</td><td style="padding:6px 12px;">${esc(record.jacket) || "—"}</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Conductors</td><td style="padding:6px 12px;">${esc(record.conductors) || "—"} × ${esc(record.gauge) || "—"} AWG</td></tr>
           <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">Shield</td><td style="padding:6px 12px;">${esc(record.shield)}</td></tr>
+          <tr><td style="padding:6px 12px;font-weight:bold;color:#666;">How Found</td><td style="padding:6px 12px;">${esc(record.how_heard) || "—"}</td></tr>
         </table>
         ${submissionMeta(record)}
         <p style="margin-top:12px;font-size:13px;color:#888;"><a href="https://www.autacusa.com/admin.html">View in Dashboard</a></p>

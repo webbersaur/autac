@@ -126,6 +126,7 @@ Deno.serve(async (req) => {
       company_name: String(payload.company_name ?? "").slice(0, 200) || null,
       industry: String(payload.industry ?? "").slice(0, 100) || null,
       application_use: String(payload.application_use ?? "").slice(0, 2000) || null,
+      how_heard: payload.how_heard ? String(payload.how_heard).slice(0, 100) : null,
       ...telemetry,
     };
   } else if (formType === "quote") {
@@ -187,6 +188,7 @@ Deno.serve(async (req) => {
       company: s("company", 200) ?? "",
       email,
       phone: s("phone", 50) ?? "",
+      how_heard: s("how_heard", 100),
       ...telemetry,
     };
   }

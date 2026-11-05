@@ -1083,6 +1083,17 @@
                 <input type="tel" id="contactPhone" required>
               </div>
             </div>
+            <div class="form-group">
+              <label for="howHeard">How did you find us? *</label>
+              <select id="howHeard" required>
+                <option value="">Select...</option>
+                <option value="Google Search">Google</option>
+                <option value="ThomasNet">ThomasNet</option>
+                <option value="Existing Customer">Existing customer</option>
+                <option value="Referral">Referral</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-success" id="formSuccess">
@@ -1324,8 +1335,9 @@
       var email = document.getElementById('contactEmail').value;
       var phone = document.getElementById('contactPhone').value;
       var company = document.getElementById('company').value;
+      var howHeard = document.getElementById('howHeard').value;
 
-      if (!name || !email || !phone || !company) {
+      if (!name || !email || !phone || !company || !howHeard) {
         alert('Please fill in your contact information (Step 8) before submitting.');
         document.getElementById('contactName').focus();
         return;
@@ -1381,7 +1393,8 @@
         contact_name: name,
         company: company,
         email: email,
-        phone: phone
+        phone: phone,
+        how_heard: howHeard
       };
 
       var submitBtn = document.querySelector('.btn-red.btn-full');
