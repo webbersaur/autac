@@ -371,10 +371,10 @@ def build_html(data: dict) -> str:
       <div class="card">
         <h3>How to read the tables</h3>
         <ul>
-          <li><b>Cat. No.</b> is the stock catalog number. Quote it with the retracted length you need, for example <b>93161, 24 inch</b>. A number ending in <b>W</b> is the white-jacket version; <b>5P</b> is a PVC jacket and <b>7P</b> an Auta-Prene TPE jacket on the same cord.</li>
+          <li><b>Cat. No.</b> is the stock catalog number. Quote it with the retracted length you need, for example <b>93161, 24 inch</b>. A number ending in <b>W</b> is the white-jacket version and <b>R</b> the red-jacket version (91208R, a red test lead); <b>5P</b> is a PVC jacket and <b>7P</b> an Auta-Prene TPE jacket on the same cord.</li>
           <li><b>Cond.</b>, <b>AWG</b>, and <b>Strand</b> are conductor count, wire gauge, and stranding (number of strands / strand gauge).</li>
           <li><b>Type</b> is the UL cord designation. <b>AWM</b> is UL Recognized appliance wiring material. Volts, amps, and temperature are the rated maximums for that construction.</li>
-          <li><b>Cond. OD</b> and <b>Coil OD</b> are the outside diameter of the finished cord and of the coil, in inches.</li>
+          <li><b>Cord OD</b> and <b>Coil OD</b> are the outside diameter of the finished cord and of the coil, in inches.</li>
           <li><b>Retracted</b> lengths are the coil lengths stocked, in inches, at rest. <b>Wt. lbs</b> gives the weight at each of those lengths in order.</li>
           <li><b>UL/cUL Listed</b> cords are finished, standalone products. <b>UL Recognized</b> cords are components for use inside equipment that carries its own approval.</li>
         </ul>

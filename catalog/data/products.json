@@ -327,7 +327,7 @@
       "category": "tpe-power",
       "awg": "18",
       "conductors": 3,
-      "type": "SJEOW/STOW",
+      "type": "SEOW/STOW",
       "voltage": "600V",
       "ampRating": "7A",
       "retractedLengths": [
@@ -352,7 +352,7 @@
       "category": "tpe-power",
       "awg": "18",
       "conductors": 7,
-      "type": "SJEOW/STOW",
+      "type": "SEOW/STOW",
       "voltage": "600V",
       "ampRating": "7A",
       "retractedLengths": [
@@ -377,7 +377,7 @@
       "category": "tpe-power",
       "awg": "18",
       "conductors": 10,
-      "type": "SJEOW/STOW",
+      "type": "SEOW/STOW",
       "voltage": "600V",
       "ampRating": "7A",
       "retractedLengths": [
@@ -477,7 +477,7 @@
       "category": "tpr-power",
       "awg": "16",
       "conductors": 4,
-      "type": "SEOW/STOW",
+      "type": "SJEOW/SJTOW",
       "voltage": "300V",
       "ampRating": "10A",
       "retractedLengths": [
@@ -627,7 +627,7 @@
       "category": "tpr-power",
       "awg": "14",
       "conductors": 3,
-      "type": "SEOW/STOW",
+      "type": "SJEOW/SJTOW",
       "voltage": "300V",
       "ampRating": "10A",
       "retractedLengths": [
@@ -702,7 +702,7 @@
       "category": "tpr-power",
       "awg": "14",
       "conductors": 5,
-      "type": "SEOW/STOW",
+      "type": "SJEOW/SJTOW",
       "voltage": "300V",
       "ampRating": "12A",
       "retractedLengths": [
@@ -752,7 +752,7 @@
       "category": "tpr-power",
       "awg": "12",
       "conductors": 2,
-      "type": "SEOW/STOW",
+      "type": "SJEOW/SJTOW",
       "voltage": "300V",
       "ampRating": "12A",
       "retractedLengths": [
@@ -2123,7 +2123,7 @@
       "category": "test-leads",
       "awg": "20",
       "conductors": 1,
-      "type": "Test lead",
+      "type": "Test lead, red",
       "voltage": "5000V",
       "ampRating": "4A",
       "retractedLengths": [
