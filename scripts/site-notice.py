@@ -32,8 +32,8 @@ END = "<!-- SITENOTICE:END -->"
 NOTICE = """  <!-- SITENOTICE:START -->
   <div class="sitenotice" role="status">
     <div class="container">
-      <span class="sitenotice-tag">Service Notice</span>
-      <p>Comcast is working on our phone and internet lines today (Thursday, September 3) and we may experience intermittent outages. If you can&rsquo;t reach us by phone, email <a href="mailto:sales@autacusa.com">sales@autacusa.com</a> or <a href="/quote/">send us a quote request</a> and we&rsquo;ll get right back to you.</p>
+      <span class="sitenotice-tag">Email Outage</span>
+      <p><strong>Our Outlook email is down</strong> (thanks, Microsoft!), so messages aren&rsquo;t reaching us right now. Real, live people are here to answer the phone and help: call <a href="tel:8002433161">800.243.3161</a> or <a href="tel:+12034813444">203.481.3444</a>, Mon&ndash;Fri 8am&ndash;5pm. We&rsquo;re old school, which is why we&rsquo;re dependable!</p>
     </div>
   </div>
   <style>
