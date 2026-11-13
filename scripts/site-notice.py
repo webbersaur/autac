@@ -33,7 +33,7 @@ NOTICE = """  <!-- SITENOTICE:START -->
   <div class="sitenotice" role="status">
     <div class="container">
       <span class="sitenotice-tag">Email Outage</span>
-      <p><strong>Our Outlook email is down</strong> (thanks, Microsoft!), so messages aren&rsquo;t reaching us right now. Real, live people are here to answer the phone and help: call <a href="tel:8002433161">800.243.3161</a> or <a href="tel:+12034813444">203.481.3444</a>, Mon&ndash;Fri 8am&ndash;5pm. We&rsquo;re old school, which is why we&rsquo;re dependable!</p>
+      <p><strong>Our email is currently down</strong>, but Autac is fully prepared to keep doing business without interruption. Please place orders by phone at <a href="tel:+12034813444">203.481.3444</a> or by fax at 203.488.0496, Mon-Fri 8am-5pm. For updates, follow <a href="https://www.facebook.com/autacusa" target="_blank" rel="noopener">Autac Incorporated on Facebook</a>.</p>
     </div>
   </div>
   <style>
