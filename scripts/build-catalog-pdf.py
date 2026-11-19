@@ -397,7 +397,7 @@ def build_html(data: dict) -> str:
         <div><b>Facility</b>{esc(FACILITY)}</div>
         <div><b>Mailing and remittance</b>{esc(MAILING)}</div>
         <div><b>Web</b>{esc(SITE)}</div>
-        <div><b>Hours</b>Mon to Fri, 8am to 5pm ET</div>
+        <div><b>Hours</b>Mon to Thu 8:30am to 5pm, Fri 8:30am to 3pm ET</div>
       </div>
     </div>
   </div>
